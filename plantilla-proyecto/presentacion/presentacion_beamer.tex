@@ -1,0 +1,171 @@
+% ==============================================================================
+% PLANTILLA DE PRESENTACIÓN BEAMER EN LATEX
+% Curso: Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica
+% Instructor: Enmanuel Huallparimachi (Ciencia Política · PUCP)
+% Modelo basado en: Investigación Experimental en Ciencia Política
+% ==============================================================================
+
+\documentclass[aspectratio=169,10pt]{beamer}
+
+% --- Tema y Colores ---
+\usetheme{Madrid}
+\usecolortheme{whale}
+
+% --- Idioma y Codificación ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+
+% --- Paquetes Adicionales ---
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+
+% --- Metadatos ---
+\title[Iconografía Populista Punitiva]{\textbf{Incidencia de la Iconografía Populista Punitiva en la Cooperación Ciudadana}}
+\subtitle{Una Propuesta Experimental en Ciencia Política}
+
+\author[E. Huallparimachi]{
+    \textbf{Enmanuel Huallparimachi Rojas} \\
+    \footnotesize \texttt{enmanuel.huallparimachi@pucp.edu.pe}
+}
+
+\institute[PUCP]{
+    Facultad de Ciencias Sociales \\
+    Pontificia Universidad Católica del Perú
+}
+
+\date[2026-2]{Taller Introductorio de Overleaf (LaTeX) · Semestre 2026-2}
+
+% ==============================================================================
+\begin{document}
+% ==============================================================================
+
+% Slide 1: Portada
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Slide 2: Agenda
+\begin{frame}{Estructura de la Presentación}
+    \tableofcontents
+\end{frame}
+
+% ==============================================================================
+\section{Introducción y Problema de Investigación}
+% ==============================================================================
+
+\begin{frame}{El Fenómeno del Populismo Punitivo}
+    \begin{block}{Definición Conceptual}
+        Estrategias de seguridad pública del Estado orientadas a maximizar el rédito político, legitimidad o apoyo electoral antes que la efectividad técnica contra el crimen.
+    \end{block}
+
+    \vspace{0.3cm}
+    \pause
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \textbf{Dimensión \textit{Ex-Ante}:}
+            \begin{itemize}
+                \item Predisposiciones y actitudes punitivas.
+                \item Influencia del framing mediático.
+                \item Demandas de mano dura.
+            \end{itemize}
+        \end{column}
+        \pause
+        \begin{column}{0.48\textwidth}
+            \textbf{Dimensión \textit{Ex-Post}:}
+            \begin{itemize}
+                \item Apoyo efectivo a excesos policiales.
+                \item Tolerancia a la violencia estatal.
+                \item Cooperación ciudadana directa.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ==============================================================================
+\section{Mecanismos Causales e Hipótesis}
+% ==============================================================================
+
+\begin{frame}{Mecanismos Causales de la Iconografía Punitiva}
+    \begin{alertblock}{Pregunta Central}
+        ¿Cómo influye la exposición a imágenes de castigo y sometimiento policial sobre la cooperación de los ciudadanos?
+    \end{alertblock}
+
+    \vspace{0.4cm}
+    \pause
+    \begin{enumerate}
+        \item \textbf{Mecanismo de Legitimidad:} Apelación a símbolos patrios y soberanía popular.
+        \pause
+        \item \textbf{Mecanismo de Auto-Interés (\textit{Self-Interest}):} Percepción de provisión estatal de seguridad.
+        \pause
+        \item \textbf{Mecanismo de Coerción Simbólica:} Demostración de poderío físico y disuasión punitiva.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Hipótesis y Modelo Econométrico}
+    \begin{exampleblock}{Hipótesis de Trabajo ($H_1$)}
+        La exposición a iconografía populista punitiva incrementa el Índice de Cooperación Punitiva Ciudadana (ICPC).
+    \end{exampleblock}
+
+    \vspace{0.3cm}
+    \pause
+    \textbf{Especificación del Modelo:}
+    \begin{equation}
+        Y_i = \alpha + \beta \, T_i + \sum_{k=1}^K \gamma_k X_{ki} + \varepsilon_i
+    \end{equation}
+
+    \begin{itemize}
+        \item $Y_i$: Índice de Cooperación Punitiva Ciudadana (ICPC).
+        \item $T_i \in \{0, 1\}$: Asignación aleatoria (Control vs. Tratamiento).
+        \item $\beta$: Efecto promedio del tratamiento (\textit{ATE}).
+    \end{itemize}
+\end{frame}
+
+% ==============================================================================
+\section{Metodología y Resultados}
+% ==============================================================================
+
+\begin{frame}{Resultados de la Comparación de Medias}
+    \begin{table}
+        \small
+        \centering
+        \begin{tabular}{lcccc}
+            \toprule
+            \textbf{Componente} & \textbf{Control} & \textbf{Tratamiento} & \textbf{Diferencia} & \textbf{Valor $p$} \\
+            \midrule
+            ICPC Global & 5.82 & 5.85 & +0.03 & 0.33 \\
+            Componente Actitudinal & 6.10 & 6.18 & +0.08 & 0.26 \\
+            Componente Conductual & 5.54 & 5.52 & -0.02 & 0.75 \\
+            Apoyo a Fuerza Policial & 5.91 & 6.02 & +0.11 & 0.29 \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \pause
+    \begin{block}{Interpretación}
+        La dirección del efecto en la dimensión actitudinal coincide con la hipótesis teórica (+0.08 puntos), sugiriendo la importancia de profundizar en estímulos audiovisuales e iconográficos.
+    \end{block}
+\end{frame}
+
+% ==============================================================================
+\section{Conclusiones}
+% ==============================================================================
+
+\begin{frame}{Conclusiones y Aportes}
+    \begin{itemize}
+        \item<1-> \textbf{Aporte metodológico:} Relevancia de los experimentos en encuesta para estudiar iconografía política.
+        \item<2-> \textbf{Reproducibilidad académica:} Integración de LaTeX, Beamer y BibTeX para una comunicación rigurosa.
+        \item<3-> \textbf{Agenda futura:} Evaluar piezas audiovisuales de marketing gubernamental y redes sociales.
+    \end{itemize}
+
+    \vspace{0.5cm}
+    \uncover<4->{
+        \begin{center}
+            \Huge \textbf{¡Muchas Gracias!} \\
+            \normalsize Preguntas y comentarios: \texttt{enmanuel.huallparimachi@pucp.edu.pe}
+        \end{center}
+    }
+\end{frame}
+
+\end{document}

@@ -53,6 +53,14 @@ Al finalizar el taller, el estudiante será capaz de:
 ├── 📄 README.md                   ← Este archivo
 ├── 📄 SILABO.md                   ← Programa detallado del taller
 │
+├── 📁 plantilla-proyecto/         ← 🌟 PROYECTO MODELO (Manuscrito + Beamer + BibTeX)
+│   ├── README.md
+│   ├── main.tex                   ← Manuscrito basado en la investigación del instructor
+│   ├── referencias.bib            ← Base de datos bibliográfica
+│   ├── imagenes/                  ← Figuras y diagramas
+│   └── presentacion/              ← Diapositivas en Beamer
+│       └── presentacion_beamer.tex
+│
 ├── 📁 sesion-01/                  ← Sesión 1: Introducción y primer proyecto
 │   ├── README.md
 │   └── materiales/
@@ -76,9 +84,11 @@ Al finalizar el taller, el estudiante será capaz de:
 ├── 📁 sesion-05/                  ← Sesión 5: Proyecto integrador y colaboración
 │   └── README.md
 │
-├── 📁 evaluaciones/               ← Rúbricas y lineamientos de evaluación
+├── 📁 evaluaciones/               ← Rúbricas, lineamientos y guía de ramas
 │   ├── README.md
-│   └── Rubrica_Tarea_Calificada_1.pdf
+│   ├── GUIA_DE_ENTREGAS_Y_BRANCHES.md ← Guía paso a paso para estudiantes
+│   ├── Rubrica_Tarea_Calificada_1.pdf
+│   └── Silabo_oficial.pdf
 │
 └── 📁 recursos/                   ← Enlaces, cheatsheets y material complementario
     └── README.md
@@ -108,6 +118,26 @@ Al finalizar el taller, el estudiante será capaz de:
 
 > **Certificado**: Nota ≥ 11 y asistencia ≥ 75%.  
 > **Constancia de participación**: Asistencia ≥ 75% (sin requisito de nota mínima).
+
+---
+
+## 🌿 Flujo de Entrega para Estudiantes (60+ participantes)
+
+Para que más de 60 estudiantes puedan enviar y recibir retroalimentación de sus manuscritos y presentaciones Beamer de manera ordenada y sin colisiones:
+
+```text
+ Rama main (Plantilla Base del Instructor)
+    └── Cada estudiante crea su rama:  entrega/CODIGO-APELLIDO-NOMBRE
+           └── Trabaja su manuscrito .tex, .bib y Beamer
+                  └── Abre un Pull Request (PR) hacia main con su entrega formal
+```
+
+1. **Plantilla de Referencia:** Ubicada en [`plantilla-proyecto/`](plantilla-proyecto/) con el modelo del manuscrito y diapositivas.
+2. **Nombre de Rama (*Branch*):** Cada estudiante nombra su rama como `entrega/CODIGO-APELLIDO-NOMBRE` (ejemplo: `entrega/20210456-perez-juan`).
+3. **Entrega Formal:** Se realiza abriendo un **Pull Request (PR)** hacia `main`, completando el formulario de autoevaluación y adjuntando el enlace de Overleaf.
+4. **Retroalimentación:** El instructor revisa el código LaTeX y asigna la nota directamente en los comentarios del Pull Request.
+
+📖 **Guía completa paso a paso:** [Instrucciones de Entregas y Branches](evaluaciones/GUIA_DE_ENTREGAS_Y_BRANCHES.md)
 
 ---
 

@@ -46,11 +46,32 @@
 
 ---
 
-## ⚠️ Consideraciones
+## 📁 Plantilla de Referencia para Entregas
 
-- Todos los trabajos deben ser entregados como **proyectos de Overleaf** (compartiendo el enlace de lectura).
+Para la elaboración de sus proyectos, los estudiantes cuentan con el **proyecto modelo oficial** estructurado a partir del manuscrito de investigación del instructor:
+
+👉 [**Ver Plantilla de Proyecto (LaTeX & Beamer)**](../plantilla-proyecto/README.md)
+
+---
+
+## 🌿 Flujo de Entrega con Git Branches & Pull Requests
+
+Para garantizar un proceso de entrega ordenado con más de 60 estudiantes:
+
+1. Cada estudiante debe crear su propia rama en Git con el formato `entrega/CODIGO-APELLIDO-NOMBRE`.
+2. Trabajar en su manuscrito `.tex`, bibliografía `.bib` y presentación Beamer.
+3. Subir sus cambios y abrir un **Pull Request (PR)** hacia la rama `main`.
+4. El instructor revisará el código LaTeX y dejará comentarios de retroalimentación directamente en el PR.
+
+👉 [**Ver Guía Completa de Entregas y Branches**](GUIA_DE_ENTREGAS_Y_BRANCHES.md)
+
+---
+
+## ⚠️ Consideraciones Importantes
+
+- Las entregas deben incluir el código fuente LaTeX completo y el enlace de lectura a Overleaf.
 - El documento debe **compilar sin errores**.
-- Se valorará la **organización** del proyecto y la **limpieza** del código LaTeX.
+- Se valorará la **organización** del proyecto, el uso de referencias cruzadas y la **limpieza** del código.
 
 ---
 
