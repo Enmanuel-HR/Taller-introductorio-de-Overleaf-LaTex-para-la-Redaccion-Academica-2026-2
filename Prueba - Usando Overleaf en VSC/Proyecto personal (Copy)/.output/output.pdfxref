@@ -1,0 +1,149 @@
+1/0: uncompressed; offset = 95412
+2/0: uncompressed; offset = 95543
+3/0: uncompressed; offset = 122042
+4/0: uncompressed; offset = 124622
+5/0: uncompressed; offset = 149661
+6/0: uncompressed; offset = 149821
+7/0: uncompressed; offset = 153420
+8/0: uncompressed; offset = 171285
+9/0: uncompressed; offset = 172224
+10/0: uncompressed; offset = 172377
+11/0: uncompressed; offset = 173134
+12/0: uncompressed; offset = 200187
+13/0: uncompressed; offset = 230312
+14/0: uncompressed; offset = 231251
+15/0: uncompressed; offset = 232190
+16/0: uncompressed; offset = 232503
+17/0: uncompressed; offset = 15
+18/0: uncompressed; offset = 216
+19/0: uncompressed; offset = 1468
+20/0: uncompressed; offset = 1592
+21/0: uncompressed; offset = 1809
+22/0: uncompressed; offset = 2023
+23/0: uncompressed; offset = 4279
+24/0: uncompressed; offset = 16796
+25/0: uncompressed; offset = 28120
+26/0: uncompressed; offset = 29060
+27/0: uncompressed; offset = 30000
+28/0: uncompressed; offset = 30793
+29/0: uncompressed; offset = 45050
+30/0: uncompressed; offset = 63257
+31/0: uncompressed; offset = 87118
+32/0: uncompressed; offset = 88059
+33/0: uncompressed; offset = 89000
+34/0: uncompressed; offset = 89939
+35/0: uncompressed; offset = 90654
+36/0: compressed; stream = 34, index = 0
+37/0: compressed; stream = 34, index = 1
+38/0: compressed; stream = 34, index = 2
+39/0: compressed; stream = 34, index = 3
+40/0: compressed; stream = 34, index = 4
+41/0: compressed; stream = 34, index = 5
+42/0: compressed; stream = 34, index = 6
+43/0: compressed; stream = 34, index = 7
+44/0: compressed; stream = 34, index = 8
+45/0: compressed; stream = 34, index = 9
+46/0: compressed; stream = 34, index = 10
+47/0: compressed; stream = 34, index = 11
+48/0: compressed; stream = 34, index = 12
+49/0: compressed; stream = 34, index = 13
+50/0: compressed; stream = 34, index = 14
+51/0: compressed; stream = 34, index = 15
+52/0: compressed; stream = 34, index = 16
+53/0: compressed; stream = 34, index = 17
+54/0: compressed; stream = 35, index = 0
+55/0: compressed; stream = 35, index = 1
+56/0: compressed; stream = 35, index = 2
+57/0: compressed; stream = 35, index = 3
+58/0: compressed; stream = 35, index = 4
+59/0: compressed; stream = 35, index = 5
+60/0: compressed; stream = 35, index = 6
+61/0: compressed; stream = 35, index = 7
+62/0: compressed; stream = 35, index = 8
+63/0: compressed; stream = 35, index = 9
+64/0: compressed; stream = 35, index = 10
+65/0: compressed; stream = 35, index = 11
+66/0: compressed; stream = 35, index = 12
+67/0: compressed; stream = 35, index = 13
+68/0: compressed; stream = 35, index = 14
+69/0: compressed; stream = 35, index = 15
+70/0: compressed; stream = 35, index = 16
+71/0: compressed; stream = 35, index = 17
+72/0: compressed; stream = 35, index = 18
+73/0: compressed; stream = 35, index = 19
+74/0: compressed; stream = 35, index = 20
+75/0: compressed; stream = 35, index = 21
+76/0: compressed; stream = 35, index = 22
+77/0: compressed; stream = 35, index = 23
+78/0: compressed; stream = 35, index = 24
+79/0: compressed; stream = 35, index = 25
+80/0: compressed; stream = 35, index = 26
+81/0: compressed; stream = 35, index = 27
+82/0: compressed; stream = 35, index = 28
+83/0: compressed; stream = 35, index = 29
+84/0: compressed; stream = 35, index = 30
+85/0: compressed; stream = 35, index = 31
+86/0: compressed; stream = 35, index = 32
+87/0: compressed; stream = 35, index = 33
+88/0: compressed; stream = 35, index = 34
+89/0: compressed; stream = 35, index = 35
+90/0: compressed; stream = 35, index = 36
+91/0: compressed; stream = 35, index = 37
+92/0: compressed; stream = 35, index = 38
+93/0: compressed; stream = 35, index = 39
+94/0: compressed; stream = 35, index = 40
+95/0: compressed; stream = 35, index = 41
+96/0: compressed; stream = 35, index = 42
+97/0: compressed; stream = 35, index = 43
+98/0: compressed; stream = 35, index = 44
+99/0: compressed; stream = 35, index = 45
+100/0: compressed; stream = 35, index = 46
+101/0: compressed; stream = 35, index = 47
+102/0: compressed; stream = 35, index = 48
+103/0: compressed; stream = 35, index = 49
+104/0: compressed; stream = 35, index = 50
+105/0: compressed; stream = 35, index = 51
+106/0: compressed; stream = 35, index = 52
+107/0: compressed; stream = 35, index = 53
+108/0: compressed; stream = 35, index = 54
+109/0: compressed; stream = 35, index = 55
+110/0: compressed; stream = 35, index = 56
+111/0: compressed; stream = 35, index = 57
+112/0: compressed; stream = 35, index = 58
+113/0: compressed; stream = 35, index = 59
+114/0: compressed; stream = 35, index = 60
+115/0: compressed; stream = 35, index = 61
+116/0: compressed; stream = 35, index = 62
+117/0: compressed; stream = 35, index = 63
+118/0: compressed; stream = 35, index = 64
+119/0: compressed; stream = 35, index = 65
+120/0: compressed; stream = 35, index = 66
+121/0: compressed; stream = 35, index = 67
+122/0: compressed; stream = 35, index = 68
+123/0: compressed; stream = 35, index = 69
+124/0: compressed; stream = 35, index = 70
+125/0: compressed; stream = 35, index = 71
+126/0: compressed; stream = 35, index = 72
+127/0: compressed; stream = 35, index = 73
+128/0: compressed; stream = 35, index = 74
+129/0: compressed; stream = 35, index = 75
+130/0: compressed; stream = 35, index = 76
+131/0: compressed; stream = 35, index = 77
+132/0: compressed; stream = 35, index = 78
+133/0: compressed; stream = 35, index = 79
+134/0: compressed; stream = 35, index = 80
+135/0: compressed; stream = 35, index = 81
+136/0: compressed; stream = 35, index = 82
+137/0: compressed; stream = 35, index = 83
+138/0: compressed; stream = 35, index = 84
+139/0: compressed; stream = 35, index = 85
+140/0: compressed; stream = 35, index = 86
+141/0: compressed; stream = 35, index = 87
+142/0: compressed; stream = 35, index = 88
+143/0: compressed; stream = 35, index = 89
+144/0: compressed; stream = 35, index = 90
+145/0: compressed; stream = 35, index = 91
+146/0: compressed; stream = 35, index = 92
+147/0: compressed; stream = 35, index = 93
+148/0: compressed; stream = 35, index = 94
+149/0: compressed; stream = 35, index = 95

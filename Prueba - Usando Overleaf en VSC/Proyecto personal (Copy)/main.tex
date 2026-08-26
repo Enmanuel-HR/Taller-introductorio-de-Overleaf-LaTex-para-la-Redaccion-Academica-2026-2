@@ -1,0 +1,189 @@
+% --- INICIO DEL PREÁMBULO ---
+\documentclass[12pt, a4paper]{article} % Tipo de documento
+
+% Paquetes para codificación y tipografía
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+%Idioma
+\usepackage[spanish]{babel}
+
+% Margenes
+\usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=2cm]{geometry}
+
+% Sangria
+%\setlength{\parindent}{1.5cm}
+
+% Paquetes para funcionalidades extra
+\usepackage{graphicx} % Para insertar imágenes
+\usepackage{amsmath}  % Para ecuaciones matemáticas (lo usaremos más adelante)
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[natbibapa]{apacite}
+
+
+
+%\usepackage{threeparttable}
+%\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{Soldados becarios: Diferencias en rendimiento académico entre modalidades de Beca 18}
+\author{Bryan Chura y Zarit de la Cruz}
+\date{\today}
+
+%----
+\usepackage{lscape}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{caption}
+%----
+
+% --- FIN DEL PREÁMBULO ---
+
+\begin{document}
+\maketitle
+
+%---------------------------------------------
+\section{Resumen}
+
+El Programa Nacional de Beca 18 en el Perú (PRONABEC - Perú) busca democratizar el acceso a la educación superior, operando a través de diversas modalidades que atienden a poblaciones vulnerables específicas. Entre ellas, la modalidad Fuerzas Armadas (FF.AA.) beneficia a jóvenes que realizaron el servicio militar voluntario. Sin embargo, a diferencia de la modalidad ordinaria que ha sido rigurosamente evaluada, se desconocen las características de esta intervención en una población con perfiles y experiencias distintivas. Esta investigación busca llenar este vacío al analizar las correlaciones entre la modalidad FF.AA y los resultados educativos  de los beneficiarios de Beca 18 modalidad FF.AA., en comparación con la modalidad ordinaria. A través de un análisis correlacional de efectos aleatorios correlacionados, se estudiarán las relaciones con el rendimiento académico,. La hipótesis principal plantea que existe una correlación negativa entre la modalidad FF.AA y los resultados académicos debido a brechas educativas acumuladas y dificultades de adaptación al entorno civil académico. Los resultados permitirán desarrollar recomendaciones para optimizar el diseño e implementación de esta modalidad, contribuyendo a la literatura sobre subsidios educativos y experiencia militar.
+
+%---------------------------------------------
+\section{Justificación}
+
+En los ultimos años se ha reportado un incremento de la delincuencia \citep{cattaneo_regression_2022}. 
+
+Según \citet{walkey_novel_2020} este fenomeno se debe al aumento de.
+
+En el Perú este es un problema muy común \citep{cochran_combination_1954, lee_regression_2010,larsen_fuzzy_2023}
+
+
+
+%---------------------------------------------
+\section{Sobre la intervención}
+\subsection{Servicio Militar Voluntario}
+
+
+\subsection{Beca 18 y su modalidad FF.AA.}
+El Programa Beca 18 (Vease Figura ~\ref{fig:logo_beca_18}), establecido bajo la Ley N.° 29837, es una de las iniciativas que el Estado peruano ha implementado con el objetivo de democratizar el acceso a la educación superior. Este programa tiene como objetivo  promover la igualdad de oportunidades en el acceso, permanencia y culminación de estudios superiores. Su propósito central es garantizar que el talento y el mérito académico, y no las limitaciones económicas, sean los factores determinantes para acceder a una educación superior de calidad. Opera a través de ocho modalidades específicas que responden a diferentes contextos de vulnerabilidad: Beca 18 Ordinaria, dirigida a jóvenes en situación de pobreza o pobreza extrema según el Sistema de Focalización de Hogares (Sisfoh); Beca Protección, para adolescentes bajo tutela del Estado o en situación de abandono; Beca CNA y PA, orientada a miembros de Comunidades Nativas Amazónicas y Poblaciones Afroperuanas; Beca EIB, enfocada en la formación en Educación Intercultural Bilingüe; Beca FF.AA., para licenciados del Servicio Militar Voluntario; Beca Huallaga, destinada a residentes de la zona del Huallaga; Beca Repared, para víctimas de la violencia ocurrida en el país entre 1980 y 2000; y Beca Vraem, dirigida a jóvenes del Valle de los ríos Apurímac, Ene y Mantaro (Vraem).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{pic/beca18.png}
+    \caption{Logo de Beca 18}
+    \label{fig:logo_beca_18}
+\end{figure}
+
+%---------------------------------------------
+\section{Revisión de literatura empírica}
+%---------------------------------------------
+\section{Planteamiento de Hipótesis y objetivos }
+%---------------------------------------------
+\section{Metodología}
+
+\subsection{Fuentes de datos}
+La presente investigación utiliza como fuente principal las Encuestas de Becarios Continuadores del PRONABEC, que se aplican semestralmente a todos los beneficiarios del programa desde su segundo semestre de estudios. El análisis se centra en el período comprendido entre 2019 y 2023, abarcando 10 períodos semestrales de observación. La elección de este marco temporal responde a dos consideraciones fundamentales: la estandarización del instrumento de recolección de datos implementada a partir de 2019, que garantiza la comparabilidad de las observaciones, y la necesidad de contar con suficientes puntos temporales para cada cohorte analizada.Los datos conforman un panel no balanceado, característica que emerge de tres factores inherentes al programa. Primero, los becarios ingresan al programa en diferentes momentos del tiempo, lo que resulta en distintos puntos de inicio en la serie temporal. Segundo, existe heterogeneidad en la duración de los programas académicos, que varían entre institutos tecnológicos (hasta 6 ciclos) y universidades (hasta 10 ciclos). Tercero, se observa una atrición natural debido a deserción o culminación adelantada de estudios, aunque esta pérdida es relativamente baja, con tasas de deserción entre 1\% y 2\%.
+La variable principal de resultado, el rendimiento académico, proviene de datos autorreportados en el reporte semestral de notas. Si bien el autorreporte podría generar preocupaciones sobre la calidad de los datos, el sistema de verificación de PRONABEC y los incentivos de los becarios para reportar información precisa (dado que la continuidad de su beca depende de su desempeño) contribuyen a la confiabilidad de estos datos. La encuesta presenta una tasa de respuesta notablemente alta, entre 90-95\%, lo que la convierte efectivamente en un censo de la población becaria.Es importante señalar que algunas variables inicialmente consideradas para el estudio, como indicadores socioemocionales, fueron descartadas debido a la falta de consistencia en su medición a lo largo del período de estudio. Esta decisión metodológica responde a la necesidad de mantener la comparabilidad de las variables a lo largo del tiempo, requisito fundamental para la implementación del método de efectos fijos correlacionados. 
+La muestra del estudio comprende a los becarios que ingresaron al programa entre 2019 y 2023. Durante este período, se otorgaron 90 becas en la modalidad FF.AA. en 2019, aumentando a 144 en 2020, manteniéndose en 140 becas anuales durante 2021-2023, sumando un total de 654 becarios en la modalidad FF.AA. Para la modalidad ordinaria, se otorgaron 2,284 becas en 2019, 3,476 en 2020, 3,584 en 2021, 3,495 en 2022 y 3,561 en 2023, totalizando 16,400 becarios. Siguiendo la distribución institucional establecida por PRONABEC, el 40\% de estas becas fueron asignadas a institutos técnicos superiores (262 becas FF.AA. y 6,560 ordinarias) y el 60\% a universidades (392 becas FF.AA. y 9,840 ordinarias). Esta distribución permite un análisis diferenciado por tipo de institución educativa, considerando las distintas duraciones de los programas académicos y sus particulares dinámicas de rendimiento.
+
+\begin{table}[h!]
+    %\centering
+    \caption{Número histórico de becas otorgadas por modalidad (2012-2024)}
+    \label{tab:becas}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|*{14}{l}|c|}
+        \hline
+        \textbf{Modalidad} & \textbf{2012} & \textbf{2013} & \textbf{2014} & \textbf{2015} & \textbf{2016} & \textbf{2017} & \textbf{2018} & \textbf{2019} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{Total} \\
+        \hline
+        \textbf{BECA 18 ORDINARIA} & 3973 & 4260 & 7894 & 18213 & 4321 & 3166 & 930 & 2284 & 3476 & 3584 & 3495 & 3561 & 7188 & \textbf{66345} \\
+        \hline
+        \textbf{BECA 18 FFAA} & 713 & 770 & 1765 & 2503 & 609 & 233 & 99 & 90 & 144 & 140 & 140 & 140 & 201 & \textbf{7547} \\
+        \hline
+        \textbf{BECA 18 VRAEM} & 539 & 799 & 1189 & 1689 & 777 & 325 & 78 & 89 & 119 & 175 & 168 & 140 & 342 & \textbf{6429} \\
+        \hline
+        \textbf{BECA 18 REPARED} & 43 & 184 & 304 & 301 & 250 & 394 & 315 & 367 & 488 & 550 & 550 & 550 & 1081 & \textbf{5377} \\
+        \hline
+        \textbf{BECA 18 CNA} & 0 & 0 & 379 & 1204 & 249 & 372 & 213 & 163 & 242 & 265 & 361 & 364 & 723 & \textbf{4535} \\
+        \hline
+        \textbf{BECA 18 HUALLAGA} & 0 & 0 & 293 & 865 & 275 & 75 & 86 & 83 & 105 & 138 & 141 & 126 & 274 & \textbf{2461} \\
+        \hline
+        \textbf{BECA 18 EIB} & 0 & 118 & 428 & 386 & 282 & 374 & 83 & 47 & 101 & 58 & 53 & 41 & 120 & \textbf{2091} \\
+        \hline
+        \textbf{BECA 18 PROTECCION} & 0 & 83 & 181 & 387 & 187 & 45 & 52 & 67 & 65 & 78 & 86 & 84 & 70 & \textbf{1385} \\
+        \hline
+        \textbf{Total} & \textbf{5268} & \textbf{6214} & \textbf{12433} & \textbf{25548} & \textbf{6950} & \textbf{4984} & \textbf{1856} & \textbf{3190} & \textbf{4740} & \textbf{4988} & \textbf{4994} & \textbf{5006} & \textbf{9999} & \textbf{96170} \\
+        \hline
+    \end{tabular}%
+    }
+
+\end{table}
+
+\subsection{Variables}
+
+%-------------------------
+
+\label{Bibliography}
+
+\bibliographystyle{apacite}
+\bibliography{biblio.bib}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%--------------
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
