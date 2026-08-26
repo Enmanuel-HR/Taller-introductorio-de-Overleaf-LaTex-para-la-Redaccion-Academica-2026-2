@@ -9,6 +9,7 @@
 | **Diseño** | Abierto |
 | **Modalidad** | A distancia |
 | **Unidad Académica** | 4141 – Facultad de Ciencias Sociales |
+| **Instructor / Docente** | Enmanuel Huallparimachi (Ciencia Política) |
 | **Coordinador** | 20084395 – Rodriguez Saldarriaga, Alfonso Jesús |
 | **Duración** | 10 horas (5 sesiones de 2 horas) |
 

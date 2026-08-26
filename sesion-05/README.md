@@ -59,3 +59,12 @@ Elabora un proyecto completo en Overleaf que demuestre el dominio de todos los t
 - [Overleaf: Collaboration](https://www.overleaf.com/learn/how-to/Sharing_a_project)
 - [Overleaf: Galería de plantillas](https://www.overleaf.com/gallery)
 - [Overleaf: Using \input and \include](https://www.overleaf.com/learn/latex/Management_in_a_large_project)
+
+---
+
+<div align="center">
+
+*Instructor: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>

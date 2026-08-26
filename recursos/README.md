@@ -66,4 +66,13 @@
 Si tienes dudas o problemas técnicos:
 1. Consulta la [documentación de Overleaf](https://www.overleaf.com/learn).
 2. Revisa los materiales de las sesiones correspondientes.
-3. Contacta al instructor a través del aula virtual.
+3. Contacta al instructor a través del aula virtual o vía GitHub.
+
+---
+
+<div align="center">
+
+*Instructor: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>

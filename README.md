@@ -25,7 +25,8 @@ Este taller introductorio se enfoca en el uso de LaTeX a través de **Overleaf**
 | | Detalle |
 |---|---|
 | 🏫 **Unidad Académica** | Facultad de Ciencias Sociales – PUCP |
-| 👨‍🏫 **Coordinador** | Alfonso Jesús Rodriguez Saldarriaga |
+| 👨‍🏫 **Instructor** | **Enmanuel Huallparimachi** · Ciencia Política |
+| 📋 **Coordinador** | Alfonso Jesús Rodriguez Saldarriaga |
 | 📅 **Modalidad** | A distancia (sesiones sincrónicas por Zoom) |
 | ⏱ **Duración** | 10 horas (5 sesiones) |
 | 🎯 **Tipo** | Taller abierto |
@@ -133,10 +134,33 @@ Al finalizar el taller, el estudiante será capaz de:
 
 ---
 
-## 👨‍🏫 Sobre el Instructor
+## 💡 Enfoque Pedagógico
+
+Este taller fue diseñado y estructurado con un enfoque práctico y orientado a las **Ciencias Sociales**, combinando fundamentos teóricos de tipografía digital con ejemplos reales de investigación académica (artículos empíricos, experimentos de campo, análisis de datos y citación formal). 
+
+- **Aprendizaje guiado paso a paso:** Desde el primer documento en blanco hasta la producción de artículos y presentaciones completas.
+- **Materiales aplicados:** Uso de bases de datos bibliográficas reales (`referencias.bib`) y estructuras de manuscritos experimentales.
+- **Evaluación formativa:** Rúbricas analíticas claras y retroalimentación orientada a la calidad editorial.
+
+---
+
+## 👨‍🏫 Instructor y Autor de Materiales
+
+<div align="left">
+
+**Enmanuel Huallparimachi**  
+*Ciencia Política · Facultad de Ciencias Sociales · Pontificia Universidad Católica del Perú (PUCP)*  
+[![GitHub](https://img.shields.io/badge/GitHub-Enmanuel--HR-181717?style=flat&logo=github)](https://github.com/Enmanuel-HR)
+
+- **Rol:** Diseño instruccional, autor de los materiales de clase, elaboración de guías prácticas y rúbricas, conducción pedagógica de las sesiones y evaluación del aprendizaje.
+- **Áreas de interés:** Metodología de la investigación, ciencia política, análisis cuantitativo y redacción académica con software libre y reproducible.
+
+</div>
+
+### 📋 Coordinación Académica
 
 **Alfonso Jesús Rodriguez Saldarriaga**  
-Facultad de Ciencias Sociales · Pontificia Universidad Católica del Perú (PUCP)
+*Coordinador · Facultad de Ciencias Sociales · PUCP*
 
 ---
 

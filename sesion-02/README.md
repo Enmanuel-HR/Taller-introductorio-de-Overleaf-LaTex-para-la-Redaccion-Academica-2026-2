@@ -60,3 +60,12 @@ Crea un manuscrito en Overleaf que incluya:
 - [Overleaf: Bibliography management with bibtex](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex)
 - [Detexify – Buscador de símbolos LaTeX](https://detexify.kirelabs.org/)
 - [Editor de ecuaciones LaTeX online](https://latexeditor.lagrida.com/)
+
+---
+
+<div align="center">
+
+*Instructor: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>

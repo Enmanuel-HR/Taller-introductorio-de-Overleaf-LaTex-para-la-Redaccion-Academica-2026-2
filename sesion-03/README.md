@@ -54,3 +54,12 @@ Modifica tu manuscrito para incluir:
 - [Overleaf: Tables](https://www.overleaf.com/learn/latex/Tables)
 - [Overleaf: Cross referencing](https://www.overleaf.com/learn/latex/Cross_referencing_sections,_equations_and_floats)
 - [Tables Generator – Herramienta online](https://www.tablesgenerator.com/)
+
+---
+
+<div align="center">
+
+*Instructor: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>

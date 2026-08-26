@@ -51,3 +51,12 @@
 - Todos los trabajos deben ser entregados como **proyectos de Overleaf** (compartiendo el enlace de lectura).
 - El documento debe **compilar sin errores**.
 - Se valorará la **organización** del proyecto y la **limpieza** del código LaTeX.
+
+---
+
+<div align="center">
+
+*Diseño de evaluaciones y rúbricas: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>

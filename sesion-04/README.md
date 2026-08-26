@@ -58,3 +58,12 @@ Crea una presentación Beamer de al menos 10 diapositivas que incluya:
 - [Overleaf: Beamer presentations](https://www.overleaf.com/learn/latex/Beamer_Presentations:_A_Tutorial_for_Beginners_(Part_1))
 - [Galería de temas Beamer](https://deic.uab.cat/~iblanes/beamer_gallery/)
 - [Overleaf: Beamer templates](https://www.overleaf.com/gallery/tagged/presentation)
+
+---
+
+<div align="center">
+
+*Instructor: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>

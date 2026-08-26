@@ -54,3 +54,12 @@ Crea un documento en Overleaf que contenga:
 - [Overleaf: Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
 - [LearnLaTeX.org – Lecciones en español](https://www.learnlatex.org/es/)
 - [Overleaf: Creating a document](https://www.overleaf.com/learn/latex/Creating_a_document_in_Overleaf)
+
+---
+
+<div align="center">
+
+*Instructor: **Enmanuel Huallparimachi** (Ciencia Política · PUCP)*  
+*Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · 2026-2*
+
+</div>
