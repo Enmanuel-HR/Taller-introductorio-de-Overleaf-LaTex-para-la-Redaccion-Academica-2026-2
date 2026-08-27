@@ -50,7 +50,7 @@
 
 Para la elaboración de sus proyectos, los estudiantes cuentan con el **proyecto modelo oficial** estructurado a partir del manuscrito de investigación del instructor:
 
-👉 [**Ver Plantilla de Proyecto (LaTeX & Beamer)**](../plantilla-proyecto/README.md)
+👉 [**Ver Trabajo Final (LaTeX & Beamer)**](../Trabajo%20final/README.md)
 
 ---
 

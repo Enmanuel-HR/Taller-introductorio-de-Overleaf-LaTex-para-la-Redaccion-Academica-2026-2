@@ -1,0 +1,30 @@
+Guía de instalación:
+
+1) Antigravity
+Instalen Antigravity con su cuenta institucional: Les ayudará a instalar y usar lo demás.
+
+2) Git
+Descarga: https://git-scm.com/downloads
+En Windows instalen Git for Windows (Antigravity y Claude Code lo usa para ejecutar comandos con Git Bash).
+Abran CMD o Powershell (las terminales) y configuren Git escribiendo los siguientes comandos:
+git config --global user.name "Su Nombre"
+git config --global user.email "su.correo@ejemplo.com"
+
+También pueden decirle a Antigravity que lo haga por ustedes.
+
+3) Cuenta y credenciales de GitHub
+- Creen su cuenta en https://github.com (usen preferentemente su correo institucional).
+- Activen la autenticación en dos pasos.
+- Configuren sus credenciales para poder hacer push desde el terminal. Lo más simple es instalar GitHub CLI (https://cli.github.com) y ejecutar: gh auth login
+El objetivo es que puedan enviar cambios directamente desde Antigravity al repositorio del taller en GitHub, sin pasos manuales adicionales.
+
+4) Visual Studio Code + extensión de Overleaf Workshop
+Instalen VS Code y luego la extensión "Overleaf Workshop" desde el marketplace.
+Guía: https://github.com/overleaf-workshop/Overleaf-Workshop/wiki
+
+Comprobación final: abran una carpeta vacía en VS Code, ejecuten Antigravity en el terminal integrado o en su programa local, inicien sesión y confirmen que pueden crear un repositorio y hacer un push en su cuenta GitHub. Si les funciona ese flujo completo, están listos.
+
+Cualquier problema de instalación, escríbanme antes de la clase y lo vemos.
+
+Saludos,
+Enmanuel

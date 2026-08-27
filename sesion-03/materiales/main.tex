@@ -1,0 +1,721 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% ==============================================================================
+% CONFIGURACIÓN DE IDIOMA Y CODIFICACIÓN
+% ==============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+
+% ==============================================================================
+% PAQUETES TIPOGRÁFICOS Y DE FORMATO
+% ==============================================================================
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, shadows}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% ==============================================================================
+% DEFINICIÓN DE COLORES INSTITUCIONALES (PUCP / Q-LAB)
+% ==============================================================================
+\definecolor{pucpRed}{RGB}{140, 20, 40}        % Carmesí / Borgoña institucional
+\definecolor{pucpBlue}{RGB}{0, 40, 85}         % Azul marino profundo
+\definecolor{pucpLightBlue}{RGB}{230, 241, 252}% Azul claro para bloques y acentos
+\definecolor{pucpMidBlue}{RGB}{15, 75, 140}    % Azul medio para subsecciones
+\definecolor{pucpGray}{RGB}{246, 248, 250}     % Fondo claro de código y cajas
+\definecolor{pucpDarkGray}{RGB}{70, 74, 78}    % Texto secundario
+\definecolor{accentGreen}{RGB}{28, 125, 46}    % Verde para ejemplos / éxito
+\definecolor{accentGold}{RGB}{195, 130, 0}     % Dorado para notas y tips
+
+% ==============================================================================
+% TEMA DE BEAMER Y PERSONALIZACIÓN VISUAL
+% ==============================================================================
+\useinnertheme{rectangles}
+
+% Desactivar barra de navegación inferior estándar
+\setbeamertemplate{navigation symbols}{}
+
+% Colores de la estructura
+\setbeamercolor{structure}{fg=pucpBlue}
+\setbeamercolor{palette primary}{bg=pucpBlue, fg=white}
+\setbeamercolor{palette secondary}{bg=pucpMidBlue, fg=white}
+\setbeamercolor{palette tertiary}{bg=pucpRed, fg=white}
+\setbeamercolor{palette quaternary}{bg=pucpBlue, fg=white}
+
+% Encabezado (Headline) elegante con sección actual
+\setbeamertemplate{headline}{%
+  \leavevmode%
+  \ifnum\thepage=1\else%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.4ex,dp=1.0ex,leftskip=1.2em,rightskip=1.2em]{palette primary}%
+    \fontsize{7}{8}\selectfont\textbf{Q-LAB} \textbar\ \insertshorttitle \hfill \textit{\insertsectionhead}%
+  \end{beamercolorbox}%
+  \fi%
+  \vskip0pt%
+}
+
+% Título del frame con margen interno seguro
+\setbeamercolor{frametitle}{bg=pucpRed, fg=white}
+\setbeamerfont{frametitle}{series=\bfseries, size=\large}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.2ex,leftskip=1.2em,rightskip=1.2em]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle\strut%
+  \end{beamercolorbox}%
+}
+
+% Bloques estándar, de alerta y de ejemplos
+\setbeamercolor{block title}{bg=pucpBlue, fg=white}
+\setbeamercolor{block body}{bg=pucpLightBlue!60, fg=black}
+
+\setbeamercolor{block title alerted}{bg=pucpRed, fg=white}
+\setbeamercolor{block body alerted}{bg=pucpRed!10, fg=black}
+
+\setbeamercolor{block title example}{bg=accentGreen, fg=white}
+\setbeamercolor{block body example}{bg=accentGreen!10, fg=black}
+
+% Listas (ítems)
+\setbeamercolor{item}{fg=pucpBlue}
+\setbeamercolor{subitem}{fg=pucpRed}
+\setbeamertemplate{itemize item}{\color{pucpBlue}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{pucpRed}$\bullet$}
+\setbeamertemplate{itemize/enumerate body begin}{\small}
+\setbeamertemplate{itemize/enumerate subbody begin}{\footnotesize}
+
+% ==============================================================================
+% FOOTLINE PERSONALIZADO (Estilo Q-LAB / PUCP con dimensiones precisas)
+% ==============================================================================
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.18\paperwidth,ht=2.4ex,dp=0.9ex,center]{palette primary}%
+      \textbf{Q-LAB}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.64\paperwidth,ht=2.4ex,dp=0.9ex,center]{palette secondary}%
+      \scriptsize Taller Introductorio de Overleaf (\LaTeX) para la Redacción Académica
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=0.18\paperwidth,ht=2.4ex,dp=0.9ex,center]{palette primary}%
+      \textbf{PUCP}\hspace{0.6em}\insertframenumber\,/\,\inserttotalframenumber
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+% ==============================================================================
+% CONFIGURACIÓN DE LISTINGS (CÓDIGO Y COMANDOS)
+% ==============================================================================
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  backgroundcolor=\color{pucpGray},
+  keywordstyle=\color{pucpRed}\bfseries,
+  commentstyle=\color{pucpDarkGray}\itshape,
+  stringstyle=\color{pucpMidBlue},
+  numbers=none,
+  breaklines=true,
+  showstringspaces=false,
+  tabsize=2,
+  frame=single,
+  rulecolor=\color{black!15}
+}
+
+% ==============================================================================
+% METADATOS DE LA PRESENTACIÓN
+% ==============================================================================
+\title[\LaTeX\ en VS Code, Git \& IA]{Flujo de Trabajo Avanzado con \LaTeX: Integración de VS Code, Git/GitHub y Copilotos de IA}
+\subtitle{Sesión 3: Del Piloto Manual al Piloto Automático}
+\author[Q-LAB - PUCP]{Laboratorio de Inteligencia Artificial y Métodos Computacionales en Ciencias Sociales (Q-LAB)}
+\institute[PUCP]{Pontificia Universidad Católica del Perú}
+\date{26 de agosto de 2026}
+
+% ==============================================================================
+% INICIO DEL DOCUMENTO
+% ==============================================================================
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% DIAPOSITIVA 1: PORTADA
+% ------------------------------------------------------------------------------
+\begin{frame}[plain]
+  \vfill
+  \centering
+  \begin{tcolorbox}[colback=pucpRed,colframe=pucpRed,coltext=white,boxrule=0pt,arc=2.5mm,width=0.95\textwidth,halign=center,top=2.8mm,bottom=2.8mm]
+    {\Large\textbf{Flujo de Trabajo Avanzado con \LaTeX}}\\[0.5ex]
+    {\small\textit{Sesión 3: Integración de Overleaf, VS Code, Git/GitHub y Copilotos de IA}}
+  \end{tcolorbox}
+  
+  \vspace{0.35cm}
+  {\small\textbf{Laboratorio de Inteligencia Artificial y Métodos Computacionales en Ciencias Sociales (Q-LAB)}}\\[0.3ex]
+  {\footnotesize Pontificia Universidad Católica del Perú}\\[0.5ex]
+  {\scriptsize 26 de agosto de 2026}
+  
+  \vspace{0.35cm}
+  \begin{tcolorbox}[colback=pucpBlue,colframe=pucpBlue,coltext=white,boxrule=0pt,arc=2.5mm,width=0.42\textwidth,halign=center,top=1.8mm,bottom=1.8mm]
+    \textbf{\normalsize Q-LAB}\\[0.1ex]
+    \tiny Innovación, Datos y Redacción Académica
+  \end{tcolorbox}
+  \vfill
+\end{frame}
+
+% ------------------------------------------------------------------------------
+% DIAPOSITIVA 2: AGENDA / TABLA DE CONTENIDOS
+% ------------------------------------------------------------------------------
+\begin{frame}{Estructura y Objetivos de la Sesión 3}
+  \tableofcontents
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 1: INTRODUCCIÓN Y ENFOQUE PEDAGÓGICO
+% ==============================================================================
+\section[Piloto Automático]{De Piloto Manual a Piloto Automático}
+
+\begin{frame}{Transición: Del Piloto Manual al Piloto Automático}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Sesiones 1 y 2: Piloto Manual}
+        \small
+        \begin{itemize}
+          \item Uso exclusivo del editor web de Overleaf.
+          \item Memorización manual de sintaxis y etiquetas.
+          \item Flujo individual y dependiente del navegador.
+          \item Restricciones de cuotas de cómputo en la nube.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Sesión 3: Piloto Automático}
+        \small
+        \begin{itemize}
+          \item Entorno de Desarrollo Integrado (\textbf{IDE: VS Code}).
+          \item Control de versiones profesional (\textbf{Git y GitHub}).
+          \item Asistencia y automatización con IA (\textbf{Antigravity}).
+          \item Trabajo local/remoto sin límites de compilación.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{alertblock}{Objetivo Pedagógico Central}
+    \small
+    Aprender herramientas profesionales transferibles: no solo para redactar en \LaTeX, sino para investigación reproducible, ciencia de datos (R, Python) y colaboración multidisciplinaria.
+  \end{alertblock}
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 2: CONTROL DE VERSIONES CON GIT Y GITHUB
+% ==============================================================================
+\section[Git \& GitHub]{Control de Versiones: Git y GitHub}
+
+\begin{frame}{¿Qué es Git y qué problema resuelve?}
+  \begin{columns}[T]
+    \begin{column}{0.54\textwidth}
+      \begin{block}{Definición de Git}
+        \small
+        Sistema de control de versiones distribuido (\textit{VCS}) que registra el historial completo de cambios en archivos de texto.
+      \end{block}
+
+      \vspace{0.1cm}
+      \textbf{\small ¿Cómo opera en la práctica?}
+      \small
+      \begin{itemize}
+        \item Captura \textbf{instantáneas (\textit{commits})} en puntos clave.
+        \item Permite revertir cambios o comparar versiones sin riesgo.
+        \item Facilita el trabajo concurrente mediante ramas (\textit{branches}).
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.44\textwidth}
+      \begin{alertblock}{El Trastorno del "final\_doc"}
+        \scriptsize
+        \texttt{manuscrito\_final.docx} \\
+        $\to$ \texttt{manuscrito\_final\_revisado.docx} \\
+        $\to$ \texttt{manuscrito\_final\_asesor.docx} \\
+        $\to$ \texttt{manuscrito\_final\_ESTE\_SI.docx} \\
+        $\to$ \texttt{manuscrito\_final\_v3\_definitivo.docx}
+      \end{alertblock}
+      \vspace{0.12cm}
+      \begin{center}
+        \scriptsize\textit{Git sustituye el desorden de archivos por un historial ordenado y verificable.}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Conceptos Clave de Git Desmitificados}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Los 3 Estados de un Archivo en Git}
+        \small
+        \begin{enumerate}
+          \item \textbf{Working Directory:} Carpeta local de edición.
+          \item \textbf{Staging Area (\texttt{git add}):} Selección de cambios.
+          \item \textbf{Repository (\texttt{git commit}):} Registro formal guardado permanentemente en el historial.
+        \end{enumerate}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Colaboración con Ramas (\textit{Branches})}
+        \small
+        \begin{itemize}
+          \item \textbf{Branch (Rama):} Línea de trabajo paralela sin alterar el documento principal (\texttt{main}).
+          \item \textbf{Pull Request (PR):} Solicitud para integrar cambios.
+          \item \textbf{Push / Pull:} Envío y descarga de cambios remotos.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{tcolorbox}[colback=pucpLightBlue!50,colframe=pucpBlue,boxrule=0.5pt,arc=1.5mm,top=1.5mm,bottom=1.5mm]
+    \footnotesize\textbf{Analogía:} \textit{Git} es el motor local que gestiona las versiones; \textit{GitHub} es la plataforma en la nube que permite compartir y colaborar en equipo.
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{GitHub: Colaboración, Portafolio y Educación}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{¿Qué es GitHub?}
+        \small
+        \begin{itemize}
+          \item Plataforma web para repositorios Git remotos.
+          \item Centro de código abierto y ciencia reproducible.
+          \item Permite compartir textos, datos y bibliografía.
+        \end{itemize}
+      \end{block}
+      
+      \vspace{0.1cm}
+      \begin{exampleblock}{Portafolio Académico y Laboral}
+        \footnotesize
+        Tus repositorios sirven como carta de presentación ante asesores, revistas y empleadores.
+      \end{exampleblock}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{block}{GitHub Education (Beneficios Pro)}
+        \small
+        \begin{itemize}
+          \item Registro con correo PUCP (\texttt{@pucp.edu.pe}).
+          \item Acceso a \textbf{GitHub Pro} sin costo.
+          \item Habilitación de herramientas avanzadas para investigación y docencia.
+        \end{itemize}
+      \end{block}
+
+      \vspace{0.1cm}
+      \begin{alertblock}{Estructura del Taller en GitHub}
+        \footnotesize
+        Repositorio modular organizado por carpetas (\texttt{Sesión 1}, \texttt{Sesión 2}, \dots) con código fuente y rúbricas.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 3: VISUAL STUDIO CODE COMO ENTORNO INTEGRADO (IDE)
+% ==============================================================================
+\section[VS Code]{Visual Studio Code como IDE Central}
+
+\begin{frame}{Visual Studio Code (VS Code): El Entorno Integrado}
+  \begin{block}{¿Qué es un IDE (Integrated Development Environment)?}
+    \small
+    Un entorno que centraliza editor de texto, terminal, depurador, gestor de extensiones y visores en una sola ventana de trabajo profesional.
+  \end{block}
+
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \textbf{\small ¿Por qué centralizar en VS Code?}
+      \small
+      \begin{itemize}
+        \item Reduce drásticamente el consumo de memoria RAM.
+        \item Unifica todas tus herramientas académicas:
+        \begin{itemize}\footnotesize
+          \item \LaTeX\ / Overleaf
+          \item Scripts en R, Python, Julia o Stata
+          \item Control de versiones con Git
+          \item Gestores bibliográficos (Zotero / BibTeX)
+        \end{itemize}
+      \end{itemize}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{tcolorbox}[colback=pucpGray,colframe=pucpBlue,title=\textbf{Paneles Clave en VS Code},fonttitle=\bfseries\scriptsize,boxrule=0.6pt,top=1.5mm,bottom=1.5mm]
+        \scriptsize
+        \begin{itemize}
+          \item \textbf{Explorador:} Árbol de archivos y carpetas.
+          \item \textbf{Extensiones:} Instalación de plugins (Overleaf, Python).
+          \item \textbf{Paleta de Comandos:} \texttt{Ctrl + Shift + P}.
+          \item \textbf{Terminal Integrada:} PowerShell / Bash.
+          \item \textbf{Outline (Esquema):} Índice de secciones y figuras.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Terminales y Entorno: PowerShell vs. CMD vs. Bash}
+  \begin{block}{La Terminal Integrada en VS Code}
+    \small
+    Permite interactuar directamente con el sistema operativo sin cambiar de programa.
+  \end{block}
+
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[colback=white,colframe=pucpDarkGray,title=\textbf{CMD (Símbolo de Sistema)},fonttitle=\bfseries\tiny,boxrule=0.5pt,top=1.2mm,bottom=1.2mm]
+        \tiny
+        \begin{itemize}
+          \item Intérprete clásico de MS-DOS.
+          \item Sintaxis limitada para scripts modernos.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.33\textwidth}
+      \begin{tcolorbox}[colback=pucpLightBlue!40,colframe=pucpBlue,title=\textbf{PowerShell (Recomendado)},fonttitle=\bfseries\tiny,boxrule=0.5pt,top=1.2mm,bottom=1.2mm]
+        \tiny
+        \begin{itemize}
+          \item Shell moderno nativo en Windows 10/11.
+          \item Gran soporte de variables y automatizaciones.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.34\textwidth}
+      \begin{tcolorbox}[colback=white,colframe=pucpMidBlue,title=\textbf{Git Bash / Linux Shell},fonttitle=\bfseries\tiny,boxrule=0.5pt,top=1.2mm,bottom=1.2mm]
+        \tiny
+        \begin{itemize}
+          \item Estándar en UNIX/Linux y macOS.
+          \item Clave en servidores y clusters.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{alertblock}{¿Qué es la variable PATH del sistema?}
+    \small
+    Es la lista de rutas donde Windows busca ejecutables (\texttt{git}, \texttt{agy} o \texttt{pdflatex}). Si un comando no se reconoce, su ruta debe agregarse al PATH.
+  \end{alertblock}
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 4: EXTENSIÓN OVERLEAF WORKSHOP Y CONEXIÓN REMOTA
+% ==============================================================================
+\section[Overleaf en IDE]{Integración de Overleaf en VS Code}
+
+\begin{frame}{¿Por qué conectar Overleaf con VS Code?}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Restricciones del Plan Web Gratuito}
+        \small
+        \begin{itemize}
+          \item Tiempos límite de compilación estrictos (\textit{timeout errors}).
+          \item Bloqueos en documentos pesados con muchas figuras.
+          \item Límite de colaboradores simultáneos.
+          \item Dependencia absoluta de la conexión al navegador.
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Ventajas de Overleaf Workshop}
+        \small
+        \begin{itemize}
+          \item \textbf{Compilaciones ilimitadas} y mayor velocidad.
+          \item Sincronización bidireccional inmediata con la nube.
+          \item Capacidad de compilar localmente con motores propios.
+          \item Edición fluida con atajos avanzados y visor integrado.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Protocolo de Conexión: Autenticación por Cookies}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Paso 1: Obtener la Cookie}
+        \begin{enumerate}\scriptsize
+          \item Abre tu proyecto en el navegador (Overleaf).
+          \item Presiona \texttt{F12} (o Clic derecho $\to$ \textit{Inspeccionar}).
+          \item Ve a la pestaña \textbf{Network (Red)} y recarga (\texttt{F5}).
+          \item En el filtro de búsqueda, escribe \texttt{cookie}.
+          \item Copia el valor de \texttt{overleaf\_session}.
+        \end{enumerate}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Paso 2: Vincular en VS Code}
+        \begin{enumerate}\scriptsize
+          \item Instala la extensión \textbf{Overleaf Workshop}.
+          \item En el panel lateral, clic en \textit{Add New Server}.
+          \item Selecciona \textit{Login with cookies}.
+          \item Pega el valor de la cookie y presiona \texttt{Enter}.
+          \item ¡Tus proyectos remotos aparecerán listados al instante!
+        \end{enumerate}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{tcolorbox}[colback=accentGreen!10,colframe=accentGreen,boxrule=0.5pt,arc=1.5mm,halign=center,top=1.5mm,bottom=1.5mm]
+    \footnotesize\textbf{Resultado:} Acceso directo a \texttt{main.tex}, \texttt{referencias.bib} y figuras desde tu editor local.
+  \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Flujo de Trabajo y Workspaces en VS Code}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \begin{block}{Operaciones Clave en el Proyecto}
+        \small
+        \begin{itemize}
+          \item \textbf{Compilar:} Botón \textit{Compile project} o atajo de teclado.
+          \item \textbf{Visor PDF:} Panel lateral con \textit{View compiled PDF}.
+          \item \textbf{Sincronización Automática:} Cambios guardados en VS Code se actualizan en Overleaf web.
+          \item \textbf{Descarga Completa:} Clic derecho $\to$ \textit{Download} para respaldar todo localmente.
+        \end{itemize}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{tcolorbox}[colback=pucpGray,colframe=pucpMidBlue,title=\textbf{Workspaces en VS Code},fonttitle=\bfseries\scriptsize,boxrule=0.6pt,top=1.5mm,bottom=1.5mm]
+        \scriptsize
+        \textbf{¿Por qué guardar un Workspace?}
+        \begin{itemize}
+          \item Genera un archivo \texttt{.code-workspace} con la sesión del proyecto.
+          \item Permite reanudar el trabajo con un solo clic sin tener que reingresar credenciales.
+          \item Menú: \textit{File} $\to$ \textit{Save Workspace As...}
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 5: COPILOTOS DE IA Y GOOGLE ANTIGRAVITY
+% ==============================================================================
+\section[Copilotos \& IA]{Copilotos de IA y Google Antigravity}
+
+\begin{frame}{Ecosistema de Modelos e Inteligencia Artificial}
+  \begin{block}{Distinción Fundamental: Modelos vs. Asistentes/Agentes}
+    \small
+    Los \textbf{Modelos Fundacionales} (Gemini, Claude, GPT) generan texto; los \textbf{Agentes de Programación} (Antigravity, Claude Code, Cursor) pueden interactuar con tus archivos, terminales y proyectos.
+  \end{block}
+
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[colback=white,colframe=pucpDarkGray,title=\textbf{OpenAI GPT / Codex},fonttitle=\bfseries\tiny,boxrule=0.5pt,top=1.2mm,bottom=1.2mm]
+        \tiny
+        \begin{itemize}
+          \item Pionero en generación de código.
+          \item Límites de cuota estrictos en versiones base.
+          \item Menor integración en flujos locales libres.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[colback=white,colframe=pucpDarkGray,title=\textbf{Anthropic Claude Code},fonttitle=\bfseries\tiny,boxrule=0.5pt,top=1.2mm,bottom=1.2mm]
+        \tiny
+        \begin{itemize}
+          \item Gran capacidad de razonamiento lógico.
+          \item Mayor consumo de costos API.
+          \item Consumo rápido de cuota de tokens.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.34\textwidth}
+      \begin{tcolorbox}[colback=pucpLightBlue!40,colframe=pucpRed,title=\textbf{Google Antigravity},fonttitle=\bfseries\tiny,boxrule=0.5pt,top=1.2mm,bottom=1.2mm]
+        \tiny
+        \begin{itemize}
+          \item \textbf{Modo Agente:} Lee y edita archivos con confirmación.
+          \item \textbf{Eficiente:} Gran ventana de contexto y bajo coste.
+          \item Modelos flexibles: Gemini Flash/Pro y Claude.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Capacidades de Google Antigravity en la Práctica}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Modos de Interacción}
+        \small
+        \begin{itemize}
+          \item \textbf{Agent Mode:} Ejecuta tareas de forma autónoma (crear archivos, depurar \LaTeX, compilar).
+          \item \textbf{Ask Mode:} Resuelve consultas conceptuales sin realizar cambios en tus archivos.
+          \item \textbf{Plan Mode:} Diseña un plan de trabajo estructurado antes de aplicar modificaciones.
+        \end{itemize}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Resolución Autónoma de Problemas}
+        \small
+        \begin{itemize}
+          \item \textbf{Diagnóstico de Entorno:} Detecta y repara errores de comandos o rutas en el \texttt{PATH}.
+          \item \textbf{Conversión de Formatos:} Transforma borradores Word/PDF a sintaxis limpia de \LaTeX.
+          \item \textbf{Depuración Bibliográfica:} Normaliza entradas BibTeX y repara citas rotas.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Automatización de Git/GitHub con Antigravity}
+  \begin{alertblock}{Control de Versiones mediante Lenguaje Natural}
+    \small
+    No necesitas memorizar la sintaxis de consola (\texttt{git add}, \texttt{commit}, \texttt{push}). Antigravity traduce tu petición en acciones atómicas de Git.
+  \end{alertblock}
+
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \textbf{\small Ejemplo de Prompt en Antigravity:}
+      \begin{tcolorbox}[colback=pucpGray,colframe=pucpBlue,arc=1.5mm,boxrule=0.5pt,top=1.5mm,bottom=1.5mm]
+        \scriptsize\ttfamily
+        "Hola Antigravity, toma mi carpeta local de Overleaf y súbela a mi repositorio de GitHub dentro de 'prueba-vscode', haciendo commit y push a la rama main."
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.49\textwidth}
+      \textbf{\small Flujo Automatizado que ejecuta la IA:}
+      \begin{enumerate}\scriptsize
+        \item Identifica archivos (\texttt{main.tex}, \texttt{.bib}, figuras).
+        \item Prepara y registra los cambios en Git.
+        \item Formula un mensaje descriptivo de commit.
+        \item Solicita tu autorización de seguridad.
+        \item Sube los cambios al repositorio remoto.
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 6: MODALIDADES DE EVALUACIÓN Y TAREAS
+% ==============================================================================
+\section[Evaluación]{Modalidades de Evaluación y Portafolio}
+
+\begin{frame}{Opciones para la Evaluación Práctica del Taller}
+  {\small Se ofrecen dos modalidades para la entrega del trabajo calificado:}
+
+  \vspace{0.1cm}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Opción 1: Modalidad Tradicional}
+        \small
+        \begin{itemize}
+          \item Redacción de un \textbf{manuscrito académico} en \LaTeX.
+          \item \textbf{Y además}, elaboración de una presentación en \textbf{Beamer} con las diapositivas.
+          \item Entrega convencional mediante enlace de Overleaf o archivo ZIP.
+        \end{itemize}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Opción 2: Modalidad Avanzada (Recomendada)}
+        \small
+        \begin{itemize}
+          \item Desarrollar \textbf{solo uno de los dos productos}: Manuscrito \textbf{O} Presentación Beamer.
+          \item Subir el trabajo mediante una rama (\textbf{Branch}) al repositorio colaborativo en GitHub.
+          \item Automatizar la subida utilizando \textbf{Antigravity}.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{center}
+    \footnotesize\textbf{Fecha límite de entrega:} Domingo al finalizar la semana del taller.
+  \end{center}
+\end{frame}
+
+\begin{frame}{Beneficios Profesionales de la Modalidad Avanzada}
+  \begin{center}
+    \textbf{\large "Matar 5 pájaros de un solo tiro"}
+  \end{center}
+  \vspace{0.05cm}
+
+  \begin{columns}[T]
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[colback=pucpLightBlue!50,colframe=pucpBlue,title=\textbf{1. Menor Carga},fonttitle=\bfseries\scriptsize,halign=center,boxrule=0.5pt,top=1.5mm,bottom=1.5mm]
+        \scriptsize
+        Desarrollas un solo producto de alta calidad (Manuscrito o Beamer) en vez de duplicar esfuerzo.
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[colback=pucpLightBlue!50,colframe=pucpBlue,title=\textbf{2. Dominio de Git},fonttitle=\bfseries\scriptsize,halign=center,boxrule=0.5pt,top=1.5mm,bottom=1.5mm]
+        \scriptsize
+        Adquieres experiencia real en control de versiones y colaboración en GitHub.
+      \end{tcolorbox}
+    \end{column}
+
+    \begin{column}{0.31\textwidth}
+      \begin{tcolorbox}[colback=pucpLightBlue!50,colframe=pucpRed,title=\textbf{3. Portafolio LinkedIn},fonttitle=\bfseries\scriptsize,halign=center,boxrule=0.5pt,top=1.5mm,bottom=1.5mm]
+        \scriptsize
+        Evidencia verificable y pública de habilidades en \LaTeX, Overleaf, GitHub e IA.
+      \end{tcolorbox}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{alertblock}{Construcción de Identidad Académica y Profesional}
+    \small
+    Un perfil en GitHub con código ordenado demuestra competencia técnica y distinción para becas, posgrados y convocatorias laborales.
+  \end{alertblock}
+\end{frame}
+
+% ==============================================================================
+% SECCIÓN 7: SÍNTESIS Y PRÓXIMOS PASOS
+% ==============================================================================
+\section[Cierre]{Síntesis y Próximos Pasos}
+
+\begin{frame}{Resumen de la Sesión y Próxima Clase}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Lo que aprendimos hoy (Sesión 3)}
+        \small
+        \begin{itemize}
+          \item Fundamentos de control de versiones con Git y GitHub.
+          \item VS Code como entorno centralizado de trabajo.
+          \item Conexión remota con Overleaf Workshop.
+          \item Asistencia y automatización con Google Antigravity.
+        \end{itemize}
+      \end{block}
+    \end{column}
+
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Lo que veremos mañana (Sesión 4)}
+        \small
+        \begin{itemize}
+          \item \textbf{Diseño de Presentaciones con Beamer}:
+          \begin{itemize}\footnotesize
+            \item Estructura de diapositivas y bloques temáticos.
+            \item Paletas cromáticas institucionales y temas visuales.
+            \item Inserción de fórmulas, figuras y tablas dinámicas.
+          \end{itemize}
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{center}
+    \textbf{\small ¡Muchas gracias por su atención y participación!}\\[0.2ex]
+    \scriptsize Dudas y asesorías disponibles por correo y en las sesiones complementarias de consulta.
+  \end{center}
+\end{frame}
+
+\end{document}

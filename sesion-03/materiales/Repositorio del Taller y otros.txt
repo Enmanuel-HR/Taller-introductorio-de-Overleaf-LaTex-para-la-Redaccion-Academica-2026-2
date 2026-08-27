@@ -1,0 +1,5 @@
+Repositorio del Taller y otros:
+
+1. Repositorio Overleaf: https://github.com/Enmanuel-HR/Taller-introductorio-de-Overleaf-LaTex-para-la-Redaccion-Academica-2026-2
+
+2. Git-Hub: https://github.com/ccsuehara/python_para_las_ccss/tree/main/Github

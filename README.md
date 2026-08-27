@@ -53,7 +53,7 @@ Al finalizar el taller, el estudiante será capaz de:
 ├── 📄 README.md                   ← Este archivo
 ├── 📄 SILABO.md                   ← Programa detallado del taller
 │
-├── 📁 plantilla-proyecto/         ← 🌟 PROYECTO MODELO (Manuscrito + Beamer + BibTeX)
+├── 📁 Trabajo final/              ← 🌟 PROYECTO MODELO (Manuscrito + Beamer + BibTeX)
 │   ├── README.md
 │   ├── main.tex                   ← Manuscrito basado en la investigación del instructor
 │   ├── referencias.bib            ← Base de datos bibliográfica
@@ -132,7 +132,7 @@ Para que más de 60 estudiantes puedan enviar y recibir retroalimentación de su
                   └── Abre un Pull Request (PR) hacia main con su entrega formal
 ```
 
-1. **Plantilla de Referencia:** Ubicada en [`plantilla-proyecto/`](plantilla-proyecto/) con el modelo del manuscrito y diapositivas.
+1. **Plantilla de Referencia:** Ubicada en [`Trabajo final/`](Trabajo%20final/) con el modelo del manuscrito y diapositivas.
 2. **Nombre de Rama (*Branch*):** Cada estudiante nombra su rama como `entrega/CODIGO-APELLIDO-NOMBRE` (ejemplo: `entrega/20210456-perez-juan`).
 3. **Entrega Formal:** Se realiza abriendo un **Pull Request (PR)** hacia `main`, completando el formulario de autoevaluación y adjuntando el enlace de Overleaf.
 4. **Retroalimentación:** El instructor revisa el código LaTeX y asigna la nota directamente en los comentarios del Pull Request.

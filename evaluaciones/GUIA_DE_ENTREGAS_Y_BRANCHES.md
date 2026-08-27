@@ -72,7 +72,7 @@ git checkout -b entrega/20210456-perez-juan
 
 ### Paso 3: Trabajar en tu manuscrito y presentación
 
-Puedes utilizar los archivos de la carpeta [`plantilla-proyecto/`](../plantilla-proyecto/) como base:
+Puedes utilizar los archivos de la carpeta [`Trabajo final/`](../Trabajo%20final/) como base:
 
 1. Edita o crea tu archivo `main.tex` con tu investigación.
 2. Agrega tus citas en `referencias.bib`.

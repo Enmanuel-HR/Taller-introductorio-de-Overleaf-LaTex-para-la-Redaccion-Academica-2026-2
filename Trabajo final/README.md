@@ -1,4 +1,4 @@
-# 📂 Plantilla Modelo de Proyecto de Investigación (LaTeX & Beamer)
+# 📂 Trabajo Final - Proyecto de Investigación Modelo (LaTeX & Beamer)
 
 ### Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica · Semestre 2026-2
 **Instructor:** Enmanuel Huallparimachi *(Ciencia Política · Facultad de Ciencias Sociales · PUCP)*
