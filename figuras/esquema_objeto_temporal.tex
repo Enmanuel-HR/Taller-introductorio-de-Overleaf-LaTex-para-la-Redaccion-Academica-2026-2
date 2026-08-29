@@ -1,0 +1,57 @@
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[x=1cm,y=1cm,>=Stealth]
+
+%---------------------------------
+% LÍNEA SUPERIOR: OBJETO TEMPORAL
+%---------------------------------
+\node[anchor=east,font=\itshape] at (-5.8,2.6) {Objeto temporal};
+\draw[->,thick] (-5.4,2.6) -- (5.4,2.6);
+
+\fill (-3.6,2.6) circle (2.6pt);
+\fill (0,2.6) circle (2.6pt);
+\fill (3.6,2.6) circle (2.6pt);
+
+\node[above=8pt,align=center,text width=2.8cm] at (-3.6,2.6)
+{\small instante\\ transcurrido\\ $t_1$};
+
+\node[above=8pt,align=center,text width=2.8cm] at (0,2.6)
+{\small instante\\ actual\\ $t_2$};
+
+\node[above=8pt,align=center,text width=2.8cm] at (3.6,2.6)
+{\small instante\\ adveniente\\ $t_3$};
+
+%---------------------------------
+% LÍNEA INFERIOR: CONCIENCIA DEL AHORA
+%---------------------------------
+\node[anchor=east,font=\itshape] at (-5.8,0.2) {Conciencia del ahora};
+
+% puntos de la conciencia
+\coordinate (R) at (-3.6,-0.15);   % retención un poco hundida
+\coordinate (I) at (0,0.25);       % impresión originaria más alta
+\coordinate (P) at (3.6,0.05);     % protención abierta hacia delante
+
+% línea de la conciencia
+\draw[->,thick] (-5.4,0.05) -- (R) -- (I) -- (P) -- (5.4,0.05);
+
+% puntos visibles
+\fill (R) circle (2.6pt);
+\fill (I) circle (2.6pt);
+\fill (P) circle (2.6pt);
+
+% guías punteadas desde el objeto temporal
+\draw[densely dotted] (-3.6,2.6) -- (R);
+\draw[densely dotted] (0,2.6) -- (I);
+\draw[densely dotted] (3.6,2.6) -- (P);
+
+% etiquetas inferiores
+\node[below=10pt,align=center,text width=2.8cm] at (R)
+{\small\textbf{Retención}};
+
+\node[below=10pt,align=center,text width=3.4cm] at (I)
+{\small\textbf{Impresión originaria}};
+
+\node[below=10pt,align=center,text width=2.8cm] at (P)
+{\small\textbf{Protención}};
+
+\end{tikzpicture}%
+}
