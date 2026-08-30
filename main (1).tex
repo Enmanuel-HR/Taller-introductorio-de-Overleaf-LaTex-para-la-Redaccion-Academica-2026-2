@@ -1,0 +1,102 @@
+\documentclass[12pt, a4paper]{article}
+
+%idioma
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+%gráficos
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{graphicx}
+\graphicspath{imagenes/}
+
+%Formato de páginas
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2cm, bottom=2cm}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{hyperref}
+
+%bibliografía
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+%trabajo
+\title{\textbf{Encuadre Mediático, Desinformación y Protesta Social: Un Análisis Teórico}}
+\author{\textbf{Maria Elena Del Pilar Jara Curi}\\ \small Pontificia Universidad Católica del Perú}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+   Este trabajo analiza cómo la cobertura de los medios de comunicación y la desinformación en redes sociales influyen en la percepción de impunidad y la violencia durante las protestas. Mediante la revisión de literatura reciente y la propuesta de un modelo sencillo de indignación ciudadana, se identifican las principales variables que motivan la movilización. Los resultados sugieren que el uso de enfoques sensacionalistas en la prensa incrementa el malestar de la población.
+    
+\end{abstract}
+
+\newpage
+
+\section{Introducción}
+
+Este trabajo analiza la compleja relación entre los discursos mediáticos, los factores estructurales y las dinámicas temporales en la configuración de la protesta social y la inestabilidad política. La investigación parte del reconocimiento de que los episodios de malestar social no son fenómenos aislados, sino que responden a patrones predecibles y a marcos interpretativos moldeados por el lenguaje y la tecnología. \cite{robiro_predictable_2026} demuestran, por ejemplo, que en contextos agrarios como Kenia, la actividad protesta sigue ciclos estacionales vinculados a la escasez de alimentos. Paralelamente, \cite{chen_press_2026} subraya el papel de las metáforas elementales en la prensa y la policía, mostrando cómo las elecciones léxico-gramaticales en el discurso pueden alterar significativamente la percepción pública de una misma situación de conflicto. Por su parte, \cite{mamaev_automating_2026} plantea que el uso de técnicas de procesamiento de lenguaje natural y aprendizaje automático está revolucionando la recopilación y el análisis de datos sobre eventos contenciosos. No obstante, \cite{voas_social_2025} advierten que la desinformación actúa como un denominador común que puede desencadenar violencia política, lo que plantea desafíos éticos y metodológicos en contextos polarizados.
+
+En segundo lugar, este trabajo se inscribe en una tradición interdisciplinaria que combina el análisis del discurso, la ciencia política y los estudios urbanos. La obra de \cite{wilfred_hong_2024}, a través de su cortometraje "An Uneasy Walk", ilustra cómo el registro audiovisual y las narrativas personales pueden capturar la tensión cotidiana en espacios urbanos como Hong Kong, reflejando conexiones globales con otros movimientos sociales. Esta perspectiva cualitativa complementa los enfoques cuantitativos y computacionales de \cite{mamaev_automating_2026} y \cite{robiro_predictable_2026}, enriqueciendo la comprensión de los significados subjetivos durante los conflictos. En conjunto, el trabajo sostiene que solo mediante la integración de métodos experimentales, automatizados y etnográficos es posible abordar la complejidad del malestar social, y que dicha integración es esencial para diseñar políticas de prevención sensibles tanto a los factores materiales como a los simbólicos que alimentan la protesta, tal como sugieren \cite{robiro_predictable_2026} y \cite{chen_press_2026}.
+
+\section{Modelo Teórico}
+
+Para representar la relación entre el contenido de los medios y la respuesta de la gente, proponemos un modelo de Indignación y Movilización Social ($IMS$). Definimos el nivel de malestar o propensión a la protesta $Y_{i,t}$ del individuo $i$ en el momento $t$ mediante la siguiente ecuación:
+
+\begin{equation}
+    Y_{i,t} = \alpha_0 + \beta_1\text{Prensa}_{i,t} + \beta_2\text{Desinf}_{i,t} + \gamma X_{1,t} + \varepsilon_{i_t} \label{eq:Modelo_violencia}
+\end{equation}
+
+Donde $$\text{Prensa}_{i,t}$$ mide la exposición a noticias sensacionalistas, $$\text{Desinf}_{i,t}$$ es el nivel de exposición a desinformación en redes, y $X_{i,t}$ representa variables de control sociodemográficas. Como se observa en la ecuación \ref{eq:Modelo_violencia}, esperamos que los coeficientes $\beta_1$ y $\beta_2$ sean positivos.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{imagenes/foto esquema 1_0.png}
+    \caption{Esquema conceptual sobre la relación entre medios, desinformación y protesta.}
+
+    \label{fig:esquema}
+\end{figure}
+
+El proceso causal de este modelo se resume en la Figura \ref{fig:esquema}, mostrando el camino desde la publicación de la noticia hasta la reacción en las calles.
+
+\section{Variables}
+
+En la tabla \ref{tab:variables} se ordenan las variables principales del análiisis, con sus respectivos, indicadores y autores de referencia.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Operacionalidad de Variables}
+    \label{tab:variables}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{Variables} &
+    \textbf{Indicador principal} &
+    \textbf{Fuente teórica} \\
+    \midrule
+Encuadre Mediático & Frecuencia de términos alarmistas & \cite{robiro_predictable_2026} \\
+Exposición a Desinformación & Nivel de interacción en redes sociales & \cite{mamaev_automating_2026} \\
+Malestar Político & Escala de desconfianza en instituciones & \cite{chen_press_2026} \\
+Protesta / Confrontación & Registro de eventos de conflicto & \cite{wilfred_hong_2024} \\
+\bottomrule
+    \end{tabular}
+    \end{table}
+
+\section{Conclusiones}
+
+Este trabajo ha explorado, desde una perspectiva teórica e interdisciplinaria, cómo los discursos mediáticos y la desinformación inciden en la configuración de la protesta social. A partir de la revisión de literatura reciente, se ha evidenciado que el lenguaje empleado por la prensa, las dinámicas temporales de los ciclos económicos y el uso de tecnologías automatizadas son factores clave para comprender los procesos de movilización ciudadana. El modelo de Indignación y Movilización Social (IMS) propuesto sugiere que tanto el sensacionalismo como la desinformación contribuyen positivamente a elevar los niveles de malestar político, tal como se desprende de la ecuación \ref{eq:Modelo_violencia}. 
+
+No obstante, la complejidad del fenómeno exige la integración de enfoques cuantitativos y cualitativos que permitan capturar tanto los patrones estructurales como los significados subjetivos de los actores involucrados. Futuras investigaciones deberían poner a prueba empíricamente las relaciones aquí planteadas, utilizando datos de redes sociales y fuentes periodísticas para validar el alcance del modelo en distintos contextos nacionales. En definitiva, comprender la interacción entre medios, desinformación y protesta no solo es un desafío académico, sino una necesidad para diseñar políticas de prevención y respuesta que sean sensibles a las causas profundas del malestar social.
+
+\appendix
+\section{Anexo: Notas metodológicas}
+En esta sección se detallan las fuentes secundarias consideradas para la selección de las variables del modelo.
+
+%bibliografía
+\bibliography{Referenciasss}
+
+\end{document}
