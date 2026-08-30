@@ -1,0 +1,60 @@
+\begin{tikzpicture}[scale=0.82, transform shape, >=Stealth]
+
+% OBJETO TEMPORAL
+\node[anchor=east, font=\itshape] at (-5.4,2.6)
+{Objeto temporal};
+
+\draw[->, thick] (-5,2.6) -- (5,2.6);
+
+\fill (-3.3,2.6) circle (2.5pt);
+\fill (0,2.6) circle (2.5pt);
+\fill (3.3,2.6) circle (2.5pt);
+
+\node[above=8pt, align=center] at (-3.3,2.6)
+{instante transcurrido\\$t_1$};
+
+\node[above=8pt, align=center] at (0,2.6)
+{instante actual\\$t_2$};
+
+\node[above=8pt, align=center] at (3.3,2.6)
+{instante adveniente\\$t_3$};
+
+
+% CONCIENCIA DEL AHORA
+\node[anchor=east, font=\itshape] at (-5.4,0)
+{Conciencia del ahora};
+
+% coordenadas de las fases
+\coordinate (R) at (-3.3,-0.25);
+\coordinate (I) at (0,0.25);
+\coordinate (P) at (3.3,0.05);
+
+% línea con hundimiento retencional
+\draw[->, thick]
+(-5,0)
+-- (R)
+-- (I)
+-- (P)
+-- (5,0.05);
+
+% puntos
+\fill (R) circle (2.5pt);
+\fill (I) circle (2.5pt);
+\fill (P) circle (2.5pt);
+
+% correspondencia entre niveles
+\draw[densely dotted] (-3.3,2.6) -- (R);
+\draw[densely dotted] (0,2.6) -- (I);
+\draw[densely dotted] (3.3,2.6) -- (P);
+
+% nombres de las fases
+\node[below=10pt] at (R)
+{\textbf{Retención}};
+
+\node[below=10pt] at (I)
+{\textbf{Impresión originaria}};
+
+\node[below=10pt] at (P)
+{\textbf{Protención}};
+
+\end{tikzpicture}
