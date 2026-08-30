@@ -1,0 +1,155 @@
+\begin{titlepage}
+    \centering
+    \thispagestyle{empty}
+
+    \vspace*{2.0cm}
+
+    {\LARGE\bfseries Trabajo Final de Overleaf\par}
+
+    \vspace{0.6cm}
+    \rule{0.75\textwidth}{0.6pt}
+    \vspace{1.2cm}
+
+    {\Large Estabilidad térmica versus eficiencia catalítica\par}
+
+    \vspace{0.45cm}
+
+    {\large\itshape
+    ¿Puede la ingeniería enzimática mejorar ambas propiedades
+    en biocatalizadores industriales?\par}
+
+    \vspace{1.2cm}
+    \rule{0.55\textwidth}{0.4pt}
+
+    \vfill
+
+    {\large Andy Edu Villalobos Melendez\par}
+    \vspace{0.35cm}
+    {\large Pontificia Universidad Católica del Perú\par}
+    \vspace{1.2cm}
+    {\large \today\par}
+
+    \vspace*{1.2cm}
+\end{titlepage}
+
+\tableofcontents
+
+\vspace{0.5cm}
+
+\noindent
+\hyperref[sec:introduccion]{Ir a Introducción}
+\hfill
+\hyperref[sec:metodologia]{Ir a Metodología}
+\hfill
+\hyperref[sec:evidencia]{Ir a Resultados}
+
+\newpage
+
+\section{Introducción y Justificación}
+\label{sec:introduccion}
+
+\subsection{El Problema Industrial}
+\label{subsec:problema_industrial}
+
+Las enzimas son proteínas que aceleran reacciones químicas y pueden utilizarse
+como biocatalizadores para transformar materias primas en productos de interés.
+Su aplicación incluye alimentos, detergentes, biocombustibles, productos
+farmacéuticos y compuestos de alto valor.
+
+Para una empresa no basta con que una enzima sea rápida. Debe conservar su
+capacidad de conversión bajo las condiciones reales de operación. Temperaturas
+elevadas, altas concentraciones de sustrato, acumulación de producto o periodos
+prolongados de uso pueden reducir su desempeño
+\citep{siddiqui_defying_2017}.
+
+Por ello, la decisión industrial parte de dos preguntas:
+
+\begin{enumerate}
+    \item ¿Con qué eficiencia transforma la materia prima?
+    \item ¿Durante cuánto tiempo conserva esa capacidad?
+\end{enumerate}
+
+Una enzima muy activa pero de corta duración puede perder rápidamente su ventaja
+inicial. Una enzima muy resistente pero poco eficiente puede durar más sin
+generar suficiente producto.
+
+\subsection{El Conflicto Actividad--Estabilidad}
+\label{subsec:tradeoff}
+
+La estabilidad térmica favorece que la enzima conserve su estructura, mientras
+que la catálisis requiere cierta movilidad molecular para reconocer el sustrato,
+acomodarlo en el sitio activo y liberar el producto.
+
+Una modificación que rigidice demasiado la proteína puede aumentar estabilidad
+y, al mismo tiempo, limitar movimientos necesarios para la reacción. Esta
+tensión se conoce como trade-off actividad--estabilidad
+\citep{hou_tradeoff_2023}.
+
+Desde una perspectiva industrial existen cuatro escenarios:
+
+\begin{enumerate}
+    \item alta eficiencia y baja estabilidad: produce rápido, pero durante poco tiempo;
+    \item baja eficiencia y alta estabilidad: dura más, pero convierte lentamente;
+    \item baja eficiencia y baja estabilidad: ofrece poco valor para el proceso;
+    \item alta eficiencia y alta estabilidad: combina velocidad y duración.
+\end{enumerate}
+
+El cuarto escenario es alcanzable: se han reportado variantes enzimáticas en las
+que estabilidad y actividad mejoran simultáneamente
+\citep{siddiqui_defying_2017,hou_tradeoff_2023}.
+
+\subsection{Por Qué Importa Analizar Ambas Propiedades}
+\label{subsec:justificacion}
+
+El análisis resulta relevante por tres razones:
+
+\begin{enumerate}
+    \item Razón productiva. Una mayor vida operativa puede sostener la conversión
+    y elevar el producto obtenido en una misma campaña.
+
+    \item Razón tecnológica. Evolución dirigida, diseño racional y herramientas
+    computacionales permiten modificar regiones específicas de una proteína
+    \citep{siddiqui_defying_2017}.
+
+    \item Razón de decisión. Mejorar una propiedad no garantiza mejorar el
+    proceso: también intervienen temperatura, sustrato, producto acumulado y
+    selectividad.
+\end{enumerate}
+
+La propiedad molecular, por tanto, debe evaluarse por su efecto sobre el
+resultado productivo y no únicamente por su valor aislado.
+
+\subsection{Pregunta y Criterio de Análisis}
+\label{subsec:pregunta}
+
+El trabajo responde la siguiente pregunta:
+
+\begin{center}
+    \textit{¿El aumento de la termoestabilidad de una enzima industrial
+    necesariamente reduce su eficiencia catalítica?}
+\end{center}
+
+Para responderla se consideran tres niveles:
+
+\begin{enumerate}
+    \item termoestabilidad: cuánto tiempo conserva actividad;
+    \item eficiencia catalítica: qué tan eficazmente convierte el sustrato;
+    \item desempeño productivo: cuánto producto genera durante la operación.
+\end{enumerate}
+
+La lógica central es:
+
+\begin{equation}
+\text{Estabilidad}
++
+\text{Eficiencia}
++
+\text{Condiciones de Operación}
+\longrightarrow
+\text{Producción Útil}.
+\end{equation}
+
+Las variables se definen en la \hyperref[sec:variables]{Sección 2}, el protocolo
+en la \hyperref[sec:metodologia]{Sección 3}, los resultados en la
+\hyperref[sec:evidencia]{Sección 4} y la decisión industrial en la
+\hyperref[sec:discusion]{Sección 5}.

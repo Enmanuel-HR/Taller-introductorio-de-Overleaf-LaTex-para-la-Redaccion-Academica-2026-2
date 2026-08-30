@@ -1,0 +1,196 @@
+\section{Metodología}
+\label{sec:metodologia}
+
+El análisis compara dos versiones de cada enzima:
+
+\begin{enumerate}
+    \item WT: enzima original utilizada como referencia;
+    \item ENG: enzima modificada mediante ingeniería.
+\end{enumerate}
+
+El objetivo es determinar si ENG dura más, convierte mejor y termina generando
+más producto.
+
+\subsection{Diseño del Análisis}
+\label{subsec:diseno}
+
+Se evaluaron cuatro aplicaciones industriales:
+
+\begin{enumerate}
+    \item proteasa para procesamiento de alimentos;
+    \item beta-glucosidasa para aprovechamiento de bagazo de caña;
+    \item xilanasa para procesamiento de biomasa;
+    \item beta-glucosidasa para síntesis de glucósidos.
+\end{enumerate}
+
+Los casos representan restricciones industriales diferentes y cuentan con
+antecedentes de ingeniería orientada a mejorar estabilidad, actividad o ambas
+propiedades
+\citep{yuan_apre2709_2025,cao_ks5a7_2018,zhang_xylanase_2010,yin_bgl1d_2019}.
+
+Cada condición se evaluó con cuatro réplicas.
+
+\subsection{Protocolo y Medidas}
+\label{subsec:protocolo}
+
+\begin{table}[H]
+\centering
+\tabcaptionlink{anx:tab_protocolo}{Protocolo Utilizado para Comparar WT y ENG}{tab:protocolo_metodologia}
+
+
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tabularx}{0.96\textwidth}{
+|p{2.6cm}|
+p{4.1cm}|
+X|
+}
+\hline
+Prueba & Condición & Resultado Utilizado \\ \hline
+
+Estabilidad &
+\(60\,^{\circ}\mathrm{C}\), 10 mM de sustrato &
+\(t_{50}\) y actividad conservada en el tiempo. \\ \hline
+
+Cinética &
+0.5--80 mM de sustrato &
+Eficiencia de conversión e inhibición por exceso de sustrato. \\ \hline
+
+Respuesta Térmica &
+\(35--90\,^{\circ}\mathrm{C}\) &
+Temperatura de máxima actividad. \\ \hline
+
+Producción Base &
+\(60\,^{\circ}\mathrm{C}\), 40 mM, 8 horas &
+Producto acumulado bajo una condición común. \\ \hline
+
+Exploración Operativa &
+Misma malla de temperaturas y sustratos, 8 horas &
+Mejor punto de producción encontrado para WT y ENG. \\ \hline
+
+\end{tabularx}
+\end{table}
+
+La condición base permite comparar todas las variantes bajo el mismo entorno.
+La exploración operativa se utiliza después para responder una pregunta
+distinta: qué combinación de temperatura y sustrato conviene usar para cada
+variante dentro del rango evaluado.
+
+\subsection{Indicadores de Comparación}
+\label{subsec:indicadores}
+
+Se utilizan tres índices relativos:
+
+\begin{enumerate}
+    \item Índice de estabilidad (\(I_S\)): compara la actividad conservada por
+    ENG frente a WT.
+
+    \item Índice de eficiencia (\(I_C\)): compara la eficiencia catalítica de
+    ENG frente a WT.
+
+    \item Índice de producción (\(I_P\)): compara el producto acumulado por ENG
+    frente a WT bajo la condición base.
+\end{enumerate}
+
+En los tres casos:
+
+\begin{equation}
+\text{Índice}
+=
+\frac{\text{Resultado de ENG}}
+{\text{Resultado de WT}}.
+\end{equation}
+
+La interpretación es directa:
+
+\begin{table}[H]
+\centering
+\tabcaptionlink{anx:tab_lectura_indices}{Lectura de los Índices}{tab:lectura_indices}
+
+
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{tabular}{|c|p{9.5cm}|}
+\hline
+Valor & Interpretación \\ \hline
+\(>1\) & ENG mejora el resultado frente a WT. \\ \hline
+\(=1\) & No existe diferencia entre ambas variantes. \\ \hline
+\(<1\) & ENG obtiene un resultado inferior a WT. \\ \hline
+\end{tabular}
+\end{table}
+
+También se utiliza el factor de traducción productiva (\(F_P\)):
+
+\begin{equation}
+F_P=
+\frac{I_P}{I_S I_C}.
+\end{equation}
+
+Si \(F_P<1\), parte de la mejora molecular es absorbida por otras restricciones;
+si \(F_P>1\), factores adicionales amplifican la producción.
+
+\subsection{Restricciones Consideradas}
+\label{subsec:restricciones_metodologia}
+
+El análisis incorpora cuatro mecanismos que pueden cambiar la decisión:
+
+\begin{enumerate}
+    \item pérdida de actividad con el tiempo;
+    \item inhibición por exceso de sustrato;
+    \item inhibición por producto acumulado;
+    \item cambios en selectividad hacia el producto deseado.
+\end{enumerate}
+
+Las funciones utilizadas para representar estos mecanismos se presentan en el
+\hyperref[sec:reproducibilidad]{Anexo C}.
+
+\subsection{Flujo de Decisión}
+\label{subsec:flujo}
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}[
+    node distance=0.72cm,
+    caja/.style={
+        draw,
+        rounded corners=4pt,
+        minimum width=9.2cm,
+        minimum height=0.88cm,
+        align=center
+    },
+    >=Latex
+]
+
+\node[caja] (comparacion)
+{Comparar WT frente a ENG};
+
+\node[caja, below=of comparacion] (medicion)
+{Medir estabilidad, eficiencia, temperatura y producción};
+
+\node[caja, below=of medicion] (indices)
+{Cuantificar la mejora relativa};
+
+\node[caja, below=of indices] (restriccion)
+{Identificar el cuello de botella};
+
+\node[caja, below=of restriccion] (decision)
+{Elegir la condición que maximiza producto útil};
+
+\draw[->, thick] (comparacion) -- (medicion);
+\draw[->, thick] (medicion) -- (indices);
+\draw[->, thick] (indices) -- (restriccion);
+\draw[->, thick] (restriccion) -- (decision);
+
+\end{tikzpicture}
+
+\figcaptionlink{anx:fig_flujo}{Flujo Metodológico Orientado a Decisión}{fig:flujo_metodologia}
+
+
+\end{figure}
+
+La \hyperref[sec:evidencia]{Sección 4} presenta los resultados bajo condición
+común y la \hyperref[sec:discusion]{Sección 5} utiliza esos resultados para
+definir la estrategia de explotación de cada aplicación.

@@ -1,0 +1,51 @@
+\begin{frame}{Metodología \hfill{\tiny\color{TextoSuave}\textbf{WT}: enzima original \quad | \quad \textbf{ENG}: enzima modificada por ingeniería}}
+
+
+
+{\color{Cian}\bfseries Diseño y Protocolo}\par
+\vspace{0.07cm}
+
+\begin{columns}[T,onlytextwidth]
+\column{0.44\textwidth}
+\begin{block}{4 Aplicaciones}
+\small
+\begin{itemize}
+\item Alimentos $\rightarrow$ proteasa.
+\item Bagazo $\rightarrow$ $\beta$-glucosidasa.
+\item Biomasa $\rightarrow$ xilanasa.
+\item Glucósidos $\rightarrow$ $\beta$-glucosidasa.
+\end{itemize}
+\end{block}
+
+\column{0.48\textwidth}
+\begin{block}{Protocolo Común}
+\scriptsize
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}lY@{}}
+Estabilidad & 60 $^{\circ}$C, 10 mM $\rightarrow t_{50}$\\[0.04cm]
+Cinética & 0.5--80 mM $\rightarrow$ eficiencia\\[0.04cm]
+Temperatura & 35--90 $^{\circ}$C $\rightarrow T_{opt}$\\[0.04cm]
+Producción & 60 $^{\circ}$C, 40 mM, 8 h\\[0.04cm]
+Exploración & misma malla $\rightarrow$ mejor punto
+\end{tabularx}
+\end{block}
+\end{columns}
+
+\vspace{0.11cm}
+\begin{block}{Secuencia de Decisión}
+\centering
+\resizebox{0.80\linewidth}{!}{%
+\begin{tikzpicture}[>=Latex,node distance=0.10cm]
+\tikzset{n/.style={draw=Linea,fill=PanelDos,rounded corners=2pt,text=Texto,minimum height=0.55cm,inner xsep=0.10cm,font=\scriptsize\bfseries}}
+\node[n] (a) {WT vs. ENG};
+\node[n,right=of a] (b) {Medir};
+\node[n,right=of b] (c) {Comparar};
+\node[n,right=of c] (d) {Detectar};
+\node[n,right=of d] (e) {Optimizar};
+\draw[->,Cian] (a)--(b);\draw[->,Cian] (b)--(c);\draw[->,Cian] (c)--(d);\draw[->,Cian] (d)--(e);
+\end{tikzpicture}%
+}
+\end{block}
+
+\vfill
+\fuente{4 réplicas por condición.}
+\end{frame}

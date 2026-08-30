@@ -1,0 +1,105 @@
+% 1. documento
+\documentclass[12pt,a4paper]{article}
+
+% 2. idioma y fuente
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% 3. margenes
+\usepackage[
+    left=2.5cm,
+    right=2.5cm,
+    top=2cm,
+    bottom=2cm
+]{geometry}
+
+% 4. matematicas
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% 5. imagenes
+\usepackage{graphicx}
+\graphicspath{{Imagenes/}}
+\usepackage{caption}
+\usepackage{float}
+
+% 5.1 grafico codificado
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,babel}
+
+% 6. tablas
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+% 7. listas
+\usepackage{enumitem}
+
+% 8. referencias
+\usepackage[natbibapa]{apacite}
+
+% 9. hipervinculos
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+
+% 10. formato
+\setlength{\parskip}{7pt}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.2}
+\captionsetup{font=small,labelfont=bf}
+\addto\captionsspanish{\renewcommand{\tablename}{Cuadro}}
+
+% 11. columnas
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+
+% 12. navegacion cuerpo-anexos
+\newcommand{\figcaptionlink}[3]{%
+    \begingroup
+    \captionsetup{labelformat=empty}
+    \caption[#2]{\protect\hyperref[#1]{\textbf{\figurename~\thefigure:} #2}}
+    \caption*{\small\textit{Fuente:} Elaboración propia.}
+    \label{#3}
+    \endgroup
+}
+
+\newcommand{\tabcaptionlink}[3]{%
+    \begingroup
+    \captionsetup{labelformat=empty}
+    \caption[#2]{\protect\hyperref[#1]{\textbf{\tablename~\thetable:} #2}}
+    \caption*{\small\textit{Fuente:} Elaboración propia.}
+    \label{#3}
+    \endgroup
+}
+
+\newcommand{\anexolink}[2]{%
+    \hyperref[#1]{Anexo~\ref*{#1} -- #2}
+}
+
+% 13. documento
+\begin{document}
+
+% Mantener APA en español, pero usar "et al." en lugar de "y cols."
+\renewcommand{\BOthers}[1]{et al.\hbox{}}
+\renewcommand{\BOthersPeriod}[1]{et al.\hbox{}}
+
+\input{Capitulos/Cap1}
+\input{Capitulos/Cap2}
+\input{Capitulos/Cap3}
+\input{Capitulos/Cap4}
+\input{Capitulos/Cap5}
+\input{Capitulos/Cap6}
+
+% 14. referencias
+\clearpage
+\bibliographystyle{apacite}
+\bibliography{referencias}
+
+% 15. anexos
+\clearpage
+\input{Capitulos/Anexos}
+
+\end{document}

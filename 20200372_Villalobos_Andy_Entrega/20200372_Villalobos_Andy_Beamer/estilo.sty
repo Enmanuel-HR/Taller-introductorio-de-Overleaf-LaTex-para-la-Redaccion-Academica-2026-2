@@ -1,0 +1,121 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{estilo}[2026/08/30 Estilo Beamer oscuro cian]
+
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{ragged2e}
+\RequirePackage{xcolor}
+\RequirePackage{colortbl}
+\RequirePackage{tikz}
+
+
+\definecolor{Fondo}{HTML}{0B1117}
+\definecolor{Panel}{HTML}{121B26}
+\definecolor{PanelDos}{HTML}{172331}
+\definecolor{Cian}{HTML}{55C1E8}
+\definecolor{CianClaro}{HTML}{8ED9F2}
+\definecolor{Texto}{HTML}{F5F7FA}
+\definecolor{TextoSuave}{HTML}{A9B8C7}
+\definecolor{Linea}{HTML}{263545}
+\definecolor{Exito}{HTML}{90D7B7}
+\definecolor{Alerta}{HTML}{FFD28A}
+
+\mode<presentation>{
+  \setbeamercolor{normal text}{fg=Texto,bg=Fondo}
+  \setbeamercolor{structure}{fg=Cian}
+  \setbeamercolor{frametitle}{fg=Texto,bg=Fondo}
+  \setbeamercolor{block title}{fg=Cian,bg=PanelDos}
+  \setbeamercolor{block body}{fg=Texto,bg=Panel}
+  \setbeamercolor{block title alerted}{fg=Fondo,bg=Cian}
+  \setbeamercolor{block body alerted}{fg=Texto,bg=PanelDos}
+  \setbeamercolor{button}{fg=Fondo,bg=Cian}
+
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{itemize item}{\color{Cian}\small$\blacktriangleright$}
+  \setbeamertemplate{itemize subitem}{\color{CianClaro}\scriptsize$\bullet$}
+  \setbeamertemplate{blocks}[rounded][shadow=false]
+
+  \setbeamerfont{frametitle}{size=\fontsize{20}{22}\selectfont,series=\bfseries}
+  \setbeamerfont{title}{size=\fontsize{24}{27}\selectfont,series=\bfseries}
+  \setbeamerfont{subtitle}{size=\fontsize{12}{14}\selectfont}
+  \setbeamerfont{block title}{series=\bfseries}
+}
+
+\setbeamersize{text margin left=0.42cm,text margin right=0.42cm}
+
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.72cm,dp=0.12cm,leftskip=0.42cm,rightskip=0.42cm]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle
+  \end{beamercolorbox}%
+  \vspace{-0.03cm}
+  \hspace{0.42cm}\color{Linea}\rule{0.92\paperwidth}{0.35pt}
+}
+
+
+\newcommand{\tarjeta}[2]{%
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.16cm,rounded=true]{block body}
+    {\color{Cian}\bfseries #1}\par\vspace{0.04cm}
+    {\scriptsize #2}
+  \end{beamercolorbox}
+}
+
+\newcommand{\metrica}[2]{%
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.12cm,rounded=true]{block body}
+    {\color{CianClaro}\scriptsize #1}\par
+    {\color{Texto}\Large\bfseries #2}
+  \end{beamercolorbox}
+}
+
+
+\newcommand{\grafica}[2]{%
+  \IfFileExists{Imagenes/#1}{%
+    \centering\includegraphics[width=\linewidth,height=0.36\textheight,keepaspectratio]{#1}%
+  }{%
+    \begin{beamercolorbox}[wd=\linewidth,ht=0.31\textheight,dp=0ex,center,rounded=true]{block body}
+      \vfill
+      {\color{Cian}\bfseries #2}\par\vspace{0.12cm}
+      {\color{TextoSuave}\scriptsize Colocar \texttt{Imagenes/#1}}
+      \vfill
+    \end{beamercolorbox}%
+  }%
+}
+
+
+\newcommand{\fuente}[1]{%
+  \vspace{0.08cm}{\color{TextoSuave}\fontsize{5.8}{6.6}\selectfont #1}
+}
+
+
+\newcommand{\navcell}[4]{%
+  \ifnum\insertframenumber=#1
+    \hyperlink{#2}{\colorbox{CianClaro}{\parbox[c][0.30cm][c]{#4}{\centering\color{Fondo}\fontsize{5.7}{6.4}\selectfont\bfseries #3}}}%
+  \else
+    \hyperlink{#2}{\colorbox{Cian}{\parbox[c][0.30cm][c]{#4}{\centering\color{Texto}\fontsize{5.7}{6.4}\selectfont\bfseries #3}}}%
+  \fi
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.48cm,dp=0.08cm,leftskip=0.25cm,rightskip=0.25cm]{normal text}
+    \vspace{0.05cm}
+    \navcell{1}{inicio}{1 Inicio}{0.14\paperwidth}\hspace{0.08cm}
+    \navcell{2}{diseno}{2 Diseño}{0.14\paperwidth}\hspace{0.08cm}
+    \navcell{3}{resultado}{3 Resultado}{0.14\paperwidth}\hspace{0.08cm}
+    \navcell{4}{produccion}{4 Producción}{0.14\paperwidth}\hspace{0.08cm}
+    \navcell{5}{decision}{5 Decisión}{0.14\paperwidth}
+    \hfill
+    {\color{TextoSuave}\fontsize{6}{7}\selectfont\insertframenumber/5}
+  \end{beamercolorbox}
+}
+
+
+\arrayrulecolor{Linea}
+\renewcommand{\arraystretch}{1.17}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+

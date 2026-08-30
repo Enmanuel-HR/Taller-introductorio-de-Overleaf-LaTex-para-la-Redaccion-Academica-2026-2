@@ -1,0 +1,220 @@
+\section{Discusión y Explotación Industrial}
+\label{sec:discusion}
+
+Los resultados permiten pasar de una comparación bioquímica a una decisión
+operativa. La pregunta ya no es solamente qué enzima es mejor, sino qué propiedad
+genera valor en cada proceso y en qué condición conviene explotarla.
+
+\subsection{Diagnóstico por Aplicación}
+\label{subsec:diagnostico_industrial}
+
+\begin{table}[H]
+\centering
+\tabcaptionlink{anx:tab_diagnostico}{Diagnóstico Industrial de los Cuatro Casos}{tab:diagnostico_industrial}
+
+
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{tabularx}{\textwidth}{
+|p{2.4cm}|
+p{3.2cm}|
+p{3.2cm}|
+X|
+}
+\hline
+Aplicación & Cuello de botella observado & Evidencia principal & Acción prioritaria \\ \hline
+
+Alimentos &
+Inactivación temprana &
+\(t_{50}\): 1.11 \(\rightarrow\) 3.53 h &
+Explotar mayor vida operativa antes de buscar más velocidad. \\ \hline
+
+Bagazo &
+Inactivación e inhibición por glucosa &
+\(t_{50}\): 0.75 \(\rightarrow\) 7.02 h &
+Priorizar estabilidad y tolerancia al producto. \\ \hline
+
+Biomasa &
+Ventana térmica &
+\(T_{\mathrm{opt}}\): 65 \(\rightarrow\) 75 \(^{\circ}\)C &
+Aprovechar temperaturas mayores sin exceder el punto productivo. \\ \hline
+
+Glucósidos &
+Inhibición y selectividad &
+\(I_C=2.56\), \(I_P=15.29\) &
+Optimizar producto útil, no velocidad aislada. \\ \hline
+
+\end{tabularx}
+\end{table}
+
+La evidencia gráfica que respalda estos diagnósticos se encuentra en el
+\anexolink{anx:estabilidad}{Estabilidad Térmica}, el
+\anexolink{anx:temperatura}{Respuesta Térmica} y el
+\anexolink{anx:selectividad}{Selectividad en Síntesis de Glucósidos}.
+
+\subsection{Cuánto de la Mejora Llega a Producción}
+\label{subsec:traduccion_produccion}
+
+El factor de traducción productiva \(F_P\), definido en la Sección
+\ref{subsec:indicadores}, permite distinguir entre mejora molecular y mejora de
+proceso.
+
+\begin{table}[H]
+\centering
+\tabcaptionlink{anx:tab_traduccion}{Traducción de la Mejora Molecular a Producción}{tab:factor_traduccion}
+
+
+
+\renewcommand{\arraystretch}{1.25}
+
+\begin{tabular}{|l|c|l|}
+\hline
+Aplicación & \(F_P\) & Lectura \\ \hline
+Alimentos & 0.88 & Ligera atenuación por restricciones del proceso. \\ \hline
+Bagazo de caña & 0.87 & La inhibición absorbe parte de la mejora. \\ \hline
+Biomasa & 0.70 & La estabilidad deja de ser el único límite. \\ \hline
+Glucósidos & 1.87 & Selectividad y tolerancia amplifican el resultado. \\ \hline
+\end{tabular}
+\end{table}
+
+Biomasa y glucósidos muestran el contraste más útil. En biomasa, continuar
+invirtiendo únicamente en estabilidad ofrece retornos técnicos decrecientes. En
+glucósidos, propiedades adicionales amplifican la mejora de estabilidad y
+eficiencia.
+
+\subsection{Puntos de Operación para Capturar Valor}
+\label{subsec:monetizacion}
+
+Para esta etapa se comparó el mejor punto encontrado para ENG con el mejor punto
+encontrado para WT dentro de la misma malla evaluada: \(35--90\,^{\circ}\mathrm{C}\),
+0.5--80 mM de sustrato y ocho horas de operación.
+
+Esta comparación es distinta de \(I_P\): \(I_P\) usa una condición base común;
+el Cuadro \ref{tab:puntos_operacion} permite que cada variante opere en su mejor
+punto dentro del rango analizado.
+
+\begin{table}[H]
+\centering
+\tabcaptionlink{anx:tab_puntos}{Puntos de Operación con Mayor Producto Dentro del Rango Evaluado}{tab:puntos_operacion}
+
+
+
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{3.5pt}
+
+\begin{tabularx}{\textwidth}{
+|p{2.1cm}|
+>{\centering\arraybackslash}p{2.0cm}|
+>{\centering\arraybackslash}p{1.5cm}|
+>{\centering\arraybackslash}p{2.0cm}|
+>{\centering\arraybackslash}p{1.5cm}|
+>{\centering\arraybackslash}p{1.5cm}|
+X|
+}
+\hline
+Aplicación &
+ENG: \(T\), sustrato &
+Producto ENG &
+WT: \(T\), sustrato &
+Producto WT &
+Ventaja &
+Decisión \\ \hline
+
+Alimentos &
+60 \(^{\circ}\)C, 40 mM &
+16.47 &
+45 \(^{\circ}\)C, 40 mM &
+5.93 &
+2.78\(\times\) &
+Usar ENG para extender producción. \\ \hline
+
+Bagazo &
+60 \(^{\circ}\)C, 40 mM &
+12.70 &
+45 \(^{\circ}\)C, 20 mM &
+2.93 &
+4.33\(\times\) &
+Explotar estabilidad y tolerancia a glucosa. \\ \hline
+
+Biomasa &
+70 \(^{\circ}\)C, 80 mM &
+36.04 &
+50 \(^{\circ}\)C, 40 mM &
+7.38 &
+4.88\(\times\) &
+Operar ENG a mayor temperatura y carga. \\ \hline
+
+Glucósidos &
+60 \(^{\circ}\)C, 40 mM &
+9.49 &
+45 \(^{\circ}\)C, 20 mM &
+1.59 &
+5.95\(\times\) &
+Priorizar producto útil y selectividad. \\ \hline
+
+\end{tabularx}
+\end{table}
+
+\subsubsection{A. Alimentos}
+
+La recomendación es operar ENG a \(60\,^{\circ}\mathrm{C}\), 40 mM y ocho horas.
+Dentro del rango evaluado produce \(2.78\times\) el mejor resultado de WT, es
+decir, aproximadamente 178\% más producto.
+
+La razón es la duración: ENG mantiene actividad durante más tiempo. No conviene
+elegir automáticamente \(65\,^{\circ}\mathrm{C}\) por ser la temperatura de
+máxima actividad instantánea; el mejor resultado acumulado aparece a
+\(60\,^{\circ}\mathrm{C}\).
+
+\subsubsection{B. Bagazo de Caña}
+
+La recomendación es ENG a \(60\,^{\circ}\mathrm{C}\), 40 mM y ocho horas.
+La ventaja frente al mejor punto de WT es \(4.33\times\), aproximadamente
+333\% más producto.
+
+La prioridad no es aumentar otra vez la velocidad inicial. El valor proviene de
+mantener la enzima activa y reducir el efecto de la glucosa acumulada.
+
+\subsubsection{C. Biomasa}
+
+La mejor condición encontrada para ENG es aproximadamente
+\(70\,^{\circ}\mathrm{C}\) y 80 mM. El producto alcanza 36.04 unidades relativas,
+frente a 7.38 del mejor punto de WT: \(4.88\times\), aproximadamente 388\% más.
+
+La temperatura de máxima actividad instantánea de ENG es
+\(75\,^{\circ}\mathrm{C}\), pero el mayor producto acumulado aparece a
+\(70\,^{\circ}\mathrm{C}\). Para operación industrial debe priorizarse el segundo
+criterio.
+
+\subsubsection{D. Glucósidos}
+
+La recomendación es ENG a \(60\,^{\circ}\mathrm{C}\), 40 mM y ocho horas.
+La ventaja frente al mejor punto de WT es \(5.95\times\), aproximadamente
+495\% más producto útil.
+
+No conviene aumentar sustrato indefinidamente. La decisión debe equilibrar
+inhibición y selectividad, utilizando como objetivo final la cantidad de
+glucósido deseado.
+
+\subsection{Prioridad de Explotación}
+\label{subsec:prioridad_inversion}
+
+Si el criterio es únicamente el aumento relativo de producto dentro del rango
+evaluado, la prioridad es:
+
+\begin{enumerate}
+    \item síntesis de glucósidos: \(5.95\times\), aproximadamente \(+495\%\);
+    \item procesamiento de biomasa: \(4.88\times\), aproximadamente \(+388\%\);
+    \item bagazo de caña: \(4.33\times\), aproximadamente \(+333\%\);
+    \item procesamiento de alimentos: \(2.78\times\), aproximadamente \(+178\%\).
+\end{enumerate}
+
+Este orden no representa rentabilidad neta. Representa potencial productivo. Para
+convertirlo en margen económico real faltan solo tres datos específicos de cada
+planta: precio del producto útil, costo de ENG frente a WT y costo energético de
+la condición de operación.
+
+La decisión técnica, sin embargo, ya es concreta: glucósidos ofrece la mayor
+ventaja relativa; biomasa exige explotar la ventana térmica; bagazo exige
+estabilidad y tolerancia; alimentos exige vida operativa.

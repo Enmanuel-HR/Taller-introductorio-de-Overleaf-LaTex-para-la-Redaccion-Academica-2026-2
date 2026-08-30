@@ -1,0 +1,102 @@
+\documentclass[aspectratio=169,9pt]{beamer}
+
+% base
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{estilo}
+\usetikzlibrary{positioning,arrows.meta,babel}
+\graphicspath{{Imagenes/}}
+
+% fuente
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamerfont{title}{size=\LARGE,series=\bfseries}
+\setbeamerfont{block title}{size=\small,series=\bfseries}
+\setbeamerfont{block body}{size=\small}
+\hfuzz=8pt
+
+% datos
+\title{Estabilidad Térmica vs. Eficiencia Catalítica}
+\subtitle{¿Puede la ingeniería enzimática mejorar ambas propiedades en biocatalizadores industriales?}
+\author{Andy Edu Villalobos Melendez}
+\institute{Pontificia Universidad Católica del Perú}
+\date{}
+
+% imagen
+\newcommand{\img}[2]{%
+\IfFileExists{Imagenes/#1}{%
+\centering\includegraphics[width=\linewidth,height=#2,keepaspectratio]{#1}%
+}{%
+\begin{beamercolorbox}[wd=\linewidth,ht=#2,dp=0ex,center,rounded=true]{block body}
+\vfill{\color{Cian}\bfseries #1}\vfill
+\end{beamercolorbox}%
+}}
+
+% nav
+\newcommand{\boton}[2]{\hyperlink{#1}{\beamerbutton{\fontsize{5.5}{6.2}\selectfont #2}}}
+\newcommand{\piecell}[3]{%
+\begingroup\setlength{\fboxsep}{1pt}%
+\ifnum\value{section}=#1
+\hyperlink{#2}{\colorbox{CianClaro}{\parbox[c][0.29cm][c]{0.135\paperwidth}{\centering\color{Fondo}\fontsize{4.9}{5.5}\selectfont\bfseries #3}}}%
+\else
+\hyperlink{#2}{\colorbox{Cian}{\parbox[c][0.29cm][c]{0.135\paperwidth}{\centering\color{Texto}\fontsize{4.9}{5.5}\selectfont\bfseries #3}}}%
+\fi\endgroup}
+
+% footer
+\setbeamertemplate{footline}{%
+\leavevmode
+\begin{beamercolorbox}[wd=\paperwidth,ht=0.46cm,dp=0.07cm,leftskip=0.20cm,rightskip=0.20cm]{normal text}
+\vspace{0.04cm}
+\piecell{1}{inicio}{Introducción}\hspace{0.04cm}
+\piecell{2}{metodologia}{Metodología}\hspace{0.04cm}
+\piecell{3}{resultados}{Resultados}\hspace{0.04cm}
+\piecell{4}{explotacion}{Explotación}\hspace{0.04cm}
+\piecell{5}{conclusion}{Conclusión}
+\hfill{\color{TextoSuave}\fontsize{5.4}{6}\selectfont\insertpagenumber/\insertpresentationendpage}
+\end{beamercolorbox}}
+
+% doc
+\begin{document}
+
+% intro
+\section{Introducción}
+\subsection{Problema y Pregunta}
+\input{Diapositivas/DIA1}
+\subsection{Resumen}
+\input{Diapositivas/DIA2}
+
+% metodo
+\section{Metodología}
+\subsection{Variables e Indicadores}
+\input{Diapositivas/DIA3}
+\subsection{Diseño y Protocolo}
+\input{Diapositivas/DIA4}
+\subsection{Resumen}
+\input{Diapositivas/DIA5}
+
+% resultados
+\section{Resultados}
+\subsection{Termoestabilidad}
+\input{Diapositivas/DIA6}
+\subsection{Eficiencia y Temperatura}
+\input{Diapositivas/DIA7}
+\subsection{Producción}
+\input{Diapositivas/DIA8}
+\subsection{Resumen}
+\input{Diapositivas/DIA9}
+
+% explotacion
+\section{Explotación}
+\subsection{Cuellos de Botella}
+\input{Diapositivas/DIA10}
+\subsection{Puntos de Operación y Valor}
+\input{Diapositivas/DIA11}
+\subsection{Resumen}
+\input{Diapositivas/DIA12}
+
+% cierre
+\section{Conclusión}
+\subsection{Decisión Final}
+\input{Diapositivas/DIA13}
+
+\end{document}

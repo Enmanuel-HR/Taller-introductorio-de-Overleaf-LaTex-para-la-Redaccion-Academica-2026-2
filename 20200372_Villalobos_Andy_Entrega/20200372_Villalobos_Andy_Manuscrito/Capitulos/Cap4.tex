@@ -1,0 +1,262 @@
+\section{Experimentación y Resultados}
+\label{sec:evidencia}
+
+Se ejecutó un experimento computacional comparativo para observar cómo cambios
+en estabilidad y eficiencia modifican el desempeño durante una operación
+industrial. Los cuatro casos utilizan el protocolo definido en la
+Sección \ref{sec:metodologia} y mecanismos consistentes con la literatura
+\citep{siddiqui_defying_2017,hou_tradeoff_2023}.
+
+\subsection{Resultados por Aplicación}
+\label{subsec:resultados_aplicacion}
+
+La Figura \ref{fig:produccion_casos} muestra el resultado productivo bajo la
+condición base: \(60\,^{\circ}\mathrm{C}\), 40 mM de sustrato inicial y ocho
+horas de operación.
+
+\begin{figure}[H]
+\centering
+
+\begin{tabular}{|c|c|}
+\hline
+
+\parbox{0.46\textwidth}{
+    \centering
+    \small Caso 1: Procesamiento de Alimentos\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{13.png}
+}
+&
+\parbox{0.46\textwidth}{
+    \centering
+    \small Caso 2: Bagazo de Caña\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{14.png}
+}
+\\
+\hline
+
+\parbox{0.46\textwidth}{
+    \centering
+    \small Caso 3: Procesamiento de Biomasa\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{15.png}
+}
+&
+\parbox{0.46\textwidth}{
+    \centering
+    \small Caso 4: Síntesis de Glucósidos\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{16.png}
+}
+\\
+\hline
+
+\end{tabular}
+
+\figcaptionlink{anx:fig_produccion}{Producción Acumulada Bajo la Condición Base}{fig:produccion_casos}
+
+
+\end{figure}
+
+\subsubsection{Caso 1: Procesamiento de Alimentos}
+
+La proteasa ENG conserva actividad durante más tiempo que WT y alcanza
+\(4.58\times\) la producción acumulada bajo la condición base. La principal
+ganancia es extender la vida operativa sin sacrificar capacidad de conversión
+\citep{yuan_apre2709_2025}. Las curvas completas de estabilidad se presentan en
+el \anexolink{anx:estabilidad}{Estabilidad Térmica}.
+
+\subsubsection{Caso 2: Bagazo de Caña}
+
+La beta-glucosidasa ENG combina mayor estabilidad con mayor tolerancia a glucosa.
+El producto acumulado alcanza \(8.96\times\) el valor de WT. En este caso, la
+ventaja principal es mantener la reacción activa cuando el producto comienza a
+inhibirla \citep{cao_ks5a7_2018}. La evidencia de estabilidad y cinética se
+presenta en los \anexolink{anx:estabilidad}{Estabilidad Térmica} y \anexolink{anx:cinetica}{Cinética Frente a Concentración de Sustrato}.
+
+\subsubsection{Caso 3: Procesamiento de Biomasa}
+
+La xilanasa ENG desplaza su respuesta hacia temperaturas más elevadas y alcanza
+\(5.41\times\) la producción de WT bajo la condición base
+\citep{zhang_xylanase_2010}. La comparación térmica completa se presenta en el
+\anexolink{anx:temperatura}{Respuesta Térmica}.
+
+\subsubsection{Caso 4: Síntesis de Glucósidos}
+
+La variante ENG combina estabilidad, mayor eficiencia y mejor selectividad. El
+efecto conjunto genera el mayor aumento bajo condición base:
+\(15.29\times\) la producción de WT \citep{yin_bgl1d_2019}. La cinética y la
+selectividad se presentan en los \anexolink{anx:cinetica}{Cinética Frente a Concentración de Sustrato} y
+\anexolink{anx:selectividad}{Selectividad en Síntesis de Glucósidos}.
+
+\subsection{Resumen Cuantitativo}
+\label{subsec:resumen_cuantitativo}
+
+El Cuadro \ref{tab:resumen_resultados} concentra los resultados necesarios para
+la decisión posterior.
+
+\begin{table}[H]
+\centering
+\tabcaptionlink{anx:tab_resumen}{Resumen Cuantitativo Bajo la Condición Base}{tab:resumen_resultados}
+
+
+
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{3.5pt}
+
+\begin{tabularx}{\textwidth}{
+|p{2.5cm}|
+>{\centering\arraybackslash}p{2.0cm}|
+>{\centering\arraybackslash}p{1.45cm}|
+>{\centering\arraybackslash}p{1.45cm}|
+>{\centering\arraybackslash}p{1.45cm}|
+>{\centering\arraybackslash}p{2.0cm}|
+X|
+}
+\hline
+Aplicación &
+\(t_{50}\) WT \(\rightarrow\) ENG &
+\(I_S\) &
+\(I_C\) &
+\(I_P\) &
+\(T_{\mathrm{opt}}\) WT \(\rightarrow\) ENG &
+Lectura \\ \hline
+
+Alimentos &
+1.11 \(\rightarrow\) 3.53 h &
+3.37 &
+1.54 &
+4.58 &
+60 \(\rightarrow\) 65 \(^{\circ}\)C &
+La vida operativa impulsa el resultado. \\ \hline
+
+Bagazo &
+0.75 \(\rightarrow\) 7.02 h &
+6.92 &
+1.48 &
+8.96 &
+55 \(\rightarrow\) 65 \(^{\circ}\)C &
+Estabilidad y tolerancia al producto. \\ \hline
+
+Biomasa &
+0.99 \(\rightarrow\) 6.13 h &
+4.86 &
+1.58 &
+5.41 &
+65 \(\rightarrow\) 75 \(^{\circ}\)C &
+Mayor ventana térmica útil. \\ \hline
+
+Glucósidos &
+1.49 \(\rightarrow\) 5.43 h &
+3.19 &
+2.56 &
+15.29 &
+55 \(\rightarrow\) 60 \(^{\circ}\)C &
+Eficiencia y selectividad amplifican la mejora. \\ \hline
+
+\end{tabularx}
+\end{table}
+
+Los índices \(I_S\), \(I_C\) e \(I_P\) son mayores que 1 en los cuatro casos.
+La mejora conjunta existe, pero su efecto sobre producción es distinto según el
+mecanismo dominante.
+
+\subsection{Comparación Gráfica}
+\label{subsec:comparacion_grafica}
+
+\begin{figure}[H]
+\centering
+
+\begin{tabular}{|c|c|}
+\hline
+
+\parbox{0.46\textwidth}{
+    \centering
+    \small (a) Impacto sobre Producción\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{20.png}
+}
+&
+\parbox{0.46\textwidth}{
+    \centering
+    \small (b) Matriz Estabilidad--Eficiencia\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{21.png}
+}
+\\
+\hline
+
+\end{tabular}
+
+\figcaptionlink{anx:fig_sintesis}{Síntesis Comparativa de los Cuatro Casos}{fig:resumen_experimento}
+
+
+\end{figure}
+
+La comparación individual de estabilidad y eficiencia se encuentra en el
+\anexolink{anx:fig_sintesis}{Síntesis Comparativa de los Cuatro Casos}. No se repiten aquí esas figuras para mantener el cuerpo
+principal orientado a resultados.
+
+\subsection{Comportamientos que Limitan la Mejora}
+\label{subsec:fenomenos}
+
+La Figura \ref{fig:fenomenos} muestra por qué una mayor estabilidad o eficiencia
+no se traduce siempre de forma proporcional en producto.
+
+\begin{figure}[H]
+\centering
+
+\begin{tabular}{|c|c|}
+\hline
+
+\parbox{0.46\textwidth}{
+    \centering
+    \small (a) Proteasa: Riesgo de Inactivación\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{22.png}
+}
+&
+\parbox{0.46\textwidth}{
+    \centering
+    \small (b) Bagazo: Inhibición por Producto\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{23.png}
+}
+\\
+\hline
+
+\parbox{0.46\textwidth}{
+    \centering
+    \small (c) Biomasa: Activación Térmica Transitoria\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{24.png}
+}
+&
+\parbox{0.46\textwidth}{
+    \centering
+    \small (d) Glucósidos: Inhibición por Sustrato\\[0.12cm]
+    \includegraphics[width=0.43\textwidth]{25.png}
+}
+\\
+\hline
+
+\end{tabular}
+
+\figcaptionlink{anx:fig_restricciones}{Restricciones No Lineales Observadas en los Cuatro Casos}{fig:fenomenos}
+
+
+\end{figure}
+
+\noindent\small
+Evidencia complementaria:
+\anexolink{anx:fig_restricciones}{Restricciones No Lineales Observadas en los Cuatro Casos} y
+\anexolink{anx:selectividad}{Selectividad en Síntesis de Glucósidos}.
+\normalsize
+
+Los mecanismos son distintos: inactivación en alimentos, inhibición por producto
+en bagazo, respuesta térmica en biomasa e inhibición por exceso de sustrato en
+glucósidos. En este último caso, la selectividad introduce además una segunda
+condición de decisión.
+
+\subsection{Resultado General}
+\label{subsec:resultado_general}
+
+Los resultados responden la pregunta central: mejorar estabilidad no obligó a
+sacrificar eficiencia en ninguno de los cuatro casos. Sin embargo, la mejora
+molecular solo genera su máximo valor cuando se opera dentro de condiciones que
+eviten el nuevo cuello de botella.
+
+La \hyperref[sec:discusion]{Sección 5} transforma estos resultados en decisiones
+concretas de operación y prioridad de explotación.

@@ -1,0 +1,113 @@
+\section{Variables de Decisión: Estabilidad y Eficiencia}
+\label{sec:variables}
+
+El análisis utiliza dos propiedades moleculares y una medida final de proceso.
+La primera indica cuánto resiste la enzima; la segunda, qué tan bien convierte;
+la tercera, si esa mejora realmente llega a producción.
+
+\subsection{Variable X: Termoestabilidad}
+\label{subsec:termoestabilidad}
+
+La termoestabilidad mide cuánto tiempo una enzima conserva actividad bajo una
+temperatura determinada. En este trabajo se observa mediante dos indicadores:
+
+\begin{enumerate}
+    \item \(t_{50}\): tiempo necesario para que la actividad disminuya al 50\%;
+    \item área bajo la curva de actividad residual: actividad conservada durante
+    todo el periodo evaluado.
+\end{enumerate}
+
+Un valor mayor en ambos indicadores implica una vida operativa más extensa.
+Esta propiedad es crítica cuando la enzima se inactiva antes de completar la
+conversión \citep{siddiqui_defying_2017,hou_tradeoff_2023}.
+
+\subsection{Variable Y: Eficiencia Catalítica}
+\label{subsec:eficiencia}
+
+La eficiencia catalítica indica qué tan eficazmente la enzima transforma el
+sustrato disponible. Se estima a partir de la relación entre velocidad de
+reacción y concentración de sustrato.
+
+Para la comparación se utiliza la relación:
+
+\begin{equation}
+\text{Eficiencia Catalítica}
+=
+\frac{V_{\max}}{K_m},
+\end{equation}
+
+donde \(V_{\max}\) representa la velocidad máxima estimada y \(K_m\) caracteriza
+la respuesta de la enzima frente al sustrato.
+
+Además, se considera que una concentración excesiva puede reducir la velocidad.
+Por ello, más sustrato no se interpreta automáticamente como una mejora del
+proceso.
+
+\subsection{Variable Final: Producción}
+\label{subsec:produccion_variable}
+
+La medida industrial final es el producto acumulado durante ocho horas. Esta
+variable permite comprobar si una mejora en estabilidad o eficiencia se
+convierte efectivamente en mayor producción.
+
+\subsection{Mapa de Variables}
+\label{subsec:mapa}
+
+La Figura \ref{fig:variables} resume la lógica utilizada.
+
+\begin{figure}[H]
+\centering
+
+\resizebox{0.98\textwidth}{!}{
+\begin{tikzpicture}[
+    node distance=1.0cm and 1.0cm,
+    caja/.style={
+        draw,
+        rounded corners=5pt,
+        minimum width=3.7cm,
+        minimum height=1.25cm,
+        align=center,
+        inner sep=6pt
+    },
+    flecha/.style={-{Latex[length=3mm]},thick}
+]
+
+\node[caja] (x) {Termoestabilidad\\\(t_{50}\) y actividad residual};
+\node[caja, below=1.0cm of x] (y) {Eficiencia catalítica\\velocidad frente a sustrato};
+
+\node[caja, right=1.4cm of x, yshift=-1.05cm] (proceso)
+{Condiciones de operación\\temperatura, sustrato, producto};
+
+\node[caja, right=1.4cm of proceso] (resultado)
+{Resultado industrial\\producto acumulado};
+
+\draw[flecha] (x.east) -- (proceso.west);
+\draw[flecha] (y.east) -- (proceso.west);
+\draw[flecha] (proceso) -- (resultado);
+
+\end{tikzpicture}
+}
+
+\figcaptionlink{anx:fig_variables}{Relación entre las Variables del Análisis}{fig:variables}
+
+
+\end{figure}
+
+\subsection{Criterio Central}
+\label{subsec:criterio_xy}
+
+Existe trade-off cuando una mejora de estabilidad viene acompañada de una caída
+de eficiencia. Sin embargo, esta relación no es obligatoria
+\citep{siddiqui_defying_2017,hou_tradeoff_2023}.
+
+La condición de mayor interés es:
+
+\begin{equation}
+\text{Mayor Estabilidad}
+\quad+\quad
+\text{Mayor Eficiencia}
+\quad\longrightarrow\quad
+\text{Mayor Producción}.
+\end{equation}
+
+La \hyperref[sec:metodologia]{Sección 3} define cómo se cuantifica cada mejora.
