@@ -4,168 +4,618 @@
 % Instructor: Enmanuel Huallparimachi (Ciencia Política · PUCP)
 % Modelo basado en: Investigación Experimental en Ciencia Política
 % ==============================================================================
+\documentclass[11pt,aspectratio=169]{beamer}
 
-\documentclass[aspectratio=169,10pt]{beamer}
+%------------------------------------------------------- TEMA INSTITUCIONAL --
+\usetheme{PUCP}
 
-% --- Tema y Colores ---
-\usetheme{Madrid}
-\usecolortheme{whale}
-
-% --- Idioma y Codificación ---
-\usepackage[utf8]{inputenc}
+%--------------------------------------------------------- IDIOMA Y FUENTES --
 \usepackage[T1]{fontenc}
-\usepackage[spanish,es-tabla]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla,es-nodecimaldot,es-noshorthands]{babel}
+\usepackage{lmodern}
 
-% --- Paquetes Adicionales ---
+%------------------------------------------------------- TABLAS Y GRÁFICOS ---
 \usepackage{booktabs}
-\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{tabularx}
 \usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{amsmath,amssymb}
 
-% --- Metadatos ---
-\title[Iconografía Populista Punitiva]{\textbf{Incidencia de la Iconografía Populista Punitiva en la Cooperación Ciudadana}}
-\subtitle{Una Propuesta Experimental en Ciencia Política}
+%------------------------------------------------------------ BIBLIOGRAFÍA ---
+\usepackage[round,authoryear]{natbib}
+\bibliographystyle{apalike}
 
-\author[E. Huallparimachi]{
-    \textbf{Enmanuel Huallparimachi Rojas} \\
-    \footnotesize \texttt{enmanuel.huallparimachi@pucp.edu.pe}
-}
+%---------------------------------------------------------- AJUSTES MENORES --
+% Desactiva las diapositivas de índice automáticas del tema (una por sección y
+% otra por subsección). Con 6 secciones agregaban 6 páginas extra.
+% Para recuperarlas, basta con comentar estas dos líneas.
+\AtBeginSection[]{}
+\AtBeginSubsection[]{}
 
-\institute[PUCP]{
-    Facultad de Ciencias Sociales \\
-    Pontificia Universidad Católica del Perú
-}
+% En el documento original las figuras se numeran como "Gráfico"
+\addto\captionsspanish{\renewcommand{\figurename}{Gráfico}}
+% Rutas donde buscar las imágenes
+\graphicspath{{./}{figuras/}{imagenes/}}
+% Oculta los símbolos de navegación de la esquina inferior derecha
+\setbeamertemplate{navigation symbols}{}
+% Espaciado de tablas
+\renewcommand{\arraystretch}{1.05}
+\setlength{\tabcolsep}{4pt}
 
-\date[2026-2]{Taller Introductorio de Overleaf (LaTeX) · Semestre 2026-2}
+% Notas al pie de las tablas (cierra el párrafo y ajusta el ancho)
+\newcommand{\fuente}[1]{%
+  \par\vspace{0.10cm}%
+  \noindent\parbox{\linewidth}{\raggedright\tiny\textit{#1}}\par}
 
-% ==============================================================================
+%-------------------------------------------------------- DATOS DEL TRABAJO --
+\title[Cuna Más y participación laboral femenina]{¿Cuál es el impacto de participar en el programa Cuna Más
+sobre la participación laboral de las mujeres en el año 2024?}
+\subtitle{Econometría Intermedia: Micro (1ECO25-0821)}
+\institute[PUCP]{Facultad de Ciencias Sociales\\
+                 Pontificia Universidad Católica del Perú}
+\date{Lima, 2026-1}
+
+%==============================================================================
 \begin{document}
-% ==============================================================================
 
-% Slide 1: Portada
-\begin{frame}
-    \titlepage
-\end{frame}
+%--------------------------------------------------------- 1. PORTADA -------
+\begin{frame}[plain,noframenumbering]
+  \begin{center}
+    \includegraphics[width=0.22\textwidth]{logo_pucp.png}\\[0.15cm]
+    {\scriptsize\textsc{Facultad de Ciencias Sociales}}\\[0.03cm]
+    {\scriptsize\textsc{Econometría Intermedia: Micro (1ECO25-0821)}}\\[0.25cm]
 
-% Slide 2: Agenda
-\begin{frame}{Estructura de la Presentación}
-    \tableofcontents
-\end{frame}
-
-% ==============================================================================
-\section{Introducción y Problema de Investigación}
-% ==============================================================================
-
-\begin{frame}{El Fenómeno del Populismo Punitivo}
-    \begin{block}{Definición Conceptual}
-        Estrategias de seguridad pública del Estado orientadas a maximizar el rédito político, legitimidad o apoyo electoral antes que la efectividad técnica contra el crimen.
-    \end{block}
+    \begin{beamercolorbox}[wd=0.92\textwidth,sep=8pt,center,rounded=true,shadow=true]{title}
+      \normalsize\bfseries \inserttitle
+    \end{beamercolorbox}
 
     \vspace{0.3cm}
-    \pause
-    \begin{columns}[t]
-        \begin{column}{0.48\textwidth}
-            \textbf{Dimensión \textit{Ex-Ante}:}
-            \begin{itemize}
-                \item Predisposiciones y actitudes punitivas.
-                \item Influencia del framing mediático.
-                \item Demandas de mano dura.
-            \end{itemize}
-        \end{column}
-        \pause
-        \begin{column}{0.48\textwidth}
-            \textbf{Dimensión \textit{Ex-Post}:}
-            \begin{itemize}
-                \item Apoyo efectivo a excesos policiales.
-                \item Tolerancia a la violencia estatal.
-                \item Cooperación ciudadana directa.
-            \end{itemize}
-        \end{column}
-    \end{columns}
+    {\scriptsize
+      \textbf{Integrantes:} Pérez Veliz, Valeria Jennifer (20203055)\\[0.10cm]
+      \textbf{Profesor:} García Núñez, Luis Javier\\[0.10cm]
+      Lima, 2026-1}
+  \end{center}
 \end{frame}
 
-% ==============================================================================
-\section{Mecanismos Causales e Hipótesis}
-% ==============================================================================
-
-\begin{frame}{Mecanismos Causales de la Iconografía Punitiva}
-    \begin{alertblock}{Pregunta Central}
-        ¿Cómo influye la exposición a imágenes de castigo y sometimiento policial sobre la cooperación de los ciudadanos?
-    \end{alertblock}
-
-    \vspace{0.4cm}
-    \pause
-    \begin{enumerate}
-        \item \textbf{Mecanismo de Legitimidad:} Apelación a símbolos patrios y soberanía popular.
-        \pause
-        \item \textbf{Mecanismo de Auto-Interés (\textit{Self-Interest}):} Percepción de provisión estatal de seguridad.
-        \pause
-        \item \textbf{Mecanismo de Coerción Simbólica:} Demostración de poderío físico y disuasión punitiva.
-    \end{enumerate}
+%--------------------------------------------------------- 2. AGENDA -------
+\begin{frame}{Contenido de la presentación}
+  \tableofcontents[hideallsubsections]
 \end{frame}
 
-\begin{frame}{Hipótesis y Modelo Econométrico}
-    \begin{exampleblock}{Hipótesis de Trabajo ($H_1$)}
-        La exposición a iconografía populista punitiva incrementa el Índice de Cooperación Punitiva Ciudadana (ICPC).
-    \end{exampleblock}
+%==============================================================================
+\section{Introducción}
+%==============================================================================
 
-    \vspace{0.3cm}
-    \pause
-    \textbf{Especificación del Modelo:}
-    \begin{equation}
-        Y_i = \alpha + \beta \, T_i + \sum_{k=1}^K \gamma_k X_{ki} + \varepsilon_i
-    \end{equation}
+%------------------------------------- 3. MOTIVACIÓN, PREGUNTA E HIPÓTESIS --
+\begin{frame}{Motivación, pregunta e hipótesis}
+  \footnotesize
+  \begin{itemize}
+    \item La participación laboral femenina determina el bienestar de los
+          hogares y el crecimiento en América Latina
+          \citep{martinoty_partners_2022}; una barrera central es la
+          \alert{falta de cuidado infantil accesible}
+          \citep{rodriguez_chamussy_educacion_2017}.
+    \item El \textbf{Programa Nacional Cuna Más} (MIDIS) da cuidado diurno a la
+          primera infancia y reduce el costo de oportunidad del tiempo de las
+          madres \citep{attanasio_community_2013}.
+  \end{itemize}
 
-    \begin{itemize}
-        \item $Y_i$: Índice de Cooperación Punitiva Ciudadana (ICPC).
-        \item $T_i \in \{0, 1\}$: Asignación aleatoria (Control vs. Tratamiento).
-        \item $\beta$: Efecto promedio del tratamiento (\textit{ATE}).
-    \end{itemize}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{block}{\small Pregunta de investigación}
+        \scriptsize ¿Cuál es el impacto de participar en Cuna Más sobre la
+        participación laboral de las mujeres de 14 a 50 años en el Perú
+        durante 2024?
+      \end{block}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{exampleblock}{\small Hipótesis}
+        \scriptsize El efecto es \textbf{positivo}: las mujeres cuyo hogar
+        accedió al servicio tienen mayor probabilidad de pertenecer a la PEA.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.15cm}
+  \begin{alertblock}{\small Problema de identificación}
+    \scriptsize El acceso \textbf{no es aleatorio}: depende de la focalización del
+    MIDIS y de la decisión de cada familia. Por eso se usan tres estrategias:
+    \textbf{MCO} $\rightarrow$ \textbf{PSM} (selección en observables)
+    $\rightarrow$ \textbf{VI} (selección en no observables).
+  \end{alertblock}
 \end{frame}
 
-% ==============================================================================
-\section{Metodología y Resultados}
-% ==============================================================================
+%==============================================================================
+\section{Datos y evidencia descriptiva}
+%==============================================================================
 
-\begin{frame}{Resultados de la Comparación de Medias}
-    \begin{table}
-        \small
+%--------------------------------------------- 4. DATOS, VARIABLES Y MUESTRA --
+\begin{frame}{Datos, variables y muestra}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \small
+      \begin{itemize}
+        \item \textbf{Fuente:} ENAHO 2024 (INEI).
+        \item \textbf{Muestra:} mujeres de 14 a 50 años en hogares con al menos
+              un niño menor de 5 años.
+      \end{itemize}
+      \begin{block}{\small Variables de interés}
+        \scriptsize
+        \textbf{Tratamiento $D$ (\texttt{cunamas}):} 1 si el hogar accedió a
+        Cuna Más / Wawa Wasi en los últimos 3 años; 0 si no.
+        Mód.\ 700 (\texttt{p710\_01}).\\[0.12cm]
+        \textbf{Resultado $Y$ (\texttt{participa}):} 1 si la mujer está ocupada o
+        buscando empleo (PEA); 0 si es inactiva. Mód.\ 500 (\texttt{ocu500}).
+      \end{block}
+      \scriptsize
+      \textbf{Covariables $\mathbf{X}$:} edad, nivel educativo, tamaño del
+      hogar, área urbana, jefatura femenina del hogar, lengua originaria e
+      ingreso bruto anual del hogar.
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \centering
+      \scriptsize
+      \textbf{Descripción de la variable de tratamiento}\\[0.15cm]
+      \begin{tabular}{lrrr}
+        \toprule
+        \textbf{Accedió a Cuna Más} & \textbf{Frec.} & \textbf{\%} &
+        \textbf{Acum.} \\
+        \midrule
+        No accede         & 9,587 & 97.53 & 97.53 \\
+        Accede a Cuna Más &   243 &  2.47 & 100.00 \\
+        \midrule
+        \textbf{Total}    & \textbf{9,830} & \textbf{100.00} & \\
+        \bottomrule
+      \end{tabular}
+      \fuente{Fuente: elaboración propia con base en la ENAHO 2024,
+      módulo 700 (\texttt{p710\_01}).}
+
+      \vspace{0.15cm}
+      \begin{alertblock}{\small Grupo tratado pequeño}
+        \scriptsize Solo el \textbf{2.47\,\%} de los 9,830 hogares accedió al
+        programa (243 casos), lo que limita la precisión de las estimaciones.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%-------------------------------------------- 5. PERFIL DE LOS BENEFICIARIOS --
+\begin{frame}{Perfil de los hogares beneficiarios}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{figure}
         \centering
-        \begin{tabular}{lcccc}
-            \toprule
-            \textbf{Componente} & \textbf{Control} & \textbf{Tratamiento} & \textbf{Diferencia} & \textbf{Valor $p$} \\
-            \midrule
-            ICPC Global & 5.82 & 5.85 & +0.03 & 0.33 \\
-            Componente Actitudinal & 6.10 & 6.18 & +0.08 & 0.26 \\
-            Componente Conductual & 5.54 & 5.52 & -0.02 & 0.75 \\
-            Apoyo a Fuerza Policial & 5.91 & 6.02 & +0.11 & 0.29 \\
-            \bottomrule
-        \end{tabular}
-    \end{table}
+        \includegraphics[width=\linewidth,height=0.46\textheight,keepaspectratio]{graf1_ingreso.png}
+        \caption{\tiny Ingreso en hogares que reciben o no Cuna Más}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth,height=0.46\textheight,keepaspectratio]{graf2_educacion.png}
+        \caption{\tiny Nivel educativo de las madres según Cuna Más}
+      \end{figure}
+    \end{column}
+  \end{columns}
 
-    \pause
-    \begin{block}{Interpretación}
-        La dirección del efecto en la dimensión actitudinal coincide con la hipótesis teórica (+0.08 puntos), sugiriendo la importancia de profundizar en estímulos audiovisuales e iconográficos.
-    \end{block}
+  \vspace{0.1cm}
+  \scriptsize
+  \begin{itemize}
+    \item \textbf{Ingreso:} distribución asimétrica a la derecha en ambos grupos
+          (mediana S/ 34,402 frente a un máximo de S/ 586,090). El grupo Cuna Más
+          está \alert{aún más concentrado en valores bajos}: evidencia de
+          focalización en hogares de menores recursos.
+    \item \textbf{Educación:} en ambos grupos predomina la \textbf{secundaria}
+          (completa y luego incompleta): el programa atiende a una población cuya
+          formación básica se interrumpió o culminó en ese nivel.
+  \end{itemize}
 \end{frame}
 
-% ==============================================================================
+%------------------------------------- 6. BRECHA OBSERVADA Y SESGO DE SELECCIÓN
+\begin{frame}{La brecha observada y el sesgo de selección}
+  \begin{columns}[T]
+    \begin{column}{0.44\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth,height=0.50\textheight,keepaspectratio]{graf3_participacion.png}
+        \caption{\tiny Participación laboral según Cuna Más}
+      \end{figure}
+      \vspace{-0.15cm}
+      \scriptsize
+      Brecha de \alert{7 p.p.} (63\,\% frente a 70\,\%), significativa al 5\,\%
+      ($p=0.038$).
+    \end{column}
+    \begin{column}{0.54\textwidth}
+      \centering
+      \scriptsize
+      \begin{tabular}{lccc}
+        \toprule
+        \textbf{Variable} & \textbf{$D=1$} & \textbf{$D=0$} &
+        \textbf{Test $p$} \\
+        \midrule
+        Participación laboral  & 0.70      & 0.63      & \alert{0.038} \\
+        Ingreso del hogar (S/) & 40,834.50 & 45,333.09 & 0.074 \\
+        Tamaño del hogar       & 5.41      & 5.63      & 0.108 \\
+        Edad                   & 29.56     & 30.11     & 0.378 \\
+        Urbano                 & 0.66      & 0.65      & 0.723 \\
+        Jefa de hogar mujer    & 0.31      & 0.33      & 0.524 \\
+        Educación              & 5.98      & 5.94      & 0.784 \\
+        Lengua originaria      & 0.99      & 1.00      & 0.232 \\
+        \bottomrule
+      \end{tabular}
+      \fuente{$D=1$: hogares que acceden ($n=243$); $D=0$: hogares que no
+      acceden ($n=9{,}587$). Fuente: elaboración propia, ENAHO 2024.}
+
+      \vspace{0.1cm}
+      \begin{alertblock}{\small La brecha no es causal}
+        \scriptsize Los hogares tratados son \textbf{más pobres} ($p=0.074$). Si
+        el ingreso también incide en la decisión de trabajar, la comparación
+        simple confunde el efecto del programa con el del ingreso. A ello se
+        suman \textbf{no observables}: motivación, red de apoyo, información.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Estimación por MCO}
+%==============================================================================
+
+%------------------------------------------------------------------ 7. MCO ---
+\begin{frame}{Estimación por MCO: modelo de probabilidad lineal}
+  \small
+  \begin{equation*}
+    \text{participa}_i = \beta_0 + \beta_1\,\text{cunamas}_i +
+    \mathbf{X}_i'\boldsymbol{\gamma} + u_i
+    \qquad\text{(parámetro de interés: } \beta_1\text{)}
+  \end{equation*}
+
+  \vspace{-0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.44\textwidth}
+      \centering
+      \scriptsize
+      \setlength{\tabcolsep}{3pt}
+      \begin{tabular}{lcc}
+        \toprule
+        \textbf{Variables} & \textbf{Coef.\ (MCO)} & \textbf{EE} \\
+        \midrule
+        \texttt{cunamas}        & \alert{0.0780$^{***}$}  & (0.0296)    \\
+        \texttt{urbano}         & $-$0.153$^{***}$        & (0.0107)    \\
+        \texttt{ingreso\_hogar} & 1.07e$-$06$^{***}$      & (1.41e$-$07)\\
+        \texttt{jefa\_hogar}    & 0.102$^{***}$           & (0.0100)    \\
+        \texttt{educ}           & 0.0232$^{***}$          & (0.00269)   \\
+        \texttt{edad}           & 0.0133$^{***}$          & (0.000491)  \\
+        \texttt{tamhogar}       & $-$0.00847$^{***}$      & (0.00233)   \\
+        Constante               & 0.163$^{***}$           & (0.0269)    \\
+        \midrule
+        Observaciones & 9,801 & \\
+        $R^2$         & 0.104 & \\
+        \bottomrule
+      \end{tabular}
+      \fuente{Errores estándar entre paréntesis. $^{***}p<0.01$;
+      $^{**}p<0.05$; $^{*}p<0.1$.}
+    \end{column}
+    \begin{column}{0.54\textwidth}
+      \scriptsize
+      \begin{itemize}
+        \item \texttt{cunamas} tiene el \textbf{signo esperado} y es
+              significativo al 1\,\%: las mujeres de hogares beneficiarios
+              tienen una probabilidad de participación laboral
+              \alert{7.80 p.p.} mayor.
+        \item Residir en zona \textbf{urbana} reduce la probabilidad en
+              15.30 p.p.\ frente a las zonas rurales.
+        \item Cada integrante adicional del hogar la reduce en 0.84 p.p.
+        \item Edad, educación, ingreso del hogar y jefatura femenina se asocian
+              positivamente con la participación laboral.
+      \end{itemize}
+      \begin{block}{\small Limitación}
+        \scriptsize El resultado solo es causal si no hay selección: se
+        contrasta con PSM y VI.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Propensity Score Matching}
+%==============================================================================
+
+%------------------------------------------- 8. METODOLOGÍA Y SOPORTE COMÚN --
+\begin{frame}{PSM: metodología y soporte común}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \scriptsize
+      El PSM compara beneficiarias con no beneficiarias de \textbf{probabilidad
+      estimada de acceder similar}, condicional en observables
+      \citep{rosenbaum_central_1983}. El parámetro estimado es el ATT:
+      \begin{equation*}
+        \text{ATT} = \mathbb{E}\big[\,Y_1 - Y_0 \mid D=1\,\big]
+      \end{equation*}
+      \vspace{-0.35cm}
+      \begin{equation*}
+        = \mathbb{E}\Big\{\mathbb{E}\big[Y \mid D=1, p(\mathbf{X})\big] -
+        \mathbb{E}\big[Y \mid D=0, p(\mathbf{X})\big] \Big| D=1\Big\}
+      \end{equation*}
+      \begin{itemize}
+        \item $p(\mathbf{X}) = \Pr(D=1 \mid \mathbf{X})$ se estima por un
+              \textbf{logit} con covariables que anteceden al programa
+              (supuesto CIA).
+        \item Se impone \textbf{soporte común}:
+              $0 < \Pr(D=1\mid\mathbf{X}) < 1$, descartando tratados fuera del
+              rango del grupo de comparación.
+        \item Alta \textbf{superposición} de densidades: se cumple el
+              \emph{overlapping} y la comparación entre grupos es válida.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{graf4_pscore.png}
+        \caption{\tiny Soporte común entre tratados y no tratados}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%----------------------------------------------- 9. BALANCE Y ATT ESTIMADO ---
+\begin{frame}{PSM: balance de covariables y efecto estimado}
+  \begin{columns}[T]
+    \begin{column}{0.47\textwidth}
+      \centering
+      \scriptsize
+      \textbf{Balance tras el emparejamiento (1-NN)}\\[0.1cm]
+      \tiny
+      \setlength{\tabcolsep}{2.5pt}
+      \begin{tabular}{lrrrc}
+        \toprule
+        \textbf{Variable} & \textbf{\% sesgo} & \textbf{$t$} &
+        \textbf{$p>|t|$} & \textbf{$\frac{V(T)}{V(C)}$} \\
+        \midrule
+        \texttt{participa}          &  14.1 &  1.52 & 0.128 & --- \\
+        \texttt{urbano}             &   0.8 &  0.09 & 0.928 & --- \\
+        \texttt{ingreso\_hogar}     & $-$12.2 & $-$1.32 & 0.186 & 0.53$^{*}$ \\
+        \texttt{jefa\_hogar}        & $-$4.9  & $-$0.54 & 0.591 & --- \\
+        \texttt{educ}               &   2.6 &  0.28 & 0.779 & 0.80 \\
+        \texttt{edad}               & $-$6.0  & $-$0.65 & 0.516 & 0.97 \\
+        \texttt{lengua\_originaria} & $-$6.8  & $-$0.75 & 0.454 & --- \\
+        \texttt{tamhogar}           & $-$10.6 & $-$1.15 & 0.251 & 0.85 \\
+        \bottomrule
+      \end{tabular}
+      \fuente{$^{*}$ Razón de varianzas fuera del intervalo de referencia
+      $[0.77;\,1.29]$: los hogares tratados tienen ingresos más homogéneos.}
+    \end{column}
+    \begin{column}{0.51\textwidth}
+      \centering
+      \scriptsize
+      \textbf{ATT según el método de emparejamiento}\\[0.1cm]
+      \tiny
+      \setlength{\tabcolsep}{2.5pt}
+      \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Método} & \textbf{ATT} & \textbf{EE} & \textbf{$t$} &
+        \textbf{$N$ total} \\
+        \midrule
+        1-NN (vecino más cercano) & 0.0864 & 0.0413 & 2.0948 & 483   \\
+        2-NN (dos vecinos)        & 0.0720 & 0.0363 & 1.9831 & 718   \\
+        Radius (caliper 0.05)     & 0.0648 & 0.0299 & 2.1699 & 9,801 \\
+        Kernel (ancho 0.06)       & 0.0649 & 0.0299 & 2.1717 & 9,801 \\
+        \bottomrule
+      \end{tabular}
+      \fuente{243 tratados en los cuatro métodos. Todos los efectos son
+      significativos al 5\,\%.}
+
+      \vspace{0.1cm}
+      \begin{block}{\small Lectura}
+        \scriptsize
+        \textbf{Balance adecuado:} ninguna covariable difiere significativamente
+        ($p>0.05$); los mayores sesgos son ingreso ($-$12.2\,\%) y tamaño del
+        hogar ($-$10.6\,\%).\\[0.1cm]
+        \textbf{ATT entre 6.48 y 8.64 p.p.}, siempre significativo al 5\,\% y
+        agrupado alrededor del coeficiente de MCO (7.80 p.p.): evidencia de
+        \textbf{robustez}.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%==============================================================================
+\section{Variables instrumentales}
+%==============================================================================
+
+%--------------------------------------- 10. INSTRUMENTOS Y ESTIMACIÓN MC2E --
+\begin{frame}{VI: instrumentos y estimación por MC2E}
+  \scriptsize
+  El PSM no resuelve la selección en \textbf{no observables}. Primera etapa:
+  \vspace{-0.1cm}
+  \begin{equation*}
+    \text{cunamas}_i = \pi_0 + \pi_1\,\text{intensidad\_cunamas}_i +
+    \pi_2\,\text{lengua\_originaria}_i + \mathbf{X}_i'\boldsymbol{\pi}_3 + v_i
+  \end{equation*}
+
+  \vspace{-0.15cm}
+  \begin{columns}[T]
+    \begin{column}{0.42\textwidth}
+      \centering
+      \scriptsize
+      \setlength{\tabcolsep}{3pt}
+      \begin{tabular}{lcc}
+        \toprule
+        \textbf{Variables} & \textbf{Coef.\ (MC2E)} & \textbf{EE} \\
+        \midrule
+        \texttt{cunamas}        & \alert{0.974$^{**}$} & (0.457)     \\
+        \texttt{urbano}         & $-$0.150$^{***}$     & (0.0114)    \\
+        \texttt{ingreso\_hogar} & 9.88e$-$07$^{***}$   & (1.46e$-$07)\\
+        \texttt{jefa\_hogar}    & 0.109$^{***}$        & (0.0107)    \\
+        \texttt{educ}           & 0.0253$^{***}$       & (0.00279)   \\
+        \texttt{edad}           & 0.0135$^{***}$       & (0.000521)  \\
+        Constante               & 0.0701$^{***}$       & (0.0257)    \\
+        \midrule
+        Observaciones & 9,529 & \\
+        $R^2$         & 0.019 & \\
+        \bottomrule
+      \end{tabular}
+      \fuente{Errores estándar entre paréntesis. $^{***}p<0.01$;
+      $^{**}p<0.05$; $^{*}p<0.1$.}
+    \end{column}
+    \begin{column}{0.56\textwidth}
+      \scriptsize
+      \begin{itemize}
+        \item \textbf{\texttt{intensidad\_cunamas}:} cobertura territorial del
+              programa. La instalación depende de la focalización del MIDIS, de
+              modo que a mayor cobertura del dominio, mayor probabilidad de
+              acceder.
+        \item \textbf{\texttt{lengua\_originaria}:} la focalización territorial
+              tiende a priorizar zonas con mayor población indígena y rural.
+        \item El coeficiente de \texttt{cunamas} es 0.974, significativo al
+              5\,\%: implicaría un aumento de \alert{97.4 p.p.} Las covariables
+              exógenas se mantienen cercanas a MCO, es decir, la
+              \textbf{imprecisión se concentra en la variable instrumentada}.
+      \end{itemize}
+      \begin{alertblock}{\small Magnitud implausible}
+        \scriptsize Un efecto de 97.4 p.p.\ es económicamente inverosímil y
+        obliga a revisar la validez de los instrumentos.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------- 11. VALIDACIÓN DE INSTRUMENTOS --
+\begin{frame}{VI: validación de los instrumentos}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \scriptsize
+      \textbf{Primera etapa (relevancia)}\\[0.1cm]
+      \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Var.} & \textbf{$R^2$} & \textbf{$R^2$ aj.} &
+        \textbf{$R^2$ parc.} & \textbf{$F(2,9521)$} \\
+        \midrule
+        \texttt{cunamas} & 0.0053 & 0.0046 & 0.0047 & 22.5965 \\
+        \bottomrule
+      \end{tabular}
+      \fuente{Prob $>F = 0.0000$. Estadístico de mínimo autovalor
+      (Cragg--Donald) $=22.5965$; valor crítico de Stock--Yogo al 10\,\%:
+      19.93.}
+
+      \vspace{0.15cm}
+      \raggedright
+      \begin{itemize}
+        \item $F=22.60$ supera el umbral de 10 de Staiger y Stock (1997) y el
+              valor crítico de Stock--Yogo: \textbf{no hay instrumentos
+              débiles}.
+        \item Pero el $R^2$ parcial de 0.47\,\% revela un poder explicativo
+              \textbf{reducido} sobre la variación del tratamiento.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \centering
+      \scriptsize
+      \textbf{Sobreidentificación y endogeneidad}\\[0.1cm]
+      \begin{tabular}{llcc}
+        \toprule
+        \textbf{Prueba} & \textbf{Estadístico} & \textbf{Valor} &
+        \textbf{Valor $p$} \\
+        \midrule
+        \multicolumn{4}{l}{\textit{Sobreid.} ($H_0$: instrumentos válidos)} \\
+        Sargan (score) & $\chi^2(1)$ & 1.01424 & 0.3139 \\
+        Basmann        & $\chi^2(1)$ & 1.01349 & 0.3141 \\
+        \addlinespace
+        \multicolumn{4}{l}{\textit{Endogeneidad} ($H_0$: variable exógena)} \\
+        Durbin (score) & $\chi^2(1)$ & 4.19871 & \alert{0.0405} \\
+        Wu--Hausman    & $F(1,9521)$ & 4.19703 & \alert{0.0405} \\
+        \bottomrule
+      \end{tabular}
+      \fuente{Fuente: elaboración propia con base en la ENAHO 2024.}
+
+      \vspace{0.15cm}
+      \raggedright
+      \begin{itemize}
+        \item Sargan y Basmann \textbf{no rechazan} la validez conjunta de los
+              instrumentos ($p\approx0.314$).
+        \item Durbin y Wu--Hausman \textbf{rechazan} la exogeneidad de
+              \texttt{cunamas} ($p=0.0405$): MCO sería sesgado e inconsistente,
+              lo que justifica el uso de VI.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%==============================================================================
 \section{Conclusiones}
-% ==============================================================================
+%==============================================================================
 
-\begin{frame}{Conclusiones y Aportes}
-    \begin{itemize}
-        \item<1-> \textbf{Aporte metodológico:} Relevancia de los experimentos en encuesta para estudiar iconografía política.
-        \item<2-> \textbf{Reproducibilidad académica:} Integración de LaTeX, Beamer y BibTeX para una comunicación rigurosa.
-        \item<3-> \textbf{Agenda futura:} Evaluar piezas audiovisuales de marketing gubernamental y redes sociales.
-    \end{itemize}
+%------------------------------------------------------- 12. SÍNTESIS --------
+\begin{frame}{Síntesis de resultados}
+  \centering
+  \footnotesize
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{Estrategia} & \textbf{Efecto estimado} & \textbf{Significancia} \\
+    \midrule
+    MCO (modelo de probabilidad lineal)    & 7.80 p.p.         & 1\,\% \\
+    PSM (cuatro métodos de emparejamiento) & 6.48 -- 8.64 p.p. & 5\,\% \\
+    Variables instrumentales (MC2E)        & 97.4 p.p.         & 5\,\% \\
+    \bottomrule
+  \end{tabular}
 
-    \vspace{0.5cm}
-    \uncover<4->{
-        \begin{center}
-            \Huge \textbf{¡Muchas Gracias!} \\
-            \normalsize Preguntas y comentarios: \texttt{enmanuel.huallparimachi@pucp.edu.pe}
-        \end{center}
-    }
+  \vspace{0.3cm}
+  \begin{columns}[T]
+    \begin{column}{0.49\textwidth}
+      \begin{block}{\small Lectura conjunta}
+        \scriptsize Las tres estrategias coinciden en \textbf{dirección} y
+        \textbf{significancia}. MCO y PSM además convergen en la magnitud, lo
+        que evidencia robustez frente a la selección en observables. Se toma el
+        \textbf{PSM como referencia} para el tamaño del efecto.
+      \end{block}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{alertblock}{\small ¿Por qué desconfiar de los 97.4 p.p.?}
+        \scriptsize \texttt{lengua\_originaria} podría afectar la participación
+        laboral por vías distintas a Cuna Más ---discriminación laboral, menor
+        acceso a mercados formales---, violando la restricción de exclusión. El
+        test de sobreidentificación no lo descarta: solo evalúa la validez
+        conjunta.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.1cm}
+  \scriptsize
+  \textbf{Limitaciones:} diseño transversal (sin efectos fijos de hogar); solo
+  243 tratados (2.47\,\%), lo que limita la precisión, sobre todo en 1-NN; y, de
+  ser válido el instrumento, el efecto de VI es un \textbf{LATE} no
+  generalizable.
 \end{frame}
 
+%----------------------------------------------------- 13. CONCLUSIÓN --------
+\begin{frame}{Conclusión}
+  \begin{block}{Resultado principal}
+    La evidencia ---consistente en dirección y significancia bajo MCO, PSM y
+    VI--- respalda que Cuna Más no solo cumple su función de cuidado infantil,
+    sino que también actúa como un \textbf{mecanismo de activación laboral} para
+    las madres beneficiarias.
+  \end{block}
+
+  \begin{itemize}
+    \item Magnitud estimada del efecto: \alert{entre 6 y 9 puntos porcentuales}
+          en la probabilidad de participación laboral.
+    \item Implicancia de política: los servicios públicos de cuidado infantil
+          pueden ser también instrumentos de inserción laboral femenina.
+    \item Agenda futura: datos de panel y mejores instrumentos para identificar
+          el efecto sobre no observables.
+  \end{itemize}
+
+\end{frame}
+
+%---------------------------------------------------- 14. REFERENCIAS --------
+\begin{frame}[allowframebreaks]{Referencias}
+  \scriptsize
+  \bibliography{referencias}
+\end{frame}
+
+\bibliographystyle{apalike}
 \end{document}
