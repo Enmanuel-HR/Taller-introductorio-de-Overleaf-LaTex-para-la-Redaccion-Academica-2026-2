@@ -1,0 +1,122 @@
+% =============================================================================
+%  beamerthemePUCP.sty
+%  Tema institucional PUCP para presentaciones Beamer.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemePUCP}[2026/08/30 Tema Beamer institucional PUCP]
+
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+\ProcessOptionsBeamer
+
+% --- OUTER E INNER THEMES ---
+\useoutertheme[footline=authorinstitutetitle,subsection=false]{smoothbars}
+\useinnertheme{circles}
+
+% --- DEFINICIÓN DE LA PALETA INSTITUCIONAL PUCP ---
+% Azul Marino Institucional PUCP (#002456)
+\xdefinecolor{pucpnavy}{RGB}{0,36,86}
+% Azul Real PUCP (#1A5FE2)
+\xdefinecolor{pucpblue}{RGB}{26,95,226}
+% Carmesí / Alerta (#DD2649)
+\xdefinecolor{pucpred}{RGB}{221,38,73}
+% Verde Lima / Éxito (#4FE221)
+\xdefinecolor{pucpgreen}{RGB}{79,226,33}
+% Verde Claro / Acento (#6EE544)
+\xdefinecolor{pucplightgreen}{RGB}{110,229,68}
+% Gris Claro / Fondo Neutro (#EAEFF8)
+\xdefinecolor{pucplightgrey}{RGB}{234,239,248}
+% Texto Oscuro (#1F2937)
+\xdefinecolor{pucpdark}{RGB}{31,41,55}
+
+% Variables de compatibilidad
+\xdefinecolor{LightGrey}{RGB}{234,239,248}
+\xdefinecolor{hkustblue}{RGB}{0,36,86}
+
+% --- CONFIGURACIÓN DE SEPARADOR DE PÁGINAS ---
+\makeatletter
+\newcommand{\frameofframes}{/}
+\newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
+
+% --- COLORES DEL PIE DE PÁGINA (FOOTLINE) ---
+\setbeamercolor{section in foot}{fg=white, bg=pucpnavy}
+\setbeamercolor{subsection in foot}{fg=pucpnavy, bg=pucplightgrey}
+
+% --- PERSONALIZACIÓN DEL FOOTLINE INSTITUCIONAL PUCP ---
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.4ex,dp=1.1ex,center]{section in foot}%
+    \usebeamerfont{institute in head/foot} PUCP
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.4ex,dp=1.1ex,center]{subsection in foot}%
+    \usebeamerfont{title in head/foot}\textbf{\insertshorttitle}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.3\paperwidth,ht=2.4ex,dp=1.1ex,right]{section in foot}%
+    \today \hspace*{6ex} \insertframenumber{} \frameofframes{} \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+
+% --- CONFIGURACIÓN DE COLORES GLOBALES, TÍTULOS Y CABECERAS ---
+\setbeamercolor{footline}{bg=pucpnavy}
+\setbeamercolor{frametitle}{bg=pucpnavy,fg=white}
+\setbeamercolor{title}{bg=pucpnavy,fg=white}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]
+
+% --- PALETAS DE ESTRUCTURA BEAMER ---
+\setbeamercolor{structure}{fg=pucpblue}
+\setbeamercolor{palette primary}{fg=white,bg=pucpnavy}
+\setbeamercolor{palette secondary}{fg=white,bg=pucpblue}
+\setbeamercolor{palette tertiary}{fg=white,bg=pucpnavy!80!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=pucpnavy!60!black}
+\setbeamercolor{titlelike}{parent=palette primary}
+
+% --- BLOQUES (BLOCK, EXAMPLEBLOCK, ALERTBLOCK) ---
+% Bloque Principal (Azul Marino PUCP)
+\setbeamercolor{block title}{bg=pucpnavy,fg=white}
+\setbeamercolor{block body}{bg=pucplightgrey,fg=pucpdark}
+
+% Bloque de Ejemplo (Verde Lima PUCP)
+\setbeamercolor{block title example}{bg=pucpgreen!85!black,fg=white}
+\setbeamercolor{block body example}{bg=pucplightgreen!15!white,fg=pucpdark}
+
+% Bloque de Alerta (Carmesí PUCP)
+\setbeamercolor{block title alerted}{bg=pucpred,fg=white}
+\setbeamercolor{block body alerted}{bg=pucpred!10!white,fg=pucpdark}
+
+% --- ÍTEMS Y LISTAS ---
+\setbeamercolor{item projected}{bg=pucpblue,fg=white}
+\setbeamercolor{itemize item}{fg=pucpblue}
+\setbeamercolor{itemize subitem}{fg=pucpred}
+\setbeamercolor{enumerate item}{fg=pucpnavy}
+
+% --- BARRA LATERAL Y NAVEGACIÓN ---
+\setbeamercolor{section in sidebar}{fg=pucpblue}
+\setbeamercolor{section in sidebar shaded}{fg=gray!60}
+\setbeamercolor{subsection in sidebar}{fg=pucpred}
+\setbeamercolor{subsection in sidebar shaded}{fg=gray!50}
+\setbeamercolor{sidebar}{bg=pucpnavy}
+
+% --- DIAPOSITIVAS DE SECCIÓN AUTOMÁTICAS CON ÍNDICE ---
+\AtBeginSection[]{
+  \begin{frame}
+    \frametitle{Índice de la Presentación}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+\AtBeginSubsection[]{
+  \begin{frame}
+    \frametitle{Índice de la Presentación}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+
+\mode
+<all>
