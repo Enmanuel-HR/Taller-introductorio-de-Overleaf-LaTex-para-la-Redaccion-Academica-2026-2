@@ -1,0 +1,652 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+
+% --- PAQUETES DE IDIOMA Y CODIFICACIÓN ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+
+% --- TIPOGRAFÍA FORMAL Y MATEMÁTICAS ---
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{booktabs,tabularx,colortbl}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc,positioning}
+
+% --- TEMA PUCP (LIMA) ---
+\usetheme{pucp}
+
+% --- EVITA DIAPOSITIVAS DE SECCIÓN AUTOMÁTICAS/DUPLICADAS ---
+\AtBeginSection[]{}
+\AtBeginSubsection[]{}
+
+% --- METADATOS DE LA PRESENTACIÓN ---
+\title[RBC en una Economía Abierta Pequeña]{Real Business Cycles in a Small Open Economy}
+\subtitle{Enrique G. Mendoza (1991) $\;\vert\;$ \textit{The American Economic Review}, Vol. 81, No. 4, pp. 797--818}
+\author[Diana Rivera]{Diana Rivera}
+\institute[PUCP]{
+    Facultad de Ciencias Sociales \\
+    Pontificia Universidad Católica del Perú \\
+    \texttt{\small a20226733@pucp.edu.pe}
+}
+\date[\today]{\today}
+
+% Macro para incluir figuras con ajuste automático y respaldo
+\newcommand{\safeimg}[2]{%
+    \begin{center}%
+        \IfFileExists{#1}{%
+            \includegraphics[#2]{#1}%
+        }{%
+            \fcolorbox{pucp_azul_academico}{pucp_gris_fondo}{%
+                \begin{minipage}{0.88\linewidth}%
+                    \centering\vspace{4pt}%
+                    {\scriptsize\bfseries\color{pucp_azul_oscuro} [Figura / Tabla: \texttt{#1}]}\\[2pt]%
+                    {\tiny\color{gray} Archivo localizado en la carpeta \texttt{pic/}}\vspace{4pt}%
+                \end{minipage}%
+            }%
+        }%
+    \end{center}%
+}
+
+% --- ETIQUETA DE ESTADO (badge) CON COLOR REAL, SIN TEXTO ROTO ---
+% Reemplaza cualquier \badge previo del tema (que salía como texto plano)
+% por una etiqueta redondeada de verdad, hecha con TikZ.
+\makeatletter
+\providecommand{\badge}{}
+\renewcommand{\badge}[2][pucp_azul_academico]{%
+    \begin{center}
+        \tikz[baseline]{
+            \node[fill=#1, text=white, rounded corners=3pt,
+                  inner xsep=8pt, inner ysep=4pt, font=\scriptsize\bfseries] {#2};
+        }
+    \end{center}
+}
+\makeatother
+
+% --- DIVISOR DE SECCIÓN (diseño consistente con portada/cierre) ---
+\newcommand{\dividerframe}[3]{%
+\begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[pucp_azul_oscuro] (current page.south west) rectangle (current page.north east);
+        \fill[pucp_azul_academico] (current page.south west) rectangle ([yshift=1.4cm]current page.south east);
+        \fill[pucp_celeste] ([yshift=1.4cm]current page.south west) rectangle ([yshift=1.46cm]current page.south east);
+        \node[text=pucp_celeste_claro, font=\fontsize{58}{58}\selectfont\bfseries]
+            at ([yshift=1.05cm]current page.center) {#1};
+        \node[text=white, align=center, font=\Large\bfseries, text width=0.8\paperwidth]
+            at ([yshift=-0.15cm]current page.center) {#2};
+        \node[text=white!85!black, align=center, font=\small, text width=0.72\paperwidth]
+            at ([yshift=-0.95cm]current page.center) {#3};
+    \end{tikzpicture}
+\end{frame}%
+}
+
+\begin{document}
+
+%==========================================================
+% PORTADA 
+%==========================================================
+\begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+        % Fondo azul marino institucional (#002D56)
+        \fill[pucp_azul_oscuro] (current page.south west) rectangle (current page.north east);
+        % Franja de acento inferior (#005DA4)
+        \fill[pucp_azul_academico] (current page.south west) rectangle ([yshift=1.65cm]current page.south east);
+        \fill[pucp_celeste] ([yshift=1.65cm]current page.south west) rectangle ([yshift=1.72cm]current page.south east);
+
+        % Logo institucional PUCP sobre tarjeta blanca
+        \node[fill=white, rounded corners=4pt, inner sep=4pt]
+            at ([yshift=2.75cm]current page.center) {%
+                \IfFileExists{pic/LOGO-DE-PUCP.jpg}{\includegraphics[height=1.05cm]{pic/LOGO-DE-PUCP.jpg}}{%
+                \IfFileExists{LOGO-DE-PUCP.jpg}{\includegraphics[height=1.05cm]{LOGO-DE-PUCP.jpg}}{%
+                \IfFileExists{LOGO-DE-PUCP.png}{\includegraphics[height=1.05cm]{LOGO-DE-PUCP.png}}{%
+                \IfFileExists{LOGO-DE-PUCP.pdf}{\includegraphics[height=1.05cm]{LOGO-DE-PUCP.pdf}}{%
+                \textbf{\color{pucp_azul_oscuro}\large PUCP}%
+                }}}}%
+            };
+
+        % Título de la investigación
+        \node[text=white, align=center, font=\LARGE\bfseries, text width=0.88\paperwidth]
+            at ([yshift=1.25cm]current page.center)
+            {Real Business Cycles in a\\Small Open Economy};
+
+        % Línea decorativa celeste
+        \draw[pucp_celeste_claro, line width=1.5pt]
+            ([yshift=0.40cm, xshift=-2.5cm]current page.center) -- ++(5.0cm,0);
+
+        % Autor del paper fundacional
+        \node[text=pucp_celeste_claro, align=center, font=\large\bfseries]
+            at ([yshift=0.02cm]current page.center) {Enrique G. Mendoza (1991)};
+
+        % Referencia bibliográfica formal
+        \node[text=white!85!black, align=center, font=\small, text width=0.85\paperwidth]
+            at ([yshift=-0.68cm]current page.center)
+            {\textit{The American Economic Review}, Vol.\ 81, No.\ 4, pp.\ 797--818 \\[2pt] \scriptsize JEL: E32 \quad F41 \quad N12};
+
+        % Datos de la expositora e institución
+        \node[text=white, align=center, font=\small]
+            at ([yshift=0.95cm]current page.south)
+            {\textbf{Diana Rivera} \quad $\vert$ \quad \texttt{diana.rivera@pucp.edu.pe}};
+        \node[text=white!90!black, align=center, font=\footnotesize]
+            at ([yshift=0.45cm]current page.south)
+            {Facultad de Ciencias Sociales --- Pontificia Universidad Católica del Perú};
+    \end{tikzpicture}
+\end{frame}
+
+%==========================================================
+% SECCIÓN 1: PRESENTACIÓN 
+%==========================================================
+\section{Presentación}
+\dividerframe{01}{Presentación}{Relevancia del journal, rigor metodológico y trayectoria académica del autor}
+
+\begin{frame}{El Journal y el Autor}
+    \framesubtitle{01 --- PRESENTACIÓN Y CONTEXTO}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{The American Economic Review (AER)}
+                \begin{itemize}
+                    \item Revista insignia de la \textbf{American Economic Association} (AEA).
+                    \item Publicación \textbf{Top-5 mundial} con tasa de aceptación inferior al $8\%$.
+                    \item Máximo estándar de arbitraje por pares y replicabilidad científica.
+                    \item Su publicación en 1991 inauguró la \textbf{Macroeconomía Abierta Cuantitativa moderna}.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Enrique G. Mendoza}
+                \begin{itemize}
+                    \item Desarrollado en el \textbf{Research Dept. del FMI} (Washington D.C.).
+                    \item Basado en su tesis doctoral en la \textbf{University of Western Ontario}.
+                    \item Comité de tesis: J. Greenwood, G. Huffman y B. Smith.
+                    \item Pionero en métodos numéricos no lineales para modelos DSGE en economías abiertas.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%==========================================================
+% SECCIÓN 2: IDENTIFICACIÓN DEL PAPER
+%==========================================================
+\section{Identificación del Paper}
+\dividerframe{02}{Identificación del Paper}{Pregunta de investigación, hechos estilizados y vacíos en la literatura}
+
+\begin{frame}{Pregunta Central e Hipótesis de Investigación}
+    \framesubtitle{02 --- IDENTIFICACIÓN DEL PAPER}
+
+    \begin{block}{Pregunta Central de Investigación}
+        \textbf{¿Puede un modelo RBC de economía abierta pequeña replicar simultáneamente la dinámica del ahorro, la inversión y la balanza comercial observada empíricamente?}
+    \end{block}
+    \vspace{0.15cm}
+
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{1. Puzzle de Feldstein--Horioka (1980)}
+                \small
+                $\text{corr}(S, I) = 0.445$ en Canadá (1946--85).\\
+                A pesar de no haber controles de capital, $S$ e $I$ covarían fuertemente.
+            \end{exampleblock}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{2. Balanza Comercial Contracíclica}
+                \small
+                $\text{corr}(TB/Y, \text{PIB}) = -0.129$.\\
+                En expansiones del PIB, el saldo comercial externo se deteriora.
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+    \vspace{0.15cm}
+
+    \begin{alertblock}{Hipótesis Fundamental de Mendoza (1991)}
+        Un modelo RBC con \textbf{perfecta movilidad de capitales}, \textbf{utilidad cardinal estacionaria} (Epstein 1983) y \textbf{costos moderados de ajuste al capital físico} replica con precisión los hechos estilizados del ciclo económico abierto.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Motivación: Tres Grandes Vacíos en la Literatura}
+    \framesubtitle{02 --- IDENTIFICACIÓN DEL PAPER}
+    \begin{columns}[T]
+        \begin{column}{0.32\textwidth}
+            \begin{block}{01 $\cdot$ Vacío Teórico}
+                \scriptsize
+                \textbf{Modelos RBC cerrados:}
+                Kydland-Prescott (1982) y Long-Plosser (1983) no abordaban variables internacionales:
+                \begin{itemize}
+                    \item Balanza comercial y $CA$.
+                    \item Flujos de capital externo.
+                    \item Shocks de tasa mundial.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \begin{block}{02 $\cdot$ Vacío Empírico}
+                \scriptsize
+                \textbf{Desmitificar a F--H:}
+                Feldstein y Horioka (1980) asumían que $\text{corr}(S,I)>0$ probaba barreras al capital.
+                \begin{itemize}
+                    \item Mendoza demuestra que con shocks persistentes y costos de ajuste, $S$ e $I$ se mueven juntos en equilibrio general.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \begin{block}{03 $\cdot$ Vacío Técnico}
+                \scriptsize
+                \textbf{Indeterminación con $\beta$ fijo:}
+                Con $r^*$ exógeno y descuento $\beta$ constante:
+                \begin{itemize}
+                    \item $\beta < r^* \implies A_t \to +\infty$.
+                    \item $\beta > r^* \implies A_t \to -\infty$.
+                \end{itemize}
+                Solución: \textbf{SCU} de Epstein (1983) con descuento endógeno y estado estacionario único.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%==========================================================
+% SECCIÓN 3: EL MODELO RBC
+%==========================================================
+\section{El Modelo RBC}
+\dividerframe{03}{El Modelo RBC}{Estructura formal, ecuaciones, preferencias SCU y algoritmo numérico}
+
+\begin{frame}{Supuestos Básicos y Estructura del Modelo}
+    \framesubtitle{03 --- EL MODELO TEÓRICO}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Estructura Macroeconómica}
+                \small
+                \begin{itemize}
+                    \item \textbf{Economía Pequeña (SOE):} Tomadora de precios en los mercados mundiales ($r^*$ exógena).
+                    \item \textbf{Horizonte Temporal:} Tiempo discreto, agente representativo con vida infinita.
+                    \item \textbf{Bien Único Transable:} El producto puede consumirse, invertirse o exportarse. Shocks de términos de intercambio se capturan en $e_t$.
+                    \item \textbf{Mercado Financiero:} Rentabilidad de activos: $r^*\exp(n_t)$.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Entorno Estocástico e Incompletitud}
+                \small
+                \begin{itemize}
+                    \item \textbf{Mercados Incompletos:} Solo existen bonos reales no contingentes.
+                    \item \textbf{Dos Perturbaciones Estocásticas:}
+                    \begin{itemize}
+                        \item $e_t$: shock de productividad doméstica.
+                        \item $n_t$: shock a la tasa de interés mundial.
+                    \end{itemize}
+                    \item \textbf{Cadena de Markov de 4 Estados:}
+                    $\lambda_t \in \{(e^1,n^1),(e^1,n^2),(e^2,n^1),(e^2,n^2)\}$.
+                    \item Transiciones: $\pi_{sr} = (1-\theta)\Pi_r + \theta p_{sr}$.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bloque de Producción y Acumulación de Capital}
+    \framesubtitle{03 --- EL MODELO TEÓRICO}
+    \begin{columns}[T]
+        \begin{column}{0.56\textwidth}
+            \begin{block}{1. Producción con Costos Cuadráticos de Ajuste}
+                \small
+                \begin{equation}
+                    G(K_t, L_t, K_{t+1}) = \exp(e_t)\, K_t^{\alpha} L_t^{1-\alpha} - \frac{\phi}{2}\left(K_{t+1}-K_t\right)^{2}
+                \end{equation}
+                \scriptsize
+                $\phi \ge 0$ penaliza la velocidad de instalación del capital físico.
+            \end{block}
+
+            \begin{block}{2. Ley de Movimiento del Capital}
+                \small
+                \begin{equation}
+                    K_{t+1} = (1-\delta)K_t + I_t
+                \end{equation}
+            \end{block}
+        \end{column}
+
+        \begin{column}{0.40\textwidth}
+            \begin{block}{3. Precio Sombra del Capital ($q$)}
+                \small
+                \begin{equation}
+                    q_t = 1 + \phi\left(I_t - \delta K_t\right)
+                \end{equation}
+                \scriptsize
+                Precio relativo de los bienes de inversión ($q$ de Tobin endógena).
+            \end{block}
+
+            \begin{exampleblock}{Mecanismo Clave}
+                \scriptsize
+                Los costos de ajuste moderados permiten separar la movilidad del capital financiero (instantánea) de la del capital físico (gradual).
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Bloque Externo y Restricciones de Recursos}
+    \framesubtitle{03 --- EL MODELO TEÓRICO}
+
+    \begin{block}{4. Evolución de Activos Externos Netos ($A_t$)}
+        \small
+        \begin{equation}
+            A_{t+1} = TB_t + A_t\left[1 + r^{*}\exp(n_t)\right]
+        \end{equation}
+        \scriptsize $TB_t$: Balanza comercial $\;\vert\;$ $A_t > 0$: Posición acreedora $\;\vert\;$ $r^*\exp(n_t)$: Rendimiento efectivo.
+    \end{block}
+
+    \begin{columns}[T]
+        \begin{column}{0.58\textwidth}
+            \begin{block}{5. Restricción de Recursos Agregada}
+                \small
+                \begin{equation}
+                    C_t + I_t + TB_t \leq \exp(e_t)\,K_t^{\alpha} L_t^{1-\alpha} - \frac{\phi}{2}\left(K_{t+1}-K_t\right)^{2}
+                \end{equation}
+                \scriptsize El ingreso neto financia consumo, inversión y exportaciones netas.
+            \end{block}
+        \end{column}
+        \begin{column}{0.38\textwidth}
+            \begin{block}{6. Límite de Deuda (No-Ponzi)}
+                \small
+                \begin{equation}
+                    A_t \geq -\Delta, \quad \Delta > 0
+                \end{equation}
+                \scriptsize Evita endeudamiento explosivo.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Preferencias SCU: Stationary Cardinal Utility (Epstein, 1983)}
+    \framesubtitle{03 --- EL MODELO TEÓRICO}
+
+    \begin{block}{Utilidad Intertemporal con Tasa de Descuento Endógena}
+        \small
+        \begin{equation}
+            U_0 = \mathbb{E}_0\left[\sum_{t=0}^{\infty} u\big(C_t - G(L_t)\big) \cdot \exp\left(-\sum_{\tau=0}^{t-1} v\big(C_\tau - G(L_\tau)\big)\right)\right]
+        \end{equation}
+    \end{block}
+
+    \begin{columns}[T]
+        \begin{column}{0.50\textwidth}
+            \begin{exampleblock}{Formas Funcionales (GHH + Epstein)}
+                \small
+                \begin{equation}
+                    u(x) = \frac{x^{1-\gamma}-1}{1-\gamma}, \qquad x = C_t - \frac{L_t^{\omega}}{\omega}
+                \end{equation}
+                \begin{equation}
+                    v(x) = \beta \ln(1+x), \qquad \beta > 0
+                \end{equation}
+                \scriptsize $\gamma$: aversión al riesgo $\;\vert\;$ $\omega$: elasticidad laboral $\;\vert\;$ $\beta$: descuento endógeno.
+            \end{exampleblock}
+        \end{column}
+        \begin{column}{0.46\textwidth}
+            \begin{block}{Propiedades Fundamentales}
+                \small
+                \begin{itemize}
+                    \item \textbf{Estacionariedad:} El descuento creciente asegura una \textbf{distribución límite única e invariante} de $(K, A)$.
+                    \item \textbf{Preferencias GHH:} Anulan el efecto riqueza sobre la oferta laboral ($L_t$ depende solo del salario real).
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Problema del Planificador Social y Solución Numérica}
+    \framesubtitle{03 --- EL MODELO TEÓRICO}
+
+    \begin{block}{Ecuación de Bellman}
+        \footnotesize
+        \resizebox{\linewidth}{!}{$\displaystyle
+            V(K_t, A_t, \lambda_t^{s}) = \max_{\substack{K_{t+1},\, A_{t+1}\\C_t,\, L_t}} \left\{
+            \frac{\left(C_t - \frac{L_t^{\omega}}{\omega}\right)^{1-\gamma}-1}{1-\gamma}
+            + \exp\left[-\beta\ln\!\left(1+C_t-\frac{L_t^{\omega}}{\omega}\right)\right]
+            \sum_{r=1}^{4}\pi_{sr}\, V(K_{t+1}, A_{t+1}, \lambda^r)
+            \right\}
+        $}
+    \end{block}
+    \vspace{0.15cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{Espacio de Estados y Control}
+                \scriptsize
+                \begin{itemize}
+                    \item \textbf{Estados:} $(K_t, A_t, \lambda_t)$ (capital, activos externos y shock).
+                    \item \textbf{Controles:} $K_{t+1}, A_{t+1}, C_t, L_t$.
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{Algoritmo Numérico}
+                \scriptsize
+                \begin{itemize}
+                    \item Grillas de estado discretas $(K \times A)$.
+                    \item \textbf{Iteración de la Función de Valor} (Bertsekas, 1976).
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Calibración Cuantitativa: Canadá (1946--1985)}
+    \framesubtitle{03 --- EL MODELO TEÓRICO}
+    \small Parámetros fijados para reproducir fielmente los hechos estilizados de la economía canadiense:
+    \vspace{0.15cm}
+
+    \centering
+    \resizebox{0.95\textwidth}{!}{%
+    \begin{tabular}{clcl}
+        \toprule
+        \rowcolor{pucp_azul_oscuro}
+        \color{white}\textbf{Parámetro} & \color{white}\textbf{Descripción} & \color{white}\textbf{Valor} & \color{white}\textbf{Fuente / Criterio de Calibración} \\
+        \midrule
+        $\alpha$ & Participación del capital en el PIB & $0.32$ & $1 - \text{participación laboral en ingreso neto canadiense}$ \\
+        $r^{*}$ & Tasa de interés real mundial & $0.04$ & Promedio de largo plazo (Kydland-Prescott 1982, Prescott 1986) \\
+        $\delta$ & Tasa de depreciación del capital & $0.10$ & Genera ratio $I/Y = 22\%$ consistente con datos \\
+        $\gamma$ & Coeficiente de aversión al riesgo & $2.00$ ó $1.001$ & Prescott (1986); se evalúan ambas parametrizaciones \\
+        $\omega$ & Elasticidad intertemporal del trabajo & $1.455$ & Heckman \& MaCurdy (1980--81): elast. Frisch $\approx 2.2$ \\
+        $\beta$ & Elasticidad del descuento al consumo & $0.11$ & Condición SS: ratio intereses netos/PIB $\approx 2\%$ \\
+        $\phi$ & Costo de ajuste del capital físico & $0.028$ & Calibrado para igualar $\sigma(I) = 9.8\%$ observada \\
+        $\rho$ & Autocorrelación de los shocks & $0.36$ ó $0.42$ & Estimación AR(1) del residuo de Solow \\
+        \bottomrule
+    \end{tabular}%
+    }
+\end{frame}
+
+%==========================================================
+% SECCIÓN 4: RESULTADOS Y EVALUACIÓN
+%==========================================================
+\section{Resultados y Modelos}
+\dividerframe{04}{Resultados y Modelos}{Evaluación cuantitativa: Modelo I (Benchmark), Modelo II y Modelo III}
+
+\begin{frame}{Síntesis Comparativa: Las Tres Versiones del Modelo}
+    \framesubtitle{04 --- RESULTADOS Y EVALUACIÓN}
+    \begin{columns}[T]
+        \begin{column}{0.32\textwidth}
+            {\setbeamercolor{block title}{bg=pucp_rojo!85!black, fg=white}
+            \begin{block}{MODELO I $\cdot$ Benchmark}
+                \scriptsize
+                \textbf{Sin costos de ajuste ($\phi = 0$):}
+                \begin{itemize}
+                    \item $\sigma(I) = 21\%$ vs datos $9.8\%$ (ajuste instantáneo $\rightarrow$ bimodal).
+                    \item $\text{corr}(S,I) = 0.25$ vs datos $0.445$.
+                    \item Reducir $\gamma$ no resuelve la volatilidad de la inversión.
+                \end{itemize}
+            \end{block}}
+            \badge[pucp_rojo]{Volatilidad excesiva}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            {\setbeamercolor{block title}{bg=pucp_azul_academico, fg=white}
+            \begin{block}{MODELO II $\cdot$ Shocks $r^{*}$}
+                \scriptsize
+                \textbf{Tasa mundial estocástica:}
+                \begin{itemize}
+                    \item Shocks de $r^{*}$ casi \textbf{neutros}: $\sigma(\text{PIB})$ pasa de $2.83\%$ a solo $2.90\%$.
+                    \item Bajo ratio deuda/PIB ($2\%$) amortigua efecto riqueza.
+                    \item Crucial para economías con alta deuda externa (Perú).
+                \end{itemize}
+            \end{block}}
+            \badge[pucp_azul_academico]{Neutral en Canadá}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            {\setbeamercolor{block title}{bg=pucp_verde!70!black, fg=white}
+            \begin{block}{MODELO III $\cdot$ Costos Ajuste}
+                \scriptsize
+                \textbf{$\phi = 0.028$ --- Versión exitosa:}
+                \begin{itemize}
+                    \item $\sigma(I) = 9.89\%$ \checkmark (datos: $9.82\%$).
+                    \item $\text{corr}(S,I) = 0.501$ \checkmark (datos: $0.445$).
+                    \item $\text{corr}(TB/Y, \text{PIB}) = 0.023$ \checkmark (datos: $-0.129$).
+                \end{itemize}
+            \end{block}}
+            \badge[pucp_verde]{Éxito cuantitativo total}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Modelo I --- Benchmark: Diagnóstico y Anomalías}
+    \framesubtitle{04 --- RESULTADOS Y EVALUACIÓN}
+    \begin{columns}[T]
+        \begin{column}{0.46\textwidth}
+            \begin{block}{Diagnóstico del Benchmark ($\phi = 0$)}
+                \small
+                \begin{itemize}
+                    \item \textbf{Acierto:} Replica la jerarquía de volatilidades: $\sigma(C) < \sigma(Y) < \sigma(I)$.
+                    \item \textbf{Falla 1 (Inversión):} $\sigma(I) = 21\%$ (vs datos: $9.82\%$). La inversión explota debido al ajuste instantáneo del capital.
+                    \item \textbf{Falla 2 (Ahorro-Inversión):} $\text{corr}(S,I) = 0.25$ (vs datos: $0.445$).
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.52\textwidth}
+            \safeimg{pic/tabla1_benchmark.png}{width=\linewidth, height=0.62\textheight, keepaspectratio}
+            \centering{\tiny TABLE 1---STATISTICAL MOMENTS: CANADIAN DATA AND THE BENCHMARK MODEL}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Distribución Límite: Capital y Activos Externos}
+    \framesubtitle{04 --- RESULTADOS Y EVALUACIÓN}
+    \begin{center}
+        \safeimg{pic/figura1_densidad.png}{width=0.72\linewidth, height=0.65\textheight, keepaspectratio}
+        {\tiny FIGURE 1. MARGINAL PROBABILITY DENSITY FOR CAPITAL AND FOREIGN ASSETS IN THE BENCHMARK MODEL}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Modelo II: Efecto de los Shocks de Tasa de Interés Mundial}
+    \framesubtitle{04 --- RESULTADOS Y EVALUACIÓN}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Canales de Transmisión de $r^*$}
+                \small
+                \begin{enumerate}
+                    \item \textbf{Efecto Riqueza:} Ingreso neto por intereses según saldo acreedor/deudor.
+                    \item \textbf{Sustitución Intertemporal:} Mayor retorno incentiva diferir consumo.
+                    \item \textbf{Asignación de Cartera:} Elección entre $K$ y bonos externos $A$.
+                \end{enumerate}
+            \end{block}
+            \vspace{0.1cm}
+            \begin{exampleblock}{Lección para Países Emergentes}
+                \scriptsize
+                En Canadá el impacto es marginal por su baja deuda ($2\%$), pero en economías emergentes (como Perú), los shocks de $r^*$ son muy desestabilizadores.
+            \end{exampleblock}
+        \end{column}
+        \begin{column}{0.50\textwidth}
+            \safeimg{pic/tabla2_shocks_r.png}{width=\linewidth, height=0.62\textheight, keepaspectratio}
+            \centering{\tiny TABLE 2---STATISTICAL MOMENTS: DOMESTIC AND INTEREST-RATE SHOCKS}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Sensibilidad a la Variabilidad de los Shocks}
+    \framesubtitle{04 --- RESULTADOS Y EVALUACIÓN}
+    \begin{columns}[c]
+        \begin{column}{0.49\textwidth}
+            \safeimg{pic/tabla3_domestic_shocks.png}{width=\linewidth, height=0.62\textheight, keepaspectratio}
+            \centering{\tiny TABLE 3---DOMESTIC SHOCKS}
+        \end{column}
+        \begin{column}{0.49\textwidth}
+            \safeimg{pic/tabla4_interest_shocks.png}{width=\linewidth, height=0.62\textheight, keepaspectratio}
+            \centering{\tiny TABLE 4---INTEREST-RATE SHOCKS}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Modelo III: El Rol Decisivo de los Costos de Ajuste}
+    \framesubtitle{04 --- RESULTADOS Y EVALUACIÓN}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Éxito Cuantitativo con $\phi = 0.028$}
+                \small
+                \begin{itemize}
+                    \item El ajuste ante shocks transitorios se absorbe vía activos externos $A$, amortiguando la variación en capital $K$.
+                    \item Con $\rho=0.42$, $S$ e $I$ covarían fuertemente: $\text{corr}(S,I) = 0.501$ \checkmark (datos: $0.445$).
+                    \item $\sigma(I) = 9.89\%$ \checkmark (datos: $9.82\%$).
+                    \item $\text{corr}(TB/Y, \text{PIB}) = 0.023$ \checkmark (datos: $-0.129$).
+                \end{itemize}
+            \end{block}
+        \end{column}
+        \begin{column}{0.50\textwidth}
+            \safeimg{pic/tabla6_ajuste.png}{width=\linewidth, height=0.62\textheight, keepaspectratio}
+            \centering{\tiny TABLE 6---STATISTICAL MOMENTS: MODEL WITH ADJUSTMENT COST}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%==========================================================
+% SECCIÓN 5: CONCLUSIONES Y RELEVANCIA
+%==========================================================
+\section{Conclusiones y Relevancia}
+\dividerframe{05}{Conclusiones y Relevancia}{Aportes teóricos, implicancias de política y vigencia metodológica}
+
+\begin{frame}{Principales Conclusiones del Trabajo}
+    \framesubtitle{05 --- CONCLUSIONES}
+    \begin{columns}[T]
+        \begin{column}{0.32\textwidth}
+            \begin{block}{01 $\cdot$ Puzzle F--H Resuelto}
+                \scriptsize
+                La alta correlación ahorro--inversión \textbf{no} demuestra autarquía ni barreras al capital. Es el resultado natural de shocks persistentes en equilibrio general con libre movilidad financiera.
+            \end{block}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \begin{block}{02 $\cdot$ Validez del Marco RBC}
+                \scriptsize
+                Las perturbaciones reales de productividad explican más del $50\%$ de la variabilidad macroeconómica y reproducen la dinámica de las cuentas externas en una SOE.
+            \end{block}
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \begin{block}{03 $\cdot$ Legado Metodológico}
+                \scriptsize
+                La combinación de preferencias SCU y programación dinámica estocástica sentó las bases para toda la literatura moderna de modelos DSGE en economía abierta.
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%==========================================================
+% DIAPOSITIVA FINAL / CIERRE
+%==========================================================
+\begin{frame}[plain]
+    \begin{tikzpicture}[remember picture, overlay]
+        % Fondo azul marino PUCP
+        \fill[pucp_azul_oscuro] (current page.south west) rectangle (current page.north east);
+        % Franja de acento inferior
+        \fill[pucp_azul_academico] (current page.south west) rectangle ([yshift=0.75cm]current page.south east);
+        \fill[pucp_celeste] ([yshift=0.75cm]current page.south west) rectangle ([yshift=0.81cm]current page.south east);
+
+        % Contenido central
+        \node[text=white, align=center, font=\Huge\bfseries]
+            at ([yshift=1.2cm]current page.center) {¡Muchas Gracias!};
+
+        \node[text=pucp_celeste_claro, align=center, font=\large\bfseries]
+            at ([yshift=0.35cm]current page.center) {Preguntas y Comentarios};
+
+        \draw[pucp_celeste, line width=1.5pt]
+            ([yshift=-0.2cm, xshift=-2.5cm]current page.center) -- ++(5.0cm,0);
+
+        \node[text=white, align=center, font=\normalsize]
+            at ([yshift=-0.8cm]current page.center) {\textbf{Diana Rivera}};
+
+        \node[text=pucp_celeste_claro, align=center, font=\footnotesize]
+            at ([yshift=-1.25cm]current page.center) {\texttt{a20226733@pucp.edu.pe}};
+
+        \node[text=white!85!black, align=center, font=\scriptsize]
+            at ([yshift=-1.75cm]current page.center) {Facultad de Ciencias Sociales --- Pontificia Universidad Católica del Perú};
+    \end{tikzpicture}
+\end{frame}
+
+\end{document}

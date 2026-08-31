@@ -1,0 +1,116 @@
+% ============================================================
+% beamerthemepucp.sty
+% Tema Beamer institucional (paleta PUCP) — versión autosuficiente
+% Define únicamente lo que main.tex necesita: la paleta de colores
+% y un estilo general limpio (títulos, bloques, viñetas, pie de página).
+% ============================================================
+\ProvidesPackage{beamerthemepucp}[2024/01/01 Tema PUCP para Beamer]
+
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+
+% ------------------------------------------------------------
+% PALETA DE COLORES INSTITUCIONAL
+% (Puedes ajustar los códigos HTML si tu manual de marca usa otros)
+% ------------------------------------------------------------
+\definecolor{pucp_azul_oscuro}{HTML}{1B3B6F}     % Azul medio oscuro (color principal del tema)
+\definecolor{pucp_azul_academico}{HTML}{2E6DA4}  % Azul académico (acento principal, algo más claro)
+\definecolor{pucp_celeste}{HTML}{4FA3D1}         % Celeste institucional
+\definecolor{pucp_celeste_claro}{HTML}{AED6F1}   % Celeste claro (texto sobre fondo oscuro)
+\definecolor{pucp_rojo}{HTML}{C0392B}            % Rojo de énfasis / alerta
+\definecolor{pucp_verde}{HTML}{27AE60}           % Verde de éxito / validación
+\definecolor{pucp_gris_fondo}{HTML}{F2F2F2}      % Gris claro de fondo (cajas de respaldo)
+\definecolor{pucp_gris_texto}{HTML}{4D4D4D}      % Gris oscuro para texto secundario
+
+% ------------------------------------------------------------
+% COLORES DE BEAMER
+% ------------------------------------------------------------
+\setbeamercolor{normal text}{fg=black, bg=white}
+\setbeamercolor{structure}{fg=pucp_azul_academico}
+
+\setbeamercolor{palette primary}{bg=pucp_azul_oscuro, fg=white}
+\setbeamercolor{palette secondary}{bg=pucp_azul_academico, fg=white}
+\setbeamercolor{palette tertiary}{bg=pucp_celeste, fg=white}
+\setbeamercolor{palette quaternary}{bg=pucp_azul_oscuro, fg=white}
+
+\setbeamercolor{title}{fg=pucp_azul_oscuro}
+\setbeamercolor{subtitle}{fg=pucp_azul_academico}
+\setbeamercolor{author}{fg=pucp_gris_texto}
+\setbeamercolor{institute}{fg=pucp_gris_texto}
+
+\setbeamercolor{frametitle}{bg=white, fg=pucp_azul_oscuro}
+\setbeamercolor{framesubtitle}{fg=pucp_azul_academico}
+
+\setbeamercolor{block title}{bg=pucp_azul_academico, fg=white}
+\setbeamercolor{block body}{bg=pucp_azul_academico!8, fg=black}
+\setbeamercolor{block title example}{bg=pucp_celeste, fg=white}
+\setbeamercolor{block body example}{bg=pucp_celeste!10, fg=black}
+\setbeamercolor{block title alerted}{bg=pucp_rojo, fg=white}
+\setbeamercolor{block body alerted}{bg=pucp_rojo!8, fg=black}
+
+\setbeamercolor{itemize item}{fg=pucp_azul_academico}
+\setbeamercolor{itemize subitem}{fg=pucp_azul_academico}
+\setbeamercolor{itemize subsubitem}{fg=pucp_azul_academico}
+\setbeamercolor{enumerate item}{fg=pucp_azul_academico}
+\setbeamercolor{enumerate subitem}{fg=pucp_azul_academico}
+
+\setbeamercolor{section in toc}{fg=pucp_azul_oscuro}
+\setbeamercolor{subsection in toc}{fg=pucp_azul_academico}
+
+\setbeamercolor{footline}{fg=pucp_gris_texto}
+\setbeamercolor{page number in head/foot}{fg=pucp_gris_texto}
+
+% ------------------------------------------------------------
+% FUENTES
+% ------------------------------------------------------------
+\setbeamerfont{frametitle}{series=\bfseries, size=\Large}
+\setbeamerfont{framesubtitle}{series=\mdseries, size=\scriptsize}
+\setbeamerfont{block title}{series=\bfseries}
+
+% ------------------------------------------------------------
+% VIÑETAS PERSONALIZADAS
+% ------------------------------------------------------------
+\setbeamertemplate{itemize item}{\textcolor{pucp_azul_academico}{\textbf{\guilsinglright}}}
+\setbeamertemplate{itemize subitem}{\textcolor{pucp_azul_academico!70!black}{\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\textcolor{pucp_azul_academico!50!black}{--}}
+\setbeamertemplate{enumerate item}{\textcolor{pucp_azul_academico}{\bfseries\insertenumlabel.}}
+
+% ------------------------------------------------------------
+% ELIMINA SÍMBOLOS DE NAVEGACIÓN
+% ------------------------------------------------------------
+\setbeamertemplate{navigation symbols}{}
+
+% ------------------------------------------------------------
+% TÍTULO DE DIAPOSITIVA (frametitle) + línea de acento
+% ------------------------------------------------------------
+\makeatletter
+\setbeamertemplate{frametitle}{
+    \vspace{0.15cm}
+    \begin{beamercolorbox}[wd=\paperwidth, sep=0pt, leftskip=0.3cm]{frametitle}
+        \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle\\[-2pt]
+        \ifx\insertframesubtitle\@empty\else
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}
+        \fi
+    \end{beamercolorbox}
+    \vspace{2pt}
+    {\color{pucp_celeste}\hrule height 1.1pt}
+    \vspace{4pt}
+}
+\makeatother
+
+% ------------------------------------------------------------
+% PIE DE PÁGINA: numeración discreta
+% ------------------------------------------------------------
+\setbeamertemplate{footline}{
+    \hfill
+    \raisebox{4pt}{\scriptsize\color{pucp_gris_texto}\insertframenumber{} / \inserttotalframenumber}
+    \hspace{6pt}
+    \vspace{5pt}
+}
+
+% ------------------------------------------------------------
+% MÁRGENES DE CONTENIDO
+% ------------------------------------------------------------
+\setbeamersize{text margin left=0.6cm, text margin right=0.6cm}
+
+\endinput
