@@ -1,225 +1,96 @@
-% ==============================================================================
-% PLANTILLA DE MANUSCRITO ACADÉMICO EN LATEX
-% Curso: Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica
-% Instructor: Enmanuel Huallparimachi (Ciencia Política · PUCP)
-% Modelo basado en: "Incidencia de iconografía populista punitiva en la
-% cooperación ciudadana frente a políticas de mano dura contra el crimen"
-% ==============================================================================
+\documentclass[12pt, a4paper]{article}
 
-\documentclass[12pt,a4paper]{article}
-
-% --- 1. Paquetes de Idioma y Codificación ---
+% --- PREÁMBULO Y PAQUETES ---
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[spanish,es-tabla]{babel}
-
-% --- 2. Paquetes de Geometría y Tipografía ---
-\usepackage[top=2.5cm,bottom=2.5cm,left=3cm,right=2.5cm]{geometry}
-\usepackage{setspace}
-\onehalfspacing % Interlineado 1.5
-\usepackage{microtype}
-\usepackage{lmodern}
-
-% --- 3. Paquetes Matemáticos ---
-\usepackage{amsmath,amssymb,amsfonts,amsthm}
-
-% --- 4. Tablas y Figuras ---
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{float}
-\usepackage{array}
-\usepackage{multirow}
-
-% --- 5. Bibliografía y Enlaces ---
-\usepackage{natbib}
 \usepackage{hyperref}
+\usepackage{cite}
+
+% Configuración de hipervínculos
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue!70!black,
-    citecolor=green!50!black,
-    urlcolor=blue!80!black
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
 }
 
-% --- 6. Apéndices ---
-\usepackage[toc,page]{appendix}
+\title{\textbf{Análisis del Crecimiento Económico y la Inflación en el Perú}}
+\author{\textbf{PUCP} \\ Facultad de Ciencias Sociales -- Economía}
+\date{\today}
 
-% ==============================================================================
-% METADATOS DEL DOCUMENTO
-% ==============================================================================
-\title{\textbf{Incidencia de iconografía populista punitiva en la cooperación ciudadana frente a políticas de mano dura contra el crimen: Una propuesta experimental}}
-
-\author{
-    \textbf{Enmanuel Huallparimachi Rojas} \\
-    \textit{Especialidad de Ciencia Política y Gobierno} \\
-    \textit{Facultad de Ciencias Sociales} \\
-    \textit{Pontificia Universidad Católica del Perú (PUCP)} \\
-    \texttt{enmanuel.huallparimachi@pucp.edu.pe}
-}
-
-\date{18 de agosto de 2025}
-
-% ==============================================================================
-% CUERPO DEL DOCUMENTO
-% ==============================================================================
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-El presente estudio investiga la relación causal entre el empleo gubernamental de iconografía populista punitiva (IPP) y el nivel de cooperación punitiva ciudadana (ICPC) hacia políticas de mano dura contra el crimen. A partir de una aproximación multimétodo que combina la validación previa de instrumentos mediante grupos focales y un experimento en encuesta con asignación aleatoria a grupos de tratamiento y control ($N = 149$), se evalúa si la exposición a representaciones visuales del castigo estatal incrementa las actitudes punitivas y la disposición conductual a colaborar con medidas de mano dura. Los hallazgos aportan evidencia empírica en la dirección teórica esperada y ofrecen un marco analítico transferible para el estudio de la iconografía autoritaria en democracias contemporáneas.
-
-\vspace{0.3cm}
-\noindent \textbf{Palabras clave:} Populismo punitivo, iconografía autoritaria, experimentos en encuesta, cooperación ciudadana, mano dura, Ciencia Política.
+Este documento analiza la dinámica macroeconómica reciente del Perú, articulando la teoría neoclásica de crecimiento con datos empíricos de inflación y producto. Se emplea un marco formal cuantitativo para evaluar la trayectoria del desarrollo económico nacional.
 \end{abstract}
 
-\newpage
+\section{Introducción}
+El estudio de las macromagnitudes es fundamental en la ciencia económica. Según el trabajo seminal de \cite{solow1956}, la acumulación de capital y la productividad condicionan el estado estacionario. Por otro lado, la evidencia sobre capital humano presentada por \cite{mankiw1992} confirma la necesidad de análisis integrales.
 
-% ------------------------------------------------------------------------------
-\section{Introducción y Revisión Teórica}
-\label{sec:introduccion}
-% ------------------------------------------------------------------------------
-
-La literatura sobre el comportamiento del Estado en relación con el fomento de políticas de criminalidad de <<mano dura>> ha planteado que es posible definir dicho fenómeno mediante el concepto de \textbf{populismo punitivo}. Así, según \citet{hernandez_morales_populismo_2023}:
-
-\begin{quote}
-\small
-<<...el concepto de populismo punitivo plantea como uno de sus principales supuestos que las estrategias de seguridad implementadas por los gobiernos y la actuación de sus instituciones no están guiadas por la eficiencia para combatir el crimen, sino más bien por motivaciones políticas, como pueden ser el fortalecimiento de la legitimidad de un régimen mediante el apoyo de la ciudadanía o el impulso de una plataforma electoral a través de la obtención de votos>> (p.~80).
-\end{quote}
-
-En ese sentido, el fenómeno del punitivismo ciudadano posee dos dimensiones complementarias:
-\begin{enumerate}
-    \item \textbf{Dimensión \textit{ex-ante}:} Refiere a las predisposiciones y actitudes hacia el castigo penal, donde autoras como \citet{aizpurua_delimitando_2015} han desarrollado escalas con componentes hacia la delincuencia general y juvenil.
-    \item \textbf{Dimensión \textit{ex-post}:} Alude a las respuestas de apoyo efectivo o tolerancia frente al uso excesivo de la violencia estatal, aspecto examinado por \citet{mendez_efectos_2022} y \citet{chouhy_punitiveness_2022}.
-\end{enumerate}
-
-No obstante, como señalan \citet{bush_effects_2016} y \citet{del_carpio_estan_2014}, el papel de la iconografía visual y los estímulos comunicacionales en el cambio actitudinal requiere de aproximaciones experimentales rigurosas para aislar los mecanismos de causalidad.
-
-% ------------------------------------------------------------------------------
-\section{Mecanismos Causales e Iconografía}
-\label{sec:mecanismos}
-% ------------------------------------------------------------------------------
-
-El marco teórico postula tres mecanismos principales a través de los cuales la iconografía pública influye sobre la cooperación ciudadana:
-\begin{itemize}
-    \item \textbf{Legitimidad:} Apelación a símbolos de autoridad soberana y patriotismo.
-    \item \textbf{Auto-interés (\textit{Self-interest}):} Demostración de que el Estado provee seguridad tangible frente a la delincuencia.
-    \item \textbf{Coerción simbólica:} Exhibición del poder punitivo como señal de control y disuasión.
-\end{itemize}
-
-% ------------------------------------------------------------------------------
-\section{Planteamiento de Hipótesis y Modelo Formal}
-\label{sec:hipotesis}
-% ------------------------------------------------------------------------------
-
-\paragraph{Hipótesis Principal ($H_1$):} \textit{El empleo gubernamental de iconografía populista punitiva en pronunciamientos públicos genera un incremento en el índice de cooperación punitiva ciudadana (ICPC) en comparación con un mensaje neutral sin iconografía punitiva.}
-
-Formalmente, el efecto del tratamiento experimental sobre la variable dependiente $Y_i$ se modela mediante la siguiente especificación econométrica:
-
+\section{Marco Teórico}
+Asumimos una función de producción agregada tipo Cobb-Douglas con rendimientos constantes a escala:
 \begin{equation}
-\label{eq:modelo_experimental}
-Y_i = \alpha + \beta \, T_i + \sum_{k=1}^{K} \gamma_k X_{ki} + \varepsilon_i
+    Y_t = A_t K_t^\alpha L_t^{1-\alpha}
+    \label{eq:cobbdouglas}
 \end{equation}
+donde $Y_t$ es el producto bruto interno, $K_t$ representa el stock de capital, $L_t$ la fuerza laboral y $A_t$ la productividad total de los factores (PTF). El parámetro $\alpha \in (0,1)$ representa la elasticidad del producto respecto al capital.
 
-\noindent donde:
-\begin{itemize}
-    \item $Y_i$ representa el \textit{Índice de Cooperación Punitiva Ciudadana} (ICPC) del individuo $i$.
-    \item $T_i \in \{0, 1\}$ es la variable indicadora de asignación aleatoria al grupo de tratamiento ($T_i = 1$) o de control ($T_i = 0$).
-    \item $X_{ki}$ es un vector de $K$ covariables de control (edad, género, nivel educativo, ideología política).
-    \item $\beta$ captura el efecto promedio del tratamiento (\textit{Average Treatment Effect}, ATE):
-\end{itemize}
+A partir de la ecuación \ref{eq:cobbdouglas}, se puede derivar la tasa de crecimiento del producto por trabajador en el tiempo.
 
-\begin{equation}
-\label{eq:ate}
-\tau_{\text{ATE}} = \mathbb{E}[Y_i(1) - Y_i(0)]
-\end{equation}
+\section{Evidencia Empírica y Resultados}
+En la Tabla \ref{tab:macro_datos} se resumen los principales datos macroeconómicos observados en el país en los últimos años.
 
-% ------------------------------------------------------------------------------
-\section{Diseño Metodológico}
-\label{sec:metodologia}
-% ------------------------------------------------------------------------------
-
-El estudio empleó un diseño experimental en encuesta con una muestra de conveniencia administrada de forma digital ($N = 149$). Previo a la administración, el instrumento fue validado cualitativamente mediante un grupo focal.
-
-\subsection{Estructura de la Muestra}
-
-La asignación aleatoria garantizó el balance de covariables entre ambos grupos experimentales. La estructura muestral se resume en la Tabla~\ref{tab:balance}.
-
-\begin{table}[H]
+\begin{table}[h!]
 \centering
-\caption{Balance de covariables entre grupos experimentales}
-\label{tab:balance}
-\begin{tabular}{lcccc}
+\caption{Indicadores Macroeconómicos del Perú (2021--2023)}
+\label{tab:macro_datos}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Covariable} & \textbf{Control ($n_0 = 74$)} & \textbf{Tratamiento ($n_1 = 75$)} & \textbf{Diferencia} & \textbf{Valor $p$} \\
+\textbf{Variable Macro} & \textbf{2021} & \textbf{2022} & \textbf{2023} \\
 \midrule
-Edad promedio (años) & 24.3 & 25.1 & +0.8 & 0.42 \\
-Proporción mujeres (\%) & 52.7 & 50.7 & -2.0 & 0.81 \\
-Nivel educativo superior (\%) & 89.2 & 88.0 & -1.2 & 0.88 \\
-Interés en política (1--5) & 3.4 & 3.5 & +0.1 & 0.65 \\
+Crecimiento del PBI (\%) & 13.4 & 2.7 & -0.6 \\
+Inflación Anual (\%) & 6.4 & 8.5 & 3.2 \\
+Tasa Referencia BCRP (\%) & 2.50 & 7.50 & 6.75 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-% ------------------------------------------------------------------------------
-\section{Presentación de Resultados}
-\label{sec:resultados}
-% ------------------------------------------------------------------------------
+Asimismo, en la Figura \ref{fig:tendencia} se presenta la evolución visual del PBI. Como se demuestra mediante el enlace con la Tabla \ref{tab:macro_datos}, la desaceleración del periodo reciente responde a choques de oferta y tasa de interés.
 
-Los resultados descriptivos e inferenciales de la comparación de medias entre ambos grupos experimentales se presentan en la Tabla~\ref{tab:resultados}.
-
-\begin{table}[H]
+\begin{figure}[h!]
 \centering
-\caption{Comparación de medias del Índice de Cooperación Punitiva Ciudadana (ICPC)}
-\label{tab:resultados}
-\begin{tabular}{lccccc}
-\toprule
-\textbf{Dimensión / Componente} & \textbf{Control} & \textbf{Tratamiento} & \textbf{Diferencia} & \textbf{Estadístico $t$} & \textbf{Valor $p$} \\
-\midrule
-ICPC Global & 5.82 & 5.85 & +0.03 & 0.98 & 0.33 \\
-Componente Actitudinal & 6.10 & 6.18 & +0.08 & 1.12 & 0.26 \\
-Componente Conductual & 5.54 & 5.52 & -0.02 & -0.31 & 0.75 \\
-Apoyo a Fuerza Policial & 5.91 & 6.02 & +0.11 & 1.05 & 0.29 \\
-\bottomrule
-\end{tabular}
-\end{table}
+% Asegúrate de haber creado la carpeta imagenes/ y guardado la imagen grafico.png
+\includegraphics[width=0.65\textwidth]{imágenes/grafico.png}
+\caption{Tendencia del Crecimiento del PBI Peruano}
+\label{fig:tendencia}
+\end{figure}
 
-Como se observa a partir de los datos de la Tabla~\ref{tab:resultados}, la dirección del efecto en la dimensión actitudinal es consistente con la hipótesis planteada ($+0.08$), si bien en términos inferenciales no se rechaza la hipótesis nula al nivel estándar ($\alpha = 0.05$).
+\section{Conclusiones}
+La estabilidad macroeconómica provista por la autonomía del BCRP es clave. Mayores detalles algebraicos de la derivación se encuentran documentados en el Apéndice \ref{sec:apendice}.
 
-% ------------------------------------------------------------------------------
-\section{Discusión y Aprendizajes Pedagógicos}
-\label{sec:discusion}
-% ------------------------------------------------------------------------------
-
-El ejercicio metodológico proporciona lecciones sustantivas:
-\begin{enumerate}
-    \item \textbf{Utilidad del método experimental en Ciencia Política:} Permite evaluar el impacto causal de la iconografía estatal sobre la opinión pública.
-    \item \textbf{Importancia de la reproducibilidad:} El uso de LaTeX junto con BibTeX y gestores como Zotero garantiza que el documento y sus referencias bibliográficas sean enteramente reproducibles.
-\end{enumerate}
-
-% ==============================================================================
-% MATERIAL SUPLEMENTARIO Y APÉNDICES
-% ==============================================================================
-\newpage
-\begin{appendices}
-\section{Instrumento de Recolección y Preguntas del Experimento}
-\label{anexo:instrumento}
-
-A continuación se detalla la formulación de las preguntas empleadas para construir el Índice de Cooperación Punitiva Ciudadana:
-
-\begin{itemize}
-    \item \textbf{Pregunta 1 (Actitudinal):} <<¿En qué medida está de acuerdo con que la policía utilice la fuerza sin restricciones ante situaciones de flagrancia delictiva?>> (Escala Likert 1--10).
-    \item \textbf{Pregunta 2 (Conductual):} <<¿Estaría dispuesto a denunciar a vecinos sospechosos en un operativo conjunto de seguridad ciudadana?>> (Escala Likert 1--10).
-\end{itemize}
-
-\end{appendices}
-
-% ==============================================================================
-% REFERENCIAS BIBLIOGRÁFICAS
-% ==============================================================================
-\newpage
-\bibliographystyle{apalike}
+% --- BIBLIOGRAFÍA ---
+\bibliographystyle{plain}
 \bibliography{referencias}
+
+\clearpage
+
+% --- ANEXOS / APÉNDICE ---
+\appendix
+\section{Derivación Matemática del Estado Estacionario}
+\label{sec:apendice}
+Partiendo de la ecuación \ref{eq:cobbdouglas} en términos intensivos $y = k^\alpha$, la ecuación fundamental de acumulación de capital por trabajador en el modelo de Solow está dada por:
+\begin{equation}
+    \dot{k} = s k^\alpha - (n + g + \delta)k
+    \label{eq:solow_difeq}
+\end{equation}
+En el estado estacionario ($\dot{k} = 0$), despejamos el capital por unidad de eficiencia $k^*$:
+\begin{equation}
+    k^* = \left( \frac{s}{n + g + \delta} \right)^{\frac{1}{1-\alpha}}
+\end{equation}
 
 \end{document}

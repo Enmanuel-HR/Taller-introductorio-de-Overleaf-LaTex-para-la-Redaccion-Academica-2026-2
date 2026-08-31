@@ -1,171 +1,204 @@
-% ==============================================================================
-% PLANTILLA DE PRESENTACIÓN BEAMER EN LATEX
-% Curso: Taller Introductorio de Overleaf (LaTeX) para la Redacción Académica
-% Instructor: Enmanuel Huallparimachi (Ciencia Política · PUCP)
-% Modelo basado en: Investigación Experimental en Ciencia Política
-% ==============================================================================
-
-\documentclass[aspectratio=169,10pt]{beamer}
-
-% --- Tema y Colores ---
-\usetheme{Madrid}
-\usecolortheme{whale}
-
-% --- Idioma y Codificación ---
+\documentclass[10pt]{beamer}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[spanish,es-tabla]{babel}
-
-% --- Paquetes Adicionales ---
+\usepackage[spanish]{babel}
 \usepackage{booktabs}
-\usepackage{amsmath,amssymb}
-\usepackage{graphicx}
+\usepackage{hyperref}
 
-% --- Metadatos ---
-\title[Iconografía Populista Punitiva]{\textbf{Incidencia de la Iconografía Populista Punitiva en la Cooperación Ciudadana}}
-\subtitle{Una Propuesta Experimental en Ciencia Política}
+% ==========================================================
+% PERSONALIZACIÓN DE LA PLANTILLA
+% ==========================================================
+\usetheme{Madrid}
 
-\author[E. Huallparimachi]{
-    \textbf{Enmanuel Huallparimachi Rojas} \\
-    \footnotesize \texttt{enmanuel.huallparimachi@pucp.edu.pe}
+% 1. Personalización de Paleta de Colores (Colores Institucionales PUCP)
+\definecolor{pucpNavy}{RGB}{0, 43, 73}
+\definecolor{pucpGold}{RGB}{197, 155, 39}
+
+\setbeamercolor{structure}{fg=pucpNavy}
+\setbeamercolor{palette primary}{bg=pucpNavy, fg=white}
+\setbeamercolor{palette secondary}{bg=pucpNavy!85, fg=white}
+\setbeamercolor{palette tertiary}{bg=pucpNavy!70, fg=white}
+\setbeamercolor{titlelike}{parent=palette primary}
+\setbeamercolor{block title}{bg=pucpNavy, fg=white}
+\setbeamercolor{block body}{bg=pucpNavy!10, fg=black}
+\setbeamercolor{block title alert}{bg=pucpGold!90!black, fg=white}
+\setbeamercolor{block body alert}{bg=pucpGold!15, fg=black}
+
+% 2. Personalización Completa del Pie de Página (Footer Structure)
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}Economía PUCP
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
 }
+\setbeamertemplate{navigation symbols}{}
 
-\institute[PUCP]{
-    Facultad de Ciencias Sociales \\
-    Pontificia Universidad Católica del Perú
-}
+% --- DATOS DEL DOCUMENTO ---
+\title[Crecimiento e Inflación]{Análisis del Crecimiento Económico y la Inflación en el Perú}
+\subtitle{Evaluación Macroeconómica Reciente}
+\author[Estudiante PUCP]{Estudiante de Economía}
+\institute[PUCP]{Pontificia Universidad Católica del Perú}
+\date{\today}
 
-\date[2026-2]{Taller Introductorio de Overleaf (LaTeX) · Semestre 2026-2}
-
-% ==============================================================================
 \begin{document}
-% ==============================================================================
 
-% Slide 1: Portada
+% SLIDE 1: Carátula
 \begin{frame}
-    \titlepage
+  \titlepage
 \end{frame}
 
-% Slide 2: Agenda
+% SLIDE 2: Agenda
 \begin{frame}{Estructura de la Presentación}
-    \tableofcontents
+  \tableofcontents
 \end{frame}
 
-% ==============================================================================
-\section{Introducción y Problema de Investigación}
-% ==============================================================================
+\section{Introducción y Marco Teórico}
 
-\begin{frame}{El Fenómeno del Populismo Punitivo}
-    \begin{block}{Definición Conceptual}
-        Estrategias de seguridad pública del Estado orientadas a maximizar el rédito político, legitimidad o apoyo electoral antes que la efectividad técnica contra el crimen.
-    \end{block}
+% SLIDE 3: Bloques de Énfasis
+\begin{frame}{Motivación del Estudio}
+  \begin{block}{Objetivo Principal}
+    Analizar los determinantes del crecimiento económico peruano y su interacción con las metas de inflación del BCRP.
+  \end{block}
 
-    \vspace{0.3cm}
-    \pause
-    \begin{columns}[t]
-        \begin{column}{0.48\textwidth}
-            \textbf{Dimensión \textit{Ex-Ante}:}
-            \begin{itemize}
-                \item Predisposiciones y actitudes punitivas.
-                \item Influencia del framing mediático.
-                \item Demandas de mano dura.
-            \end{itemize}
-        \end{column}
-        \pause
-        \begin{column}{0.48\textwidth}
-            \textbf{Dimensión \textit{Ex-Post}:}
-            \begin{itemize}
-                \item Apoyo efectivo a excesos policiales.
-                \item Tolerancia a la violencia estatal.
-                \item Cooperación ciudadana directa.
-            \end{itemize}
-        \end{column}
-    \end{columns}
+  \vspace{0.4cm}
+
+  \begin{alertblock}{Diagnóstico Central}
+    La estabilidad macroeconómica es condición indispensable pero insuficiente para garantizar el desarrollo inclusivo a largo plazo.
+  \end{alertblock}
 \end{frame}
 
-% ==============================================================================
-\section{Mecanismos Causales e Hipótesis}
-% ==============================================================================
-
-\begin{frame}{Mecanismos Causales de la Iconografía Punitiva}
-    \begin{alertblock}{Pregunta Central}
-        ¿Cómo influye la exposición a imágenes de castigo y sometimiento policial sobre la cooperación de los ciudadanos?
-    \end{alertblock}
-
-    \vspace{0.4cm}
-    \pause
-    \begin{enumerate}
-        \item \textbf{Mecanismo de Legitimidad:} Apelación a símbolos patrios y soberanía popular.
-        \pause
-        \item \textbf{Mecanismo de Auto-Interés (\textit{Self-Interest}):} Percepción de provisión estatal de seguridad.
-        \pause
-        \item \textbf{Mecanismo de Coerción Simbólica:} Demostración de poderío físico y disuasión punitiva.
-    \end{enumerate}
+% SLIDE 4: Revelación Progresiva (Ritmo de Composición)
+\begin{frame}{Modelo Neoclásico de Solow}
+  Supuestos fundamentales del modelo de crecimiento:
+  \begin{itemize}[<+->]
+    \item Rendimientos decrecientes en la acumulación del capital.
+    \item Función de producción agregada: $Y = A K^\alpha L^{1-\alpha}$.
+    \item Tasa de ahorro constante $s$ y depreciación del capital $\delta$.
+    \item Progreso tecnológico exógeno $g$.
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{Hipótesis y Modelo Econométrico}
-    \begin{exampleblock}{Hipótesis de Trabajo ($H_1$)}
-        La exposición a iconografía populista punitiva incrementa el Índice de Cooperación Punitiva Ciudadana (ICPC).
-    \end{exampleblock}
+\section{Análisis de Datos y Resultados}
 
-    \vspace{0.3cm}
-    \pause
-    \textbf{Especificación del Modelo:}
-    \begin{equation}
-        Y_i = \alpha + \beta \, T_i + \sum_{k=1}^K \gamma_k X_{ki} + \varepsilon_i
-    \end{equation}
+% SLIDE 5: Entorno Columns (Composición Avanzada)
+\begin{frame}{Desempeño Macroeconómico Reciente}
+  \begin{columns}[t]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Crecimiento del PBI}
+        \begin{itemize}
+          \item Rebote histórico post-pandemia en 2021 (+13.4\%).
+          \item Desaceleración estructural en 2022--2023.
+          \item Urgencia de mayor productividad.
+        \end{itemize}
+      \end{block}
+    \end{column}
 
-    \begin{itemize}
-        \item $Y_i$: Índice de Cooperación Punitiva Ciudadana (ICPC).
-        \item $T_i \in \{0, 1\}$: Asignación aleatoria (Control vs. Tratamiento).
-        \item $\beta$: Efecto promedio del tratamiento (\textit{ATE}).
-    \end{itemize}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Control Inflacionario}
+        \begin{itemize}
+          \item Choques globales de oferta en 2022.
+          \item Incremento preventivo de la tasa de referencia.
+          \item Convergencia al rango meta (1\%--3\%).
+        \end{itemize}
+      \end{alertblock}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-% ==============================================================================
-\section{Metodología y Resultados}
-% ==============================================================================
-
-\begin{frame}{Resultados de la Comparación de Medias}
-    \begin{table}
-        \small
-        \centering
-        \begin{tabular}{lcccc}
-            \toprule
-            \textbf{Componente} & \textbf{Control} & \textbf{Tratamiento} & \textbf{Diferencia} & \textbf{Valor $p$} \\
-            \midrule
-            ICPC Global & 5.82 & 5.85 & +0.03 & 0.33 \\
-            Componente Actitudinal & 6.10 & 6.18 & +0.08 & 0.26 \\
-            Componente Conductual & 5.54 & 5.52 & -0.02 & 0.75 \\
-            Apoyo a Fuerza Policial & 5.91 & 6.02 & +0.11 & 0.29 \\
-            \bottomrule
-        \end{tabular}
-    \end{table}
-
-    \pause
-    \begin{block}{Interpretación}
-        La dirección del efecto en la dimensión actitudinal coincide con la hipótesis teórica (+0.08 puntos), sugiriendo la importancia de profundizar en estímulos audiovisuales e iconográficos.
-    \end{block}
+% SLIDE 6: Tabla
+\begin{frame}{Datos Macroeconómicos Consolidados}
+  \centering
+  \small
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Indicador} & \textbf{2021} & \textbf{2022} & \textbf{2023} \\
+    \midrule
+    Crecimiento PBI (\%) & 13.4 & 2.7 & -0.6 \\
+    Inflación Anual (\%) & 6.4 & 8.5 & 3.2 \\
+    Tasa Referencia BCRP (\%) & 2.50 & 7.50 & 6.75 \\
+    \bottomrule
+  \end{tabular}
 \end{frame}
 
-% ==============================================================================
-\section{Conclusiones}
-% ==============================================================================
+% SLIDE 7: Revelación Progresiva y Botón Interactivo (Beamer Button)
+\begin{frame}[label=slide_monetaria]{Mecanismos de Política Monetaria}
+  Pasos del canal de transmisión de la tasa de interés:
 
-\begin{frame}{Conclusiones y Aportes}
-    \begin{itemize}
-        \item<1-> \textbf{Aporte metodológico:} Relevancia de los experimentos en encuesta para estudiar iconografía política.
-        \item<2-> \textbf{Reproducibilidad académica:} Integración de LaTeX, Beamer y BibTeX para una comunicación rigurosa.
-        \item<3-> \textbf{Agenda futura:} Evaluar piezas audiovisuales de marketing gubernamental y redes sociales.
-    \end{itemize}
+  \begin{enumerate}[<+->]
+    \item Ajuste de la tasa de interés de referencia por el BCRP.
+    \item Transmisión al costo del crédito del sistema financiero.
+    \item Modulación de la demanda agregada e inflación.
+  \end{enumerate}
 
-    \vspace{0.5cm}
-    \uncover<4->{
-        \begin{center}
-            \Huge \textbf{¡Muchas Gracias!} \\
-            \normalsize Preguntas y comentarios: \texttt{enmanuel.huallparimachi@pucp.edu.pe}
-        \end{center}
-    }
+  \vspace{0.6cm}
+  
+  \centering
+  % Botón hipervinculado al Apéndice
+  \hyperlink{slide_apendice}{\beamerbutton{Ver Derivación Matemática en Apéndice}}
+\end{frame}
+
+\section{Políticas Económicas y Conclusiones}
+
+% SLIDE 8: Columnas para Análisis
+\begin{frame}{Retos y Oportunidades Estructurales}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Retos Estructurales}
+        \begin{itemize}
+          \item Alta informalidad laboral (>70\%).
+          \item Brecha de infraestructura pública.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Oportunidades}
+        \begin{itemize}
+          \item Sólida posición de reservas (RIN).
+          \item Alta demanda de minerales de transición.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% SLIDE 9: Conclusiones
+\begin{frame}{Conclusiones}
+  \begin{itemize}[<+->]
+    \item La estabilidad de precios preserva el poder adquisitivo del sol.
+    \item Se requiere impulsar la inversión privada para retomar tasas de crecimiento sostenidas superiores al 3\%.
+    \item La institucionalidad del BCRP es la fortaleza principal del modelo macroeconómico peruano.
+  \end{itemize}
+\end{frame}
+
+% SLIDE 10: Cierre
+\begin{frame}{Cierre}
+  \centering
+  \Large \textbf{¡Muchas Gracias!}
+
+  \vspace{1cm}
+  \normalsize ¿Preguntas o Comentarios?
+\end{frame}
+
+% SLIDE 11: Apéndice (Destino Interactivo del Botón)
+\begin{frame}[label=slide_apendice]{Apéndice: Ecuaciones del Estado Estacionario}
+  \begin{block}{Ecuación de Acumulación}
+    $$\dot{k} = s f(k) - (n + g + \delta)k$$
+  \end{block}
+
+  En estado estacionario ($\dot{k} = 0$):
+  $$s k^*{}^\alpha = (n + g + \delta)k^* \implies k^* = \left( \frac{s}{n + g + \delta} \right)^{\frac{1}{1-\alpha}}$$
+
+  \vspace{0.5cm}
+  \centering
+  \hyperlink{slide_monetaria}{\beamerbutton{Volver a la Presentación}}
 \end{frame}
 
 \end{document}
