@@ -1,0 +1,981 @@
+\documentclass{beamer}
+
+\usetheme{Madrid}
+\definecolor{unacblue}{RGB}{0,51,102}
+\setbeamercolor{structure}{fg=unacblue}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+
+\setbeamertemplate{navigation symbols}{}
+
+\title{Estadística Descriptiva:\\Scatter plot, covarianza y coeficiente de correlación}
+\author{Est. Luis Ayrton Vega Ayquipa \\
+\small lavegaa@unac.edu.pe}
+\institute{Universidad Nacional del Callao \\
+Facultad de Economía \\
+Escuela Profesional de Economía}
+\date{\today}
+
+% Pie de página personalizado
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,left]{author in head/foot}
+      \hspace{1em}UNAC FCE - LAVA  
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.34\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}
+      Ayudantía de Estadística Descriptiva 2026 A 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.33\paperwidth,ht=2.5ex,dp=1ex,right]{date in head/foot}
+      \insertshortdate{} \hspace{1em} \insertframenumber/\inserttotalframenumber\hspace{1em}
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+
+\begin{document}
+
+%====================================================
+\begin{frame}
+\titlepage
+\end{frame}
+
+%====================================================
+\begin{frame}{¿Qué es un Scatter Plot?}
+
+\textbf{Definición:}
+
+El diagrama de dispersión es una representación gráfica de pares ordenados:
+
+\[
+(X,Y)
+\]
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Cada punto representa una observación.
+\item Permite visualizar relaciones entre variables.
+\item Es una herramienta fundamental del:
+\[
+EDA \quad (\text{Exploratory Data Analysis})
+\]
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{¿Para qué sirve?}
+
+\begin{itemize}
+\item Detectar relaciones lineales
+\item Identificar patrones
+\item Detectar valores atípicos
+\item Analizar dirección de asociación
+\item Evaluar dispersión de datos
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{block}{Importancia en econometría}
+Antes de estimar una regresión, es necesario observar cómo se relacionan las variables.
+\end{block}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Interpretación básica}
+
+\begin{columns}
+
+\column{0.5\textwidth}
+
+\textbf{Relación positiva}
+
+\begin{itemize}
+\item Cuando \(X\) aumenta
+\item \(Y\) también aumenta
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Ejemplo:}
+\begin{itemize}
+\item educación e ingresos
+\end{itemize}
+
+\column{0.5\textwidth}
+
+\textbf{Relación negativa}
+
+\begin{itemize}
+\item Cuando \(X\) aumenta
+\item \(Y\) disminuye
+\end{itemize}
+
+\vspace{0.4cm}
+
+\textbf{Ejemplo:}
+\begin{itemize}
+\item precio y demanda
+\end{itemize}
+
+\end{columns}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Ejemplo aplicado}
+
+\textbf{Pregunta económica:}
+
+\vspace{0.2cm}
+
+¿Cómo influye el número de horas de estudio sobre la nota obtenida?
+
+\vspace{0.4cm}
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Horas de estudio (\(X\)) & Nota (\(Y\)) \\
+\midrule
+2 & 10 \\
+3 & 11 \\
+4 & 13 \\
+5 & 15 \\
+6 & 16 \\
+7 & 18 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Construcción del Scatter Plot}
+
+\textbf{Paso 1:}
+
+Definir variables:
+
+\[
+X = \text{Horas de estudio}
+\]
+
+\[
+Y = \text{Nota}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Paso 2:}
+
+Representar cada observación como un punto:
+
+\[
+(2,10), (3,11), (4,13)
+\]
+
+etc.
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Scatter Plot del ejemplo}
+
+\begin{center}
+
+\begin{tikzpicture}
+
+\begin{axis}[
+width=10cm,
+height=6cm,
+xlabel={Horas de estudio},
+ylabel={Nota},
+grid=major
+]
+
+\addplot[
+only marks,
+mark=*,
+]
+coordinates {
+(2,10)
+(3,11)
+(4,13)
+(5,15)
+(6,16)
+(7,18)
+};
+
+\end{axis}
+
+\end{tikzpicture}
+
+\end{center}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Interpretación del gráfico}
+
+\begin{itemize}
+\item Existe una relación positiva.
+\item A mayor número de horas de estudio:
+\[
+\Rightarrow
+\]
+mayor nota promedio.
+\item Los puntos siguen aproximadamente una tendencia lineal.
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{block}{Conclusión}
+El scatter plot sugiere que podría existir correlación positiva entre ambas variables.
+\end{block}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Scatter Plot y EDA}
+
+\textbf{En análisis exploratorio de datos (EDA), el scatter plot permite:}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+\item Explorar relaciones preliminares
+\item Verificar linealidad
+\item Detectar heterogeneidad
+\item Identificar observaciones atípicas
+\item Decidir si aplicar regresión lineal
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{block}{¡Importante!}
+El scatter plot es el primer paso visual antes del modelamiento econométrico.
+\end{block}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Conclusión}
+
+\begin{itemize}
+\item El scatter plot representa pares ordenados.
+\item Permite analizar relaciones entre variables.
+\item Es fundamental en estadística y econometría.
+\item Ayuda a comprender la estructura de los datos antes de estimar modelos.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{¿Qué es la covarianza?}
+
+\textbf{Definición:}
+
+La covarianza mide cómo dos variables cambian conjuntamente.
+
+\vspace{0.4cm}
+
+\begin{itemize}
+\item Si ambas variables aumentan juntas:
+\[
+Cov(X,Y)>0
+\]
+
+\item Si una aumenta y la otra disminuye:
+\[
+Cov(X,Y)<0
+\]
+
+\item Si no existe relación lineal:
+\[
+Cov(X,Y)\approx0
+\]
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Interpretación económica}
+
+\begin{block}{Ejemplos}
+\begin{itemize}
+\item Educación e ingresos:
+\[
+Cov(X,Y)>0
+\]
+
+\item Precio y demanda:
+\[
+Cov(X,Y)<0
+\]
+\end{itemize}
+\end{block}
+
+\vspace{0.3cm}
+
+\textbf{Idea principal:}
+
+La covarianza permite identificar la dirección de la relación entre variables.
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Suma producto de desviaciones}
+
+\textbf{Concepto fundamental:}
+
+La covarianza se basa en:
+
+\[
+(x_i-\bar{x})(y_i-\bar{y})
+\]
+
+\vspace{0.1cm}
+
+\textbf{Interpretación:}
+
+\begin{itemize}
+\item Mide cómo se desvían conjuntamente las observaciones.
+\item Compara cada dato respecto a sus medias.
+\end{itemize}
+
+\vspace{0.0cm}
+
+\begin{block}{Casos}
+\begin{itemize}
+\item Ambos positivos:
+\[
+(+)(+) = +
+\]
+
+\item Ambos negativos:
+\[
+(-)(-) = +
+\]
+
+\item Signos distintos:
+\[
+(+)(-) = -
+\]
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Fórmula de covarianza poblacional}
+
+\[
+\sigma_{XY}
+=
+\frac{\sum (x_i-\mu_X)(y_i-\mu_Y)}{N}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Donde:}
+
+\begin{itemize}
+\item \(\mu_X\): media poblacional de \(X\)
+\item \(\mu_Y\): media poblacional de \(Y\)
+\item \(N\): número de observaciones
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Fórmula de covarianza muestral}
+
+\[
+S_{XY}
+=
+\frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{n-1}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Diferencia importante:}
+
+\begin{itemize}
+\item Población:
+\[
+N
+\]
+
+\item Muestra:
+\[
+n-1
+\]
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{¿Por qué \(n-1\)?}
+
+Porque se pierde un grado de libertad al estimar la media.
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Ejemplo aplicado}
+
+\textbf{Relación entre horas de estudio y nota}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Horas (\(X\)) & Nota (\(Y\)) \\
+\midrule
+2 & 10 \\
+3 & 11 \\
+4 & 13 \\
+5 & 15 \\
+6 & 16 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\[
+\bar{x}=4
+\]
+
+\[
+\bar{y}=13
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Tabla de cálculo}
+
+\small
+
+\begin{center}
+\begin{tabular}{cccccc}
+\toprule
+\(X_i\) & \(Y_i\) &
+\(X_i-\bar{x}\) &
+\(Y_i-\bar{y}\) &
+Producto \\
+\midrule
+
+2 & 10 & -2 & -3 & 6 \\
+3 & 11 & -1 & -2 & 2 \\
+4 & 13 & 0 & 0 & 0 \\
+5 & 15 & 1 & 2 & 2 \\
+6 & 16 & 2 & 3 & 6 \\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\[
+\sum (x_i-\bar{x})(y_i-\bar{y}) = 16
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Cálculo de la covarianza}
+
+Usando la fórmula muestral:
+
+\[
+S_{XY}
+=
+\frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{n-1}
+\]
+
+\vspace{0.4cm}
+
+Sustituyendo:
+
+\[
+S_{XY}
+=
+\frac{16}{5-1}
+\]
+
+\[
+S_{XY}=4
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Interpretación del resultado}
+
+\[
+S_{XY}=4
+\]
+
+\vspace{0.4cm}
+
+\textbf{Interpretación:}
+
+\begin{itemize}
+\item La covarianza es positiva.
+\item Existe relación directa entre:
+\begin{itemize}
+\item horas de estudio
+\item nota obtenida
+\end{itemize}
+
+\item Cuando aumentan las horas:
+\[
+\Rightarrow
+\]
+las notas tienden a aumentar.
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Limitación de la covarianza}
+
+\begin{block}{Problema}
+La covarianza depende de las unidades de medida.
+\end{block}
+
+\vspace{0.4cm}
+
+\textbf{Ejemplo:}
+
+\begin{itemize}
+\item Horas y notas
+\item Soles y consumo
+\item Edad y salario
+\end{itemize}
+
+\vspace{0.3cm}
+
+Por ello se utiliza posteriormente:
+
+\[
+\text{Coeficiente de correlación}
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Conclusión}
+
+\begin{itemize}
+\item La covarianza mide variación conjunta.
+\item Se basa en productos de desviaciones.
+\item Permite identificar dirección de relación.
+\item Es fundamental para correlación y regresión.
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{¿Qué es el coeficiente de correlación?}
+
+\textbf{Definición:}
+
+El coeficiente de correlación mide:
+
+\begin{itemize}
+\item dirección de la relación
+\item intensidad de la relación lineal
+\end{itemize}
+
+entre dos variables.
+
+\vspace{0.4cm}
+
+\[
+-1 \leq r \leq 1
+\]
+
+\vspace{0.3cm}
+
+\begin{block}{Interpretación}
+Mientras más cercano sea el valor a \(\pm1\), más fuerte será la relación lineal.
+\end{block}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Interpretación del coeficiente}
+
+\begin{center}
+
+\begin{tabular}{cc}
+\toprule
+Valor de \(r\) & Interpretación \\
+\midrule
+\(r=1\) & Relación positiva perfecta \\
+\(0<r<1\) & Relación positiva \\
+\(r=0\) & Sin relación lineal \\
+\(-1<r<0\) & Relación negativa \\
+\(r=-1\) & Relación negativa perfecta \\
+\bottomrule
+\end{tabular}
+
+\end{center}
+
+\vspace{0.4cm}
+
+\textbf{Ejemplos económicos:}
+
+\begin{itemize}
+\item Educación e ingresos:
+\[
+r>0
+\]
+
+\item Precio y demanda:
+\[
+r<0
+\]
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{¿Por qué surge la correlación?}
+
+La covarianza tiene un problema:
+
+\vspace{0.3cm}
+
+\begin{block}{Problema}
+La covarianza depende de las unidades de medida.
+\end{block}
+
+\vspace{0.4cm}
+
+Por ello se estandariza utilizando desviaciones estándar.
+
+\vspace{0.4cm}
+
+Así obtenemos una medida:
+
+\begin{itemize}
+\item sin unidades
+\item comparable
+\item acotada entre -1 y 1
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Fórmula poblacional}
+
+\[
+\rho_{XY}
+=
+\frac{
+Cov(X,Y)
+}{
+\sigma_X \sigma_Y
+}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Donde:}
+
+\begin{itemize}
+\item \(\rho_{XY}\): correlación poblacional
+\item \(Cov(X,Y)\): covarianza poblacional
+\item \(\sigma_X\): desviación estándar de \(X\)
+\item \(\sigma_Y\): desviación estándar de \(Y\)
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Fórmula muestral}
+
+\[
+r
+=
+\frac{
+S_{XY}
+}{
+S_X S_Y
+}
+\]
+
+\vspace{0.4cm}
+
+\textbf{Forma desarrollada:}
+
+\[
+r=
+\frac{
+\sum (x_i-\bar{x})(y_i-\bar{y})
+}{
+\sqrt{
+\sum (x_i-\bar{x})^2
+\sum (y_i-\bar{y})^2
+}
+}
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{¿Qué es una suma de cuadrados?}
+
+\textbf{Concepto:}
+
+Una suma de cuadrados mide variabilidad.
+
+\vspace{0.4cm}
+
+\[
+\sum (x_i-\bar{x})^2
+\]
+
+\vspace{0.4cm}
+
+\textbf{Interpretación:}
+
+\begin{itemize}
+\item Mide qué tan dispersos están los datos respecto a la media.
+\item Es la base de:
+\begin{itemize}
+\item varianza
+\item desviación estándar
+\item correlación
+\item regresión
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Ejemplo muestral}
+
+\textbf{Relación entre horas de estudio y nota}
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Horas (\(X\)) & Nota (\(Y\)) \\
+\midrule
+2 & 10 \\
+3 & 11 \\
+4 & 13 \\
+5 & 15 \\
+6 & 16 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\[
+\bar{x}=4
+\]
+
+\[
+\bar{y}=13
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Tabla de cálculo}
+
+\small
+
+\begin{center}
+\begin{tabular}{ccccccc}
+\toprule
+
+\(X_i\) &
+\(Y_i\) &
+\(X_i-\bar{x}\) &
+\(Y_i-\bar{y}\) &
+\((X_i-\bar{x})^2\) &
+\((Y_i-\bar{y})^2\) &
+Producto \\
+
+\midrule
+
+2 & 10 & -2 & -3 & 4 & 9 & 6 \\
+3 & 11 & -1 & -2 & 1 & 4 & 2 \\
+4 & 13 & 0 & 0 & 0 & 0 & 0 \\
+5 & 15 & 1 & 2 & 1 & 4 & 2 \\
+6 & 16 & 2 & 3 & 4 & 9 & 6 \\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\[
+\sum (x_i-\bar{x})^2 = 10
+\]
+
+\[
+\sum (y_i-\bar{y})^2 = 26
+\]
+
+\[
+\sum (x_i-\bar{x})(y_i-\bar{y}) = 16
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Cálculo del coeficiente de correlación}
+
+Aplicando:
+
+\[
+r=
+\frac{
+\sum (x_i-\bar{x})(y_i-\bar{y})
+}{
+\sqrt{
+\sum (x_i-\bar{x})^2
+\sum (y_i-\bar{y})^2
+}
+}
+\]
+
+\vspace{0.4cm}
+
+Sustituyendo:
+
+\[
+r=
+\frac{16}{\sqrt{(10)(26)}}
+\]
+
+\[
+r=
+\frac{16}{16.1245}
+\]
+
+\[
+r \approx 0.992
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Interpretación del resultado}
+
+\[
+r \approx 0.992
+\]
+
+\vspace{0.4cm}
+
+\textbf{Interpretación:}
+
+\begin{itemize}
+\item Existe una correlación positiva muy fuerte.
+\item A mayor número de horas de estudio:
+\[
+\Rightarrow
+\]
+mayor nota obtenida.
+\item Los datos presentan comportamiento casi lineal.
+\end{itemize}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Ejemplo poblacional}
+
+Supongamos una población de trabajadores:
+
+\vspace{0.3cm}
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Experiencia (\(X\)) & Salario (\(Y\)) \\
+\midrule
+1 & 1200 \\
+2 & 1400 \\
+3 & 1700 \\
+4 & 1900 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{0.4cm}
+
+Aplicando:
+
+\[
+\rho_{XY}
+=
+\frac{
+Cov(X,Y)
+}{
+\sigma_X \sigma_Y
+}
+\]
+
+\vspace{0.3cm}
+
+se obtiene:
+
+\[
+\rho_{XY}\approx0.98
+\]
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Importancia del coeficiente de correlación}
+
+\begin{itemize}
+\item Detectar relaciones lineales
+\item Analizar intensidad de asociación
+\item Base de regresión lineal
+\item Herramienta central en econometría
+\end{itemize}
+
+\vspace{0.4cm}
+
+\begin{block}{Importante}
+Correlación no implica causalidad.
+\end{block}
+
+\end{frame}
+
+%====================================================
+\begin{frame}{Conclusión}
+
+\begin{itemize}
+\item La correlación mide dirección e intensidad.
+\item Surge de estandarizar la covarianza.
+\item Utiliza sumas de cuadrados.
+\item Es fundamental para regresión y análisis económico.
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}
